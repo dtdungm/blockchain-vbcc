@@ -1,0 +1,27 @@
+# .gitignore --- Configures files to ignore from this Git repository.
+
+# --------------------
+# Generated Files
+# --------------------
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+*.bbl
+*.lol
+*.lof
+*.lot
+*.gz
+
+~/*.pdf
+
+
+# --------------------
+# Misc.
+# --------------------
+.DS_Store
+*~
+*.swap
+
