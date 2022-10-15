@@ -1,0 +1,36 @@
+\documentclass{trinhbay}
+\begin{document}
+
+\renewcommand{\bibsection}{%                                             
+ \chapter*{\bibname}}
+ 
+\include{trangbia/bia}
+\pagenumbering{roman}
+\include{trangbia/trangxacnhancuahoidong}
+\include{trangbia/loicamon}
+\include{trangbia/tomtat}
+\include{trangbia/abstract}
+\include{trangbia/loicamdoan}
+\tableofcontents
+\addcontentsline{toc}{chapter}{\contentsname}
+\listoftables
+\listoffigures
+\include{trangbia/danhmuctuviettat}
+
+\setstretch{1.2}
+\pagenumbering{arabic}
+
+\include{chuong/modau}
+\include{chuong/cosolythuyet}
+\include{chuong/xaydunghethong}
+\include{chuong/ketquathucnghiem}
+\include{chuong/ketluan}
+
+\nocite{*}
+\bibliography{tailieuthamkhao.bib}
+\bibliographystyle{vietnumeric}
+
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+
+
+\end{document}
