@@ -7,6 +7,6 @@ TRANGBIA = trangbia/*.aux
 
 # compile the document
 default: $(FILE).tex 
-	latexmk
+	latexmk -xelatex
 clean:
 	rm -f $(GARBAGE) && rm -rf $(CHUONG) && rm -rf $(TRANGBIA)
