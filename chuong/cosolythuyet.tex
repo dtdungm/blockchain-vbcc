@@ -87,10 +87,10 @@ Mục tiêu của Kỹ thuật mật mã là tạo ra các mô hình tin cậy �
 
 \begin{enumerate}
 
-\item \textbf{Tính riêng tư hoặc tính bảo mật} (confidentiality/privacy): tính chất này đảm bảo thông tin chỉ được hiểu bởi những người biết chìa khóa bí mật.
-\item \textbf{Tính toàn vẹn thông tin} (integrity): tính chất này đảm bảo thông tin không thể bị thay đổi mà không bị phát hiện, cung cấp bằng chứng xác nhận thông tin đã bị thay đổi.
-\item \textbf{Tính xác thực một thực thể hay một định danh} (authentication/identification): người gửi (hoặc người nhận) có thể chứng minh đúng họ. Phương pháp có thể dùng là mật khẩu, một thách đố dựa trên một thuật toán mã hóa hoặc một bí mật chia sẻ giữa hai người để xác thực. Sự xác thực này có thể thực hiện một chiều (one-way) hoặc hai chiều (multual authentication).
-\item \textbf{Tính không chối bỏ hay chống thoái thác trách nhiệm} (non-repudiation): người gửi hoặc nhận sau này không thể chối bỏ việc đã gửi hoặc nhận thông tin. Thông thường điều này được thực hiện thông qua chữ ký số (electronic signature).
+\item  \emph{Tính riêng tư hoặc tính bảo mật} (confidentiality/privacy): tính chất này đảm bảo thông tin chỉ được hiểu bởi những người biết chìa khóa bí mật.
+\item \emph{Tính toàn vẹn thông tin} (integrity): tính chất này đảm bảo thông tin không thể bị thay đổi mà không bị phát hiện, cung cấp bằng chứng xác nhận thông tin đã bị thay đổi.
+\item \emph{Tính xác thực một thực thể hay một định danh} (authentication/identification): người gửi (hoặc người nhận) có thể chứng minh đúng họ. Phương pháp có thể dùng là mật khẩu, một thách đố dựa trên một thuật toán mã hóa hoặc một bí mật chia sẻ giữa hai người để xác thực. Sự xác thực này có thể thực hiện một chiều (one-way) hoặc hai chiều (multual authentication).
+\item \emph{Tính không chối bỏ hay chống thoái thác trách nhiệm} (non-repudiation): người gửi hoặc nhận sau này không thể chối bỏ việc đã gửi hoặc nhận thông tin. Thông thường điều này được thực hiện thông qua chữ ký số (electronic signature).
 
 \end{enumerate}
 
@@ -139,6 +139,36 @@ Khóa cá nhân dùng để tạo mật mã và tạo chữ ký số. Khóa côn
 
 \subsection{Hàm băm}
 
+Hàm băm là phép biến đổi một chiều có đầu vào là thông điệp chiều dài bất kỳ thành một dãy bit có độ dài cố định (tùy thuộc vào thuật toán băm). Giá trị băm còn gọi là hash value (hay Digest) là đặc trưng cho thông điệp ban đầu.
+
+Ví dụ: Với thông điệp ban đầu là Hello world sẽ có các giá trị băm tương ứng với một số hàm băm, như sau:
+
+Adler32: 18ab043d
+
+MD5: 3e25960a79dbc69b674cd4ec67a72c62
+
+SHA-256: 64ec88ca00b268e5ba1a35678a1b5316d212f4f366b2477232\ldots 37f3c
+
+Băm là một giải pháp tạo ra một đặc trưng cho một file dữ liệu. Tương tự như mỗi một con người có một dấu vân tay đặc trưng. Vì vậy Băm còn được gọi dấu vân tay (Fingerprint) của file dữ liệu.
+
+Hàm băm (Hash Function) là một dạng mật mã tạo bản mật không cần giải mật mà đáp ứng yêu cầu kiểm tra tính toàn vẹn của một dữ liệu dựa trên đặc trưng vân tay của nó.
+
+Hàm băm H(x) có khả năng bảo mật tốt, nếu thỏa 3 tính chất: 
+Một chiều (One Way),  Tự do liên kết yếu (Weakly Collision Free) và Tự do liên kết mạnh (Strong Collision Free).
+
+\begin{itemize}
+\item \emph{Tính chất Một chiều}: Cho trước giá trị băm y, rất khó tìm được x: H(x) = y. Điều này có nghĩa là nhận được giá trị băm y, rất khó tìm được dữ liệu gốc x thỏa: H(x) = y. Tính chất này đảm bảo rất ít tệp dữ liệu có H(x) = y.
+
+\item \emph{Tính chất Tự do liên kết yếu}: cho trước tập dữ liệu x, rất khó tìm được tệp dữ liệu x’≠x: H(x)=H(x’). Nếu x là tập dữ liệu cần băm, thì hầu như không thể tìm được tập dữ liệu khác x’: H(x’)=H(x). Tính chất này đảm bảo tệp dữ liệu x kèm H(x) rất khó bị sửa thành x’ có cùng H(x).
+
+\item \emph{Tính chất Tự do liên kết mạnh}: rất khó có thể tìm được 2 tập dữ liệu x ≠ x’ có cùng giá trị băm H(x) = H(x’).
+\end{itemize}
+
+
+
+
+
+
 \subsection{Chữ ký số}
 Chữ ký số được định nghĩa là một loại chữ ký điện tử, được tạo bằng sự chuyển đổi thông điệp dữ liệu sử dụng một hệ thống mật mã không đối xứng, theo đó người có được thông điệp dữ liệu ban đầu và khóa công khai của người ký có thể xác định được chính xác.
 
@@ -147,7 +177,7 @@ Chữ ký số được định nghĩa là một loại chữ ký điện tử, 
 \item Sự toàn vẹn nội dung của thông điệp dữ liệu kể từ khi thực hiện việc biến đổi nêu trên.
 \end{enumerate}
 
-Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó là cách xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai.
+Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó là cách xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai. Tuy nhiên, chữ ký số chỉ có thể đảm bảo khi khóa bí mật không bị lộ. Khi khóa bí mật bị lộ thì người sở hữu chữ ký không thể ngăn chặn được việc bị giả mạo chữ ký.
 
 \subsubsection{Nguyên lý ký số và xác thực chữ ký số }
 
@@ -202,9 +232,6 @@ Chứng thư X.509 phiên bản 3 có những thông tin sau:
 
 \end{itemize}
 
-\subsection{Dịch vụ chứng thực chữ ký số}
-
-\subsection{Hạ tầng khóa công khai}
 
 \section{Công nghệ Blockchain}
 
