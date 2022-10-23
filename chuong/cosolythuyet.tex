@@ -73,21 +73,138 @@ Việc xác minh văn bằng, chứng chỉ là một trong những giai đoạn
 \item Người phụ trách xác minh khi nhận được công văn đã ký duyệt của cấp trên sẽ tiến hành đóng dấu đỏ của cơ quan, hoàn tất thủ tục hành chính, xác minh văn bằng của người yêu cầu. Cuối cùng, người yêu cầu sẽ đến nhận lại công văn (hoặc có thể nhận qua thư hay email).
 \end{enumerate}
 
+Theo quy định, nhân viên thực hiện kiểm tra, đối chiếu bản chính giấy tờ tùy thân, giấy tờ liên quan, thông tin sổ gốc nhằm tránh giả mạo người nhận. Chữ ký vào hồ sơ văn bản nhằm chứng minh cho sự hiện diện và là một đặc điểm thể hiện riêng của một người. Do đó dữ liệu văn bằng, chứng chỉ, và sổ gốc khi lưu trên máy tính cũng phải theo quy định để đảm bảo tính pháp lý.
+
+Chữ ký số (hay chữ ký điện tử) là giải pháp được công nhận về tính pháp lý. Chữ ký số có các thuộc tính định danh, xác thực đúng nguồn gốc, đảm bảo được tính toàn vẹn của dữ liệu nhận được và chống thoái thác. Chữ ký số được xem như tương đương chữ ký tay trong giao dịch để đảm bảo tính pháp lý, tin cậy, tiết kiệm thời gian.
+
+Nội dung tiếp theo sẽ giới thiệu về chữ ký số và các ứng dụng chữ ký số được nghiên cứu trong mật mã và blockchain.
+
 \section{Kỹ thuật mật mã}
 
-Kỹ thuật mật mã là ngành khoa học ứng dụng toán học vào việc biến đổi thông tin thành một dạng khác với mục đích che dấu nội dung, ý nghĩa thông tin cần mã hóa. Đây là một ngành quan trọng và có nhiều ứng dụng trong đời sống xã hội. Ngày nay, các ứng dụng mã hóa và bảo mật thông tin đang được sử dụng ngày càng phổ biến hơn trong nhiều lĩnh vực, từ lĩnh vực an ninh, quân sự, quốc phòng, cho đến các lĩnh vực dân sự như thương mại điện tử, ngân hàng.
+Kỹ thuật mật mã là ngành khoa học ứng dụng toán học vào việc biến đổi thông tin thành một dạng khác với mục đích che dấu nội dung, ý nghĩa thông tin cần mã hóa. Đây là một ngành quan trọng và có nhiều ứng dụng trong đời sống xã hội. Những ứng dụng của ngành Kỹ thuật mật mã không chỉ đơn thuần là mã hóa và giải mã thông tin mà còn mở rộng thêm bao gồm: chứng thực nguồn gốc nội dung thông tin (kỹ thuật chữ ký điện tử), chứng nhận tính xác thực về người sở hữu mã khóa, các quy trình giúp trao đổi thông tin và thực hiện giao dịch điện tử an toàn trên mạng.
 
-Những ứng dụng của ngành Kỹ thuật mật mã không chỉ đơn thuần là mã hóa và giải mã thông tin mà còn mở rộng thêm bao gồm: chứng thực nguồn gốc nội dung thông tin (kỹ thuật chữ ký điện tử), chứng nhận tính xác thực về người sở hữu mã khóa, các quy trình giúp trao đổi thông tin và thực hiện giao dịch điện tử an toàn trên mạng.
+Mục tiêu của Kỹ thuật mật mã là tạo ra các mô hình tin cậy đảm bảo đạt 4 tiêu chí của an toàn thông tin:
 
-Mục tiêu của quá trình bảo mật và mã hóa là tạo ra các mô hình tin cậy đảm bảo đạt 4 tiêu chí của an toàn thông tin:
+\begin{enumerate}
 
-\begin{itemize}
 \item \textbf{Tính riêng tư hoặc tính bảo mật} (confidentiality/privacy): tính chất này đảm bảo thông tin chỉ được hiểu bởi những người biết chìa khóa bí mật.
 \item \textbf{Tính toàn vẹn thông tin} (integrity): tính chất này đảm bảo thông tin không thể bị thay đổi mà không bị phát hiện, cung cấp bằng chứng xác nhận thông tin đã bị thay đổi.
 \item \textbf{Tính xác thực một thực thể hay một định danh} (authentication/identification): người gửi (hoặc người nhận) có thể chứng minh đúng họ. Phương pháp có thể dùng là mật khẩu, một thách đố dựa trên một thuật toán mã hóa hoặc một bí mật chia sẻ giữa hai người để xác thực. Sự xác thực này có thể thực hiện một chiều (one-way) hoặc hai chiều (multual authentication).
 \item \textbf{Tính không chối bỏ hay chống thoái thác trách nhiệm} (non-repudiation): người gửi hoặc nhận sau này không thể chối bỏ việc đã gửi hoặc nhận thông tin. Thông thường điều này được thực hiện thông qua chữ ký số (electronic signature).
+
+\end{enumerate}
+
+\subsection{Mật mã Khóa Đối xứng và mật mã Khóa Bất đối xứng}
+
+Theo Giáo trình lý thuyết mật mã \cite{lequyetthang2016}, kỹ thuật mật mã có thể được biểu diễn bằng nguyên lý ánh xạ đơn ánh, như sau:
+
+Nếu $P$ là bản rõ là một phần một phần tử của tập hợp $X$, còn bản mật $C$ là phần tử của $Y$. Khi đó:
+
+\begin{itemize}
+\item Tạo mật mã với khóa $k \in K $ là ánh xạ đơn ánh có tham số $f_k: P \to C$
+\item Giải mật mã với khóa $k’ \in K $ là ánh xạ ngược của $f$ có tham số: $ g_{k'} = f_{k'}^{-1} : C \to P $
 \end{itemize}
 
+\textbf{Phân loại mật mã}
+
+Có thể phân loại mật mã theo đặc điểm phụ thuộc vào loại khóa:
+
+\begin{itemize}
+\item Mật mã Khóa Đối xứng (Symmetric Key Cryptography) nếu $k=k'$
+\item Mật mã Khóa Bất đối xứng (Asymetric Key Cryptography) nếu $k ≠ k’$
+\end{itemize}
+
+Mật mã không phụ thuộc vào khóa: Hàm băm (Hash Function) là ánh xạ thu nhỏ một chiều (không có ánh xạ ngược).
+
+\textbf{Mật mã Khóa Đối xứng} có chung một khóa khi mật mã và giải mã trong các thuật toán mật mã luồng và mật mã khối. Mật mã luồng xử lý từng ký tự một nhưng thường xuyên là từng bit một. Ngược lại, mật mã khối xử lý từng khối dữ liệu có độ dài chuẩn như nhau. Ưu điểm của mật mã Khóa Đối xứng là tốc độ xử lý nhanh. Thuộc tính khóa phải được chia sẻ an toàn cho người nhận để có thể giải mật dữ liệu. Các thuật toán mật mã Khóa Bất Đối xứng có thể dùng để chia sẻ khóa dùng chung một cách an toàn. Tên gọi khác của mật mã Khóa Đối xứng là: mật mã Khóa Bí mật (Secret Key Cryptosystems).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/sym_alg.png}
+\caption{Sơ đồ hệ mật mã Khóa Đối xứng}
+\label{fig:sym_alg}
+\end{figure}
+
+Sơ đồ \ref{fig:sym_alg} minh họa một ứng dụng mật mã Khóa Đối xứng trong thực tế. Alice và Bob là 2 người bạn cần trao đổi thông tin bí mật bằng phương pháp sử dụng mật mã Khóa Đối xứng. Trong khi đó Oscar luôn tìm cách giải mật thông tin nghe được giữa Alice và Bob. Nhưng Alice và Bob có được khóa nên liên lạc được, chỉ Oscar thiếu duy nhất khóa để giải mật nên không thể hiểu thông tin.
+
+Các ký hiệu trong sơ đồ \ref{fig:sym_alg}:
+\begin{itemize}
+\item x là bản rõ
+\item y là bản mật
+\item k là khóa 
+\end{itemize}
+
+\textbf{Mật mã Khóa Bất đối xứng} dùng hai khóa Cá nhân và khóa Công khai trong thuật toán tạo mật mã và giải mật, cặp khóa có liên hệ chặt chẽ nhau về toán học. Khóa Công khai được công bố cho cộng đồng sử dụng nên dễ bị lộ, còn khóa Cá nhân chỉ có cá nhân được sở hữu. Mặc khác khóa Công khai bị lộ thì cũng rất khó (sử dụng Phân tích mật mã) có thể tìm được khóa Cá nhân.
+Khóa cá nhân dùng để tạo mật mã và tạo chữ ký số. Khóa công khai dùng để giải mật mã và xác thực chữ ký số. Ví dụ: khi mật mã dùng một khóa công khai thì chỉ có khóa cá nhân của cặp khóa đó mới giải mã được; Tương tự, dùng một khóa cá nhân tạo chữ ký số thì chỉ có khóa công khai tương ứng mới xác thực chữ ký số đó.
+
+\subsection{Hàm băm}
+
+\subsection{Chữ ký số}
+Chữ ký số được định nghĩa là một loại chữ ký điện tử, được tạo bằng sự chuyển đổi thông điệp dữ liệu sử dụng một hệ thống mật mã không đối xứng, theo đó người có được thông điệp dữ liệu ban đầu và khóa công khai của người ký có thể xác định được chính xác.
+
+\begin{enumerate}[a)]
+\item Việc biến đổi nêu trên được tạo ra bằng đúng khóa bí mật tương ứng với khóa công khai trong cùng một cặp khóa;
+\item Sự toàn vẹn nội dung của thông điệp dữ liệu kể từ khi thực hiện việc biến đổi nêu trên.
+\end{enumerate}
+
+Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó là cách xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai.
+
+\subsubsection{Nguyên lý ký số và xác thực chữ ký số }
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/dig_sig.png}
+\caption{Sơ đồ ký số và xác thực chữ ký số thông điệp}
+\label{fig:dig_sig}
+\end{figure}
+
+Quy trình bắt đầu khi Bob ký thông điệp x. Thuật toán ký số (sig) có tham số thứ nhất là khóa bí mật của Bob, $k_{pr}$ . Khóa bí mật được Bob giữ và chỉ anh ta mới có thể ký số lên thông điệp x. Thông điệp x là tham số thứ hai của thuật toán ký số. Sau đó bản chữ ký s sẽ thêm vào thông điêp x tạo một cặp (x,s) gửi cho Alice.
+ 
+Tiếp theo Alice xác minh chữ ký của hợp lệ hay không, hàm xác thực (ver) có 2 tham số (x,s) và $k_{pub}$  của Bob. Nếu x do Bob ký số thì được kết quả true, ngược lại false.
+Sơ đồ nguyên lý ký số và xác thực chữ ký số được mô tả ở hình ~\ref{fig:dig_sig}
+
+Tuy nhiên, với thông điệp x rất lớn thì ký số sẽ chậm và chiếm dung lượng lớn. Như vậy, thay vì ký số lên thông điệp x, thì có thể ký số lên giá trị băm của x = h(x), giá trị h(x) nhỏ hơn thông điệp x, đồng nghĩa sẽ nhanh hơn. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/dig_sig_hash.png}
+\caption{Sơ đồ ký số và xác thực chữ ký số với hàm băm}
+\label{fig:dig_sig_hash}
+\end{figure}
+
+Bob sẽ tính giá trị băm của thông điệp x và ký số lên giá trị băm z = h(x) bằng khóa bí mật $K_{pr,B}$. Còn bên nhận, Alice sẽ tính giá trị băm z’ của thông điệp x: z’=h(x). Alice sẽ xác thực chữ ký s với khóa công khai $K_{pub,B}$ và z’. Sơ đồ mô tả nguyên lý ký số và xác thực chữ ký số với hàm băm ở hình \ref{fig:dig_sig_hash}
+
+\subsubsection{Chức năng của chữ ký số và tiêu chí an toàn thông tin}
+Chữ ký số đảm bảo 2 tiêu chí an toàn thông tin như sau:
+\begin{enumerate}
+\item Tính toàn vẹn thông tin: khi có sự thay đổi bất kỳ lên thông điệp thì giá trị hàm băm sẽ bị thay đổi; nghĩa là thông điệp không toàn vẹn.
+\item Tính không chối bỏ hay chống thoái thác trách nhiệm: vì chỉ có chủ thông điệp mới có khóa bí mật để ký lên thông điệp nên người ký không thể chối bỏ thông điệp của mình
+\end{enumerate}
+
+\subsection{Chứng thư số}
+
+Chứng thư số là một dạng chứng thư điện tử do tổ chức cung cấp dịch vụ chứng thực chữ ký số (Certification Authority) cấp nhằm cung cấp thông tin định danh cho khóa công khai của một cơ quan, tổ chức, cá nhân, từ đó xác nhận cơ quan, tổ chức, cá nhân là người ký chữ ký số bằng việc sử dụng khóa bí mật tương ứng. 
+
+Chứng thư X.509 phiên bản 3 có những thông tin sau:
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/x509v3.jpg}
+\caption{Cấu trúc chứng thư số X.509 phiên bản 3}
+\end{figure}
+\begin{itemize}
+
+\item Chủ thể (subject) của chứng thư: thông tin về người dùng, máy tính, thiết bị mạng giữ khóa bí mật tương ứng với chứng thư được cấp phát.
+\item Tên dịch vụ chứng thực chữ ký số: thông tin về tổ chức cung cấp chứng thư.
+\item Khóa công khai tương ứng với khóa bí mật được liên kết với chứng thư.
+\item Tên của các thuật toán để mã hóa và thuật toán tạo chữ ký số cho chứng thư.
+\item Trạng thái thu hồi (revocation) và tính hiệu lực của chứng thư (như ngày phát hành và ngày hết hạn).
+\item Các phần mở rộng (extension) cho loại chứng chỉ X.509 version 3.
+
+\end{itemize}
+
+\subsection{Dịch vụ chứng thực chữ ký số}
+
+\subsection{Hạ tầng khóa công khai}
 
 \section{Công nghệ Blockchain}
 
@@ -114,7 +231,6 @@ Nhờ vào thiết kế mô-đun linh hoạt, chính sách quyền hạn cho ng�
 
 \subsection{Những cải tiến của Hyperledger Fabric trong phiên bản 2.x}
 
-
 Những điểm mới trong phiên bản Hyperledger Fabric 2.x rất thích hợp cho hệ thống mạng blockchain mà đề tài đang hướng đến. Phiên bản mới Fabric 2.x được hỗ trợ dài hạn, điều đó có nghĩa rằng các vấn đề bảo mật, lỗi hệ thống sẽ sớm được công đồng và nhà phát triển cập nhật cho đến khi một phiên bản LTS mới được phát hành.
 
 \begin{figure}[htbp]
@@ -123,13 +239,13 @@ Những điểm mới trong phiên bản Hyperledger Fabric 2.x rất thích h�
 \caption{Cấu trúc mạng đề xuất của hai phiên bản 1.4 và 2.x}
 \end{figure}
 
-Trong phiên bản Fabric 2.x, các hợp đồng thông minh (chaincode) muốn được cài đặt trên peer và chạy trên channel cần phải thông qua một vòng đời mới. Các tổ chức thuộc kênh (channel) cần thống nhất (đồng ý thõa thuận) các tham số của hợp đồng như chính sách chứng thực hợp đồng trước khi hợp đồng được thực hiện tương tác với sổ cái (ledger).
+Trong phiên bản Fabric 2.x, các hợp đồng thông minh (chaincode) muốn được cài đặt trên peer và chạy trên channel cần phải thông qua một vòng đời mới. Các tổ chức thuộc kênh (channel) cần thống nhất (đồng ý thỏa thuận) các tham số của hợp đồng như chính sách chứng thực hợp đồng trước khi hợp đồng được thực hiện tương tác với sổ cái (ledger).
 
 Việc nâng cấp các hợp đồng thông minh (chaincode) sẽ được gắn với quá trình đồng thuận và chỉ hoàn thành khi đạt được ngưỡng cho phép của các thành viện thuộc kênh. Điều đó có nghĩa tất cả thành viên thuộc kênh luôn giữ đầy đủ các hợp đồng (được cài đặt chaincode) cùng nhau thay vì có thể từ chối như phiên bản 1.4. Việc thay đổi cơ chế nâng cấp giao dịch của phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
 
 Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. Thay vì tạo thêm một kênh để nhóm các thành viên và mất rất nhiều thời gian để cấu hình (kênh, chính sách, MSP,…) 
 
-Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Bằng cách thay thế giải thuật Rafka thành giải thuật Raft, thêm một bộ nhớ đệm mới vào các peer để tìm nạp dữ liệu nhanh hơn khi sử dụng CouchDB bên ngoài, xác thực giao dịch song song, xử lý khối bất động bộ, phân trang chaincode,…Điều đó cho phép Hyperledger Fabric 2.x đảm bảo hiệu suất có thể xử lý hàng nghìn giao dịch mỗi giây. 
+Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Bằng cách thay thế giải thuật Kafka thành giải thuật Raft, thêm một bộ nhớ đệm mới vào các peer để tìm nạp dữ liệu nhanh hơn khi sử dụng CouchDB bên ngoài, xác thực giao dịch song song, xử lý khối bất động bộ, phân trang chaincode,…Điều đó cho phép Hyperledger Fabric 2.x đảm bảo hiệu suất có thể xử lý hàng nghìn giao dịch mỗi giây. 
 
 \subsection{Các thành phần của mạng Hyperledger Fabric}
 
