@@ -32,9 +32,9 @@
 
 \setdefaultlanguage{vietnamese}
 \RequirePackage{fontspec}
-\RequirePackage{unicode-math}
+
 \setmainfont{Times New Roman}
-\setmathfont{Times New Roman}
+
 %\setromanfont{Times New Roman}
 %\setsansfont[Scale=MatchLowercase]{Times New Roman}
 %\setmonofont[Scale=MatchLowercase]{Arial}
