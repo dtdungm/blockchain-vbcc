@@ -17,7 +17,6 @@
 \RequirePackage{amssymb}
 \RequirePackage{capt-of}
 \RequirePackage{hyperref}
-\RequirePackage{enumitem}
 \RequirePackage[a4paper,left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \RequirePackage[fontsize=13pt]{scrextend}
 \RequirePackage{indentfirst}
@@ -28,11 +27,14 @@
 \RequirePackage{setspace}
 \RequirePackage[titles]{tocloft}
 \RequirePackage{polyglossia}
-\RequirePackage[nottoc,notlof,notlot,numbib]{tocbibind}
+\RequirePackage[shortlabels]{enumitem}
+
 
 \setdefaultlanguage{vietnamese}
 \RequirePackage{fontspec}
+\RequirePackage{unicode-math}
 \setmainfont{Times New Roman}
+\setmathfont{Times New Roman}
 %\setromanfont{Times New Roman}
 %\setsansfont[Scale=MatchLowercase]{Times New Roman}
 %\setmonofont[Scale=MatchLowercase]{Arial}

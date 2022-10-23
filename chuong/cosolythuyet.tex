@@ -87,13 +87,85 @@ Những ứng dụng của ngành Kỹ thuật mật mã không chỉ đơn thu�
 
 Mục tiêu của quá trình bảo mật và mã hóa là tạo ra các mô hình tin cậy đảm bảo đạt 4 tiêu chí của an toàn thông tin:
 
-\begin{itemize}
+\begin{enumerate}
+
 \item \textbf{Tính riêng tư hoặc tính bảo mật} (confidentiality/privacy): tính chất này đảm bảo thông tin chỉ được hiểu bởi những người biết chìa khóa bí mật.
 \item \textbf{Tính toàn vẹn thông tin} (integrity): tính chất này đảm bảo thông tin không thể bị thay đổi mà không bị phát hiện, cung cấp bằng chứng xác nhận thông tin đã bị thay đổi.
 \item \textbf{Tính xác thực một thực thể hay một định danh} (authentication/identification): người gửi (hoặc người nhận) có thể chứng minh đúng họ. Phương pháp có thể dùng là mật khẩu, một thách đố dựa trên một thuật toán mã hóa hoặc một bí mật chia sẻ giữa hai người để xác thực. Sự xác thực này có thể thực hiện một chiều (one-way) hoặc hai chiều (multual authentication).
 \item \textbf{Tính không chối bỏ hay chống thoái thác trách nhiệm} (non-repudiation): người gửi hoặc nhận sau này không thể chối bỏ việc đã gửi hoặc nhận thông tin. Thông thường điều này được thực hiện thông qua chữ ký số (electronic signature).
+
+\end{enumerate}
+
+\subsection{Mật mã khóa bí mật và mật mã khóa công khai}
+
+\subsection{Hàm băm}
+
+\subsection{Chữ ký số}
+Chữ ký số được định nghĩa là một loại chữ ký điện tử, được tạo bằng sự chuyển đổi thông điệp dữ liệu sử dụng một hệ thống mật mã không đối xứng, theo đó người có được thông điệp dữ liệu ban đầu và khóa công khai của người ký có thể xác định được chính xác.
+
+\begin{enumerate}[a)]
+\item Việc biến đổi nêu trên được tạo ra bằng đúng khóa bí mật tương ứng với khóa công khai trong cùng một cặp khóa;
+\item Sự toàn vẹn nội dung của thông điệp dữ liệu kể từ khi thực hiện việc biến đổi nêu trên.
+\end{enumerate}
+
+Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó là cách xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai.
+
+\subsubsection{Nguyên lý ký số và xác thực chữ ký số }
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/dig_sig.png}
+\caption{Sơ đồ ký số và xác thực chữ ký số một thông điệp}
+\label{fig:dig_sig}
+\end{figure}
+
+Quy trình bắt đầu khi Bob ký thông điệp x. Thuật toán ký số (sig) có tham số thứ nhất là khóa bí mật của Bob, $k_{pr}$ . Khóa bí mật được Bob giữ và chỉ anh ta mới có thể ký số lên thông điệp x. Thông điệp x là tham số thứ hai của thuật toán ký số. Sau đó bản chữ ký s sẽ thêm vào thông điêp x tạo một cặp (x,s) gửi cho Alice.
+ 
+Tiếp theo Alice xác minh chữ ký của hợp lệ hay không, hàm xác thực (ver) có 2 tham số (x,s) và $k_{pub}$  của Bob. Nếu x do Bob ký số thì được kết quả true, ngược lại false.
+Sơ đồ nguyên lý ký số và xác thực chữ ký số được mô tả ở hình ~\ref{fig:dig_sig}
+
+Tuy nhiên, với thông điệp x rất lớn thì ký số sẽ chậm và chiếm dung lượng lớn. Như vậy, thay vì ký số lên thông điệp x, thì có thể ký số lên giá trị băm của x = h(x), giá trị h(x) nhỏ hơn thông điệp x, đồng nghĩa sẽ nhanh hơn. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/dig_sig_hash.png}
+\caption{Sơ đồ ký số và xác thực chữ ký số với hàm băm}
+\label{fig:dig_sig_hash}
+\end{figure}
+
+Bob sẽ tính giá trị băm của thông điệp x và ký số lên giá trị băm z = h(x) bằng khóa bí mật $K_{pr,B}$. Còn bên nhận, Alice sẽ tính giá trị băm z’ của thông điệp x: z’=h(x). Alice sẽ xác thực chữ ký s với khóa công khai $K_{pub,B}$ và z’. Sơ đồ mô tả nguyên lý ký số và xác thực chữ ký số với hàm băm ở hình \ref{fig:dig_sig_hash}
+
+\subsubsection{Chức năng của chữ ký số và tiêu chí an toàn thông tin}
+Chữ ký số đảm bảo 2 tiêu chí an toàn thông tin như sau:
+\begin{enumerate}
+\item Tính toàn vẹn thông tin: khi có sự thay đổi bất kỳ lên thông điệp thì giá trị hàm băm sẽ bị thay đổi; nghĩa là thông điệp không toàn vẹn.
+\item Tính không chối bỏ hay chống thoái thác trách nhiệm: vì chỉ có chủ thông điệp mới có khóa riêng để ký lên thông điệp nên người ký không thể chối bỏ thông điệp của mình
+\end{enumerate}
+
+\subsection{Chứng thư số}
+
+Chứng thư số là một dạng chứng thư điện tử do tổ chức cung cấp dịch vụ chứng thực chữ ký số (Certification Authority) cấp nhằm cung cấp thông tin định danh cho khóa công khai của một cơ quan, tổ chức, cá nhân, từ đó xác nhận cơ quan, tổ chức, cá nhân là người ký chữ ký số bằng việc sử dụng khóa bí mật tương ứng. 
+
+Chứng thư X.509 phiên bản 3 có những thông tin sau:
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/x509v3.jpg}
+\caption{Cấu trúc chứng thư số X.509 phiên bản 3}
+\end{figure}
+\begin{itemize}
+
+\item Chủ thể (subject) của chứng thư: thông tin về người dùng, máy tính, thiết bị mạng giữ khóa bí mật tương ứng với chứng thư được cấp phát.
+\item Tên dịch vụ chứng thực chữ ký số: thông tin về tổ chức cung cấp chứng thư.
+\item Khóa công khai tương ứng với khóa bí mật được liên kết với chứng thư.
+\item Tên của các thuật toán để mã hóa và thuật toán tạo chữ ký số cho chứng thư.
+\item Trạng thái thu hồi (revocation) và tính hiệu lực của chứng thư (như ngày phát hành và ngày hết hạn).
+\item Các phần mở rộng (extension) cho loại chứng chỉ X.509 version 3.
+
 \end{itemize}
 
+\subsection{Dịch vụ chứng thực chữ ký số}
+
+\subsection{Hạ tầng khóa công khai}
 
 \section{Công nghệ Blockchain}
 
@@ -128,7 +200,7 @@ Những điểm mới trong phiên bản Hyperledger Fabric 2.x rất thích h�
 \caption{Cấu trúc mạng đề xuất của hai phiên bản 1.4 và 2.x}
 \end{figure}
 
-Trong phiên bản Fabric 2.x, các hợp đồng thông minh (chaincode) muốn được cài đặt trên peer và chạy trên channel cần phải thông qua một vòng đời mới. Các tổ chức thuộc kênh (channel) cần thống nhất (đồng ý thõa thuận) các tham số của hợp đồng như chính sách chứng thực hợp đồng trước khi hợp đồng được thực hiện tương tác với sổ cái (ledger).
+Trong phiên bản Fabric 2.x, các hợp đồng thông minh (chaincode) muốn được cài đặt trên peer và chạy trên channel cần phải thông qua một vòng đời mới. Các tổ chức thuộc kênh (channel) cần thống nhất (đồng ý thỏa thuận) các tham số của hợp đồng như chính sách chứng thực hợp đồng trước khi hợp đồng được thực hiện tương tác với sổ cái (ledger).
 
 Việc nâng cấp các hợp đồng thông minh (chaincode) sẽ được gắn với quá trình đồng thuận và chỉ hoàn thành khi đạt được ngưỡng cho phép của các thành viện thuộc kênh. Điều đó có nghĩa tất cả thành viên thuộc kênh luôn giữ đầy đủ các hợp đồng (được cài đặt chaincode) cùng nhau thay vì có thể từ chối như phiên bản 1.4. Việc thay đổi cơ chế nâng cấp giao dịch của phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
 
