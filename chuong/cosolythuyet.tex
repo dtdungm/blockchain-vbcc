@@ -164,11 +164,6 @@ Một chiều (One Way),  Tự do liên kết yếu (Weakly Collision Free) và 
 \item \emph{Tính chất Tự do liên kết mạnh}: rất khó có thể tìm được 2 tập dữ liệu x ≠ x’ có cùng giá trị băm H(x) = H(x’).
 \end{itemize}
 
-
-
-
-
-
 \subsection{Chữ ký số}
 Chữ ký số được định nghĩa là một loại chữ ký điện tử, được tạo bằng sự chuyển đổi thông điệp dữ liệu sử dụng một hệ thống mật mã không đối xứng, theo đó người có được thông điệp dữ liệu ban đầu và khóa công khai của người ký có thể xác định được chính xác.
 
@@ -184,7 +179,7 @@ Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó l
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/dig_sig.png}
-\caption{Sơ đồ ký số và xác thực chữ ký số thông điệp}
+\caption{Sơ đồ ký số và xác thực chữ ký số}
 \label{fig:dig_sig}
 \end{figure}
 
@@ -232,65 +227,92 @@ Chứng thư X.509 phiên bản 3 có những thông tin sau:
 
 \end{itemize}
 
-
 \section{Công nghệ Blockchain}
 
-Công nghệ Blockchain có bản thiết kế đầu tiên vào năm 2008 bởi Satoshi Nakamoto và trở thành thành phần cốt lõi của tiền điện tử Bitcoin \cite{nakamoto2008bitcoin}. Công nghệ này đóng vai trò như một quyển sổ cái ghi lại tất cả giao dịch công khai trên hệ thống máy tính ngang hàng theo phương thức mã hoá các giao dịch. Từ đó, các giao dịch phát sinh mà không cần các tổ chức trung gian, tạo ra giải pháp cho các ứng dụng cần sự minh bạch, tính trách nhiệm, bảo mật cao và giảm thiểu các quy trình thủ tục phức tạp.
+Công nghệ Blockchain được hình thành vào năm 2008 theo ý tưởng của Satoshi Nakamoto và trở thành cơ chế hoạt động của tiền điện tử Bitcoin \cite{nakamoto2008bitcoin}. Công nghệ này đóng vai trò như một quyển sổ cái ghi lại tất cả giao dịch công khai trên hệ thống máy tính ngang hàng theo phương thức mã hoá các giao dịch. Từ đó, các giao dịch phát sinh mà không cần các tổ chức trung gian, tạo ra giải pháp cho các ứng dụng cần sự minh bạch, tính trách nhiệm, bảo mật cao và giảm thiểu các quy trình thủ tục phức tạp. Công nghệ blockchain đang được nghiên cứu và ứng dụng vào nhiều lĩnh vực quan trọng trong giáo dục, dịch vụ công, y tế tại nhiều nước trên thế giới.
 
-Trong những năm gần đây, công nghệ blockchain đang được nghiên cứu và ứng dụng vào nhiều lĩnh vực quan trọng trong giáo dục, dịch vụ công, y tế tại nhiều nước trên thế giới. Công nghệ này là một cơ sở dữ liệu phân cấp lưu trữ dữ liệu trong các khối thông tin được liên kết với nhau bằng mã hóa và mở rộng theo thời gian. Mỗi khối được tạo ra đều chứa thông tin thời gian khởi tạo và liên kết với khối trước đó kèm một mã thời gian và thông tin giao dịch. Vì thế, blockchain được thiết kế để chống lại sự thay đổi của dữ liệu. Khi dữ liệu đã lưu trữ trên mạng blockchain thì sẽ khó thay đổi được và nếu được cập nhật sẽ được lưu vết dưới dạng nhật ký. Hiện nay, công nghệ này đang thu hút nhiều nghiên cứu để xây dựng các mô hình mạng blockchain cho các quy trình đặc thù trong tài chính, bầu cử, nông nghiệp,\ldots{} ngoài lĩnh vực tiên phong là tiền mã hóa.
 
-Hệ thống mạng blockchain có thể được chia làm 3 nhóm. (1) Nhóm hệ thống blockchain công cộng cho phép mọi người dùng có thể truy cập dữ liệu như Bitcoin, Ethereum,\ldots{}. (2) Nhóm hệ thống blockchain riêng tư do một tổ chức hoặc một cá nhân đầu tư và kiểm soát, thông tin được kiểm soát chặt chẽ và chỉ được phổ biến trong nội bộ. (3) Nhóm còn lại là hệ thống blockchain cộng đồng là hiệp hội các tổ chức có thể xây dựng riêng mạng cho các thành viên của mình theo nguyên lý blockchain, cơ chế đồng thuận trong cộng đồng phát triển theo xu hướng tin cậy theo đa số trong cộng đồng. Mỗi hệ thống blockchain có những đặc điểm riêng và được ứng dụng trong từng lĩnh vực cụ thể. Trong thực tế, công nghệ blockchain chỉ phù hợp với các dạng dữ liệu giao dịch.
+Công nghệ này mang đặc điểm của cơ sở dữ liệu phân tán. Tuy nhiên, mỗi khối gồm nhiều giao dịch được ký số bởi các bên tham gia như hình \ref{fig:trans_bitcoin}. Dữ liệu trong các khối được liên kết với nhau bằng mã hóa (giá trị băm) như hình \ref{fig:merkle} và mở rộng theo thời gian. Mỗi khối được tạo ra đều chứa thông tin thời gian khởi tạo và liên kết với khối trước đó kèm một mã thời gian và thông tin giao dịch như hình \ref{fig:blockchain}. Vì thế, blockchain được thiết kế để chống lại sự thay đổi của dữ liệu. Khi dữ liệu đã lưu trữ trên mạng blockchain thì sẽ khó thay đổi được và nếu được cập nhật sẽ được lưu vết dưới dạng nhật ký.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/trans_bitcoin.png}
+\caption{Mô tả một giao dịch blockchain}
+\label{fig:trans_bitcoin}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/merkle.png}
+\caption{Mô tả cây mã hóa Merkle trong Bitcoin}
+\label{fig:merkle}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/blockchain.png}
+\caption{Mô tả chuỗi Blockchain}
+\label{fig:blockchain}
+\end{figure}
+
+Blockchain xác nhận giao dịch bằng hợp đồng thông minh. Hợp đồng thông minh là các chương trình chạy trên blockchain. Hợp đồng thông minh cũng giống như một hợp đồng kỹ thuật số bị bắt buộc thực hiện bởi một bộ quy tắc cụ thể. Các quy tắc này được lập trình trước và tất cả các nút (node) trong mạng đều phải sao chép và thực thi các quy tắc đó.
+
+Hệ thống mạng blockchain có thể được chia làm 3 nhóm. (1) Nhóm hệ thống blockchain công cộng cho phép mọi người dùng có thể truy cập dữ liệu như Bitcoin, Ethereum,\ldots{}. (2) Nhóm hệ thống blockchain riêng tư do một tổ chức hoặc một cá nhân đầu tư và kiểm soát, thông tin được kiểm soát chặt chẽ và chỉ được phổ biến trong nội bộ. (3) Nhóm còn lại là hệ thống blockchain cộng đồng là hiệp hội các tổ chức có thể xây dựng riêng mạng cho các thành viên của mình theo nguyên lý blockchain, cơ chế đồng thuận trong cộng đồng phát triển theo xu hướng tin cậy theo đa số trong cộng đồng. Mỗi hệ thống blockchain có những đặc điểm riêng và được ứng dụng trong từng lĩnh vực cụ thể.
 
 \section{Hyperledger Fabric}
 
 \subsection{Giới thiệu}
 
-Hyperledger Fabric là một trong năm framework về blockchain nằm trong chiến lược Hyperledger Umbrella của Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror.
+Hyperledger Fabric là một nền tảng blockchain trong dự án Hyperledger Umbrella của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror. Hình \ref{fig:hlf_um} mô tả dự án Hyperledger Umbrella.
 
-Hyperledger Fabric là một nền tảng công nghệ mã nguồn mở dưới sự cố vấn của IBM, được thiết kế để sử dụng trong môi trường doanh nghiệp, cung cấp nhiều tính năng nổi trội với các nền tảng blockchain đang tồn tại. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, chính phủ\ldots{} 
+Hyperledger Fabric thuộc nhóm phần mềm mã nguồn mở dưới sự cố vấn của công ty IBM. Mục đích thiết kế Hyperledger Fabric là cung cấp rộng rãi nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công, \ldots{}
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/hlf_um.jpg}
-\caption{Chiến lược Hyperledger Umbrella}
+\caption{Dự án Hyperledger Umbrella}
+\label{fig:hlf_um}
 \end{figure}
 
-Nhờ vào thiết kế mô-đun linh hoạt, chính sách quyền hạn cho người tham gia đã giúp Hyperledger Fabric trở thành nền tảng blockchain hoạt động tốt về tốc độ xử lý giao dịch, độ trễ xác nhận giao dịch, cho phép bảo mật và xác minh các giao dịch với hợp đồng thông minh.
+Nhờ vào thiết kế mô-đun linh hoạt và quản lý người tham gia nên Hyperledger Fabric trở thành nền tảng blockchain có tốc độ xử lý giao dịch nhanh và phù hợp với tổ chức muốn kiểm soát danh tính người tham gia, và xác minh các giao dịch với hợp đồng thông minh.
 
-\subsection{Những cải tiến của Hyperledger Fabric trong phiên bản 2.x}
+Phiên bản mới nhất của Hyperledger Fabric là 2.x. Hyperledger Fabric được cộng đồng hỗ trợ các vấn đề bảo mật, cập nhật. Hệ thống sẽ được cập nhật cho đến khi một phiên bản LTS mới được phát hành.
 
-Những điểm mới trong phiên bản Hyperledger Fabric 2.x rất thích hợp cho hệ thống mạng blockchain mà đề tài đang hướng đến. Phiên bản mới Fabric 2.x được hỗ trợ dài hạn, điều đó có nghĩa rằng các vấn đề bảo mật, lỗi hệ thống sẽ sớm được công đồng và nhà phát triển cập nhật cho đến khi một phiên bản LTS mới được phát hành.
+
+Trong phiên bản Fabric 2.x, các hợp đồng thông minh (smart contract) được cài đặt trên các peer tham gia chung channel và được đánh số các phiên bản. Các tổ chức thuộc kênh (channel) đồng ý các tham số của hợp đồng thông minh, chứng thực hợp đồng thông minh sau đó hợp đồng thông minh mới thực hiện tương tác với sổ cái (ledger).
+
+Việc nâng cấp các hợp đồng thông minh (smart contract) sẽ được gắn với quá trình đồng thuận và được các nút mạng đồng ý. Khi đó các peer có đầy đủ các hợp đồng thông minh (chaincode được cài đặt). Việc thay đổi cơ chế nâng cấp hợp đồng thông minh trên phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
+
+Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. Thay vì tạo thêm một kênh để nhóm các thành viên và mất rất nhiều thời gian để cấu hình (kênh, chính sách, MSP,…) 
+
+Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Các giải thuật đồng thuận gồm có: Kafka, Raft. Các thực giao dịch được xử lý song song, xử lý khối bất động bộ, phân trang chaincode,\ldots.
+
+\subsection{Các thành phần của Hyperledger Fabric}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/hlf_network.png}
-\caption{Cấu trúc mạng đề xuất của hai phiên bản 1.4 và 2.x}
+\caption{Kiến trúc mạng Hyperledger Fabric}
+\label{fig:hlf_network}
 \end{figure}
 
-Trong phiên bản Fabric 2.x, các hợp đồng thông minh (chaincode) muốn được cài đặt trên peer và chạy trên channel cần phải thông qua một vòng đời mới. Các tổ chức thuộc kênh (channel) cần thống nhất (đồng ý thỏa thuận) các tham số của hợp đồng như chính sách chứng thực hợp đồng trước khi hợp đồng được thực hiện tương tác với sổ cái (ledger).
+\textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản (dữ liệu trong mạng blockchain) của mạng sẽ được “chuỗi khối” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value). Toàn bộ ledger được lưu trên các Peer trong cùng Channel, và dữ liệu được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
 
-Việc nâng cấp các hợp đồng thông minh (chaincode) sẽ được gắn với quá trình đồng thuận và chỉ hoàn thành khi đạt được ngưỡng cho phép của các thành viện thuộc kênh. Điều đó có nghĩa tất cả thành viên thuộc kênh luôn giữ đầy đủ các hợp đồng (được cài đặt chaincode) cùng nhau thay vì có thể từ chối như phiên bản 1.4. Việc thay đổi cơ chế nâng cấp giao dịch của phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
+\textbf{Smart contract} (Chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các Peer.
 
-Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. Thay vì tạo thêm một kênh để nhóm các thành viên và mất rất nhiều thời gian để cấu hình (kênh, chính sách, MSP,…) 
-
-Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Bằng cách thay thế giải thuật Kafka thành giải thuật Raft, thêm một bộ nhớ đệm mới vào các peer để tìm nạp dữ liệu nhanh hơn khi sử dụng CouchDB bên ngoài, xác thực giao dịch song song, xử lý khối bất động bộ, phân trang chaincode,…Điều đó cho phép Hyperledger Fabric 2.x đảm bảo hiệu suất có thể xử lý hàng nghìn giao dịch mỗi giây. 
-
-\subsection{Các thành phần của mạng Hyperledger Fabric}
-
-\textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “blockchain” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản(dữ liệu có cấu trúc) của mạng sẽ được “blockchain” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp giá trị key-value. Ledgers được lưu trên các Peer trong cùng Channel đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
-
-\textbf{Smart contract} (Chaincode): Hợp đồng thông minh – một ứng dụng được viết bằng các ngôn ngữ lập trình như: Javascript, Go, Java dùng để tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh được gọi là chaincode, được cài đặt trên các Peer.
-
-\textbf{Peer nodes}: Là thành phần cơ bản của mạng, lưu trữ bản sao của Ledgers và thực thi Smart contract. Các peer được quản lý và duy trì bởi các thành viên trong mạng. Peer được chia làm 2 dạng:
+\textbf{Peer nodes}: Là những nút cơ bản của mạng có chức năng lưu trữ bản sao của Ledgers và thực thi Hợp đồng thông minh. Các peer được quản lý và duy trì bởi các thành viên trong mạng. Peer được chia làm 2 dạng:
 
 \begin{itemize}
 \item \textbf{Endorsing peer}: thực thi các giao dịch trong chaincode và đề xuất giao dịch.
 \item \textbf{Committing peer}: có thể không cần cài đặt chaincode, lưu trữ sổ cái đầy đủ.
 \end{itemize}
 
-\textbf{Ordering Service (Solo, Raft, Kafka)}: Là thành phần chứa thuật toán đồng thuận và đảm nhận nhiệm vụ xác minh, bảo mật, kiểm định chính sách, quản lý cấu hình Channel.
+\textbf{Ordering Service (Solo, Raft, Kafka)}: Là những nút chứa thuật toán đồng thuận và đảm nhận nhiệm vụ xác minh, bảo mật, kiểm định phân quyền, quản lý cấu hình Channel.
 
-\textbf{Channel}: Kênh là một “mạng con” riêng kết nối giữa hai hoặc nhiều thành viên trong mạng. Cấu hình một kênh gồm các Orgs(tổ chức), Peer, Ledger, Chaincode, Ordering service. Mỗi Peer có thể tham gia nhiều kênh và sẽ được cấp các định danh riêng với từng kênh bởi nhà cung cấp dịch vụ thành viên (MSP).
+\textbf{Channel}: Kênh là một “mạng con” riêng kết nối giữa hai hoặc nhiều nút trong mạng blockchain. Mỗi kênh sẽ kết nối các nút như Orgs(tổ chức), Peer, Ordering service, MSP. Mỗi Peer có thể tham gia nhiều kênh và sẽ được cấp các định danh riêng với từng kênh bởi dịch vụ xác thực thành viên (MSP).
 
-\textbf{Fabric Certificate Authorities}: Hyperledger Fabric CA là thành phần phát hành chứng chỉ mặc định, cung cấp chứng chỉ dựa trên PKI cho các tổ chức thành viên mạng và người dùng. CA phát hành một chứng thư gốc (rootCert) cho mỗi thành viên và một chứng nhận đăng ký (ECert) cho mỗi người dùng được uỷ quyền.
+\textbf{Fabric Certificate Authorities}: Hyperledger Fabric CA là thành phần phát hành chứng thư số. Chứng thư số cập dựa trên hạ tần khóa công khai PKI cho các nút trong mạng và người dùng. CA phát hành một chứng thư gốc (rootCert) cho mỗi thành viên và một chứng nhận đăng ký (ECert) cho mỗi người dùng được uỷ quyền.
 
-\textbf{Membership Service Provider (MSP)}: Trong cơ sở hạ tầng của mạng  Hyperledger Fabric, MSP là một tập hợp các thư mục được thêm vào cấu hình của mạng Fabric nhằm xác minh một tổ chức. Đây là một tập hơp các thư mục chứa các chứng thư số (cấp từ CA), giúp mạng Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định thực đặc quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
+\textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
