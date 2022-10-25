@@ -313,6 +313,6 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 
 \textbf{Channel}: Kênh là một “mạng con” riêng kết nối giữa hai hoặc nhiều nút trong mạng blockchain. Mỗi kênh sẽ kết nối các nút như Orgs(tổ chức), Peer, Ordering service, MSP. Mỗi Peer có thể tham gia nhiều kênh và sẽ được cấp các định danh riêng với từng kênh bởi dịch vụ xác thực thành viên (MSP).
 
-\textbf{Fabric Certificate Authorities}: Hyperledger Fabric CA là thành phần phát hành chứng thư số. Chứng thư số cập dựa trên hạ tần khóa công khai PKI cho các nút trong mạng và người dùng. CA phát hành một chứng thư gốc (rootCert) cho mỗi thành viên và một chứng nhận đăng ký (ECert) cho mỗi người dùng được uỷ quyền.
+\textbf{Fabric Certificate Authorities}: Hyperledger Fabric CA là thành phần phát hành chứng thư số. Chứng thư số được cấp dựa trên hạ tầng khóa công khai PKI cho các nút trong mạng và người dùng. CA phát hành một chứng thư gốc (rootCert) cho mỗi thành viên và một chứng nhận đăng ký (ECert) cho mỗi người dùng được uỷ quyền.
 
 \textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
