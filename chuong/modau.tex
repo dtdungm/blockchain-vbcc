@@ -2,18 +2,33 @@
 \chapter{Mở đầu}
 
 \section{Giới thiệu}
-Hiện nay, hầu hết các cơ sở giáo dục đều đã triển khai ứng dụng hệ thống thông tin quản lý, nhằm để tăng hiệu quả trong công việc quản lý chung.
+Ngày nay, các hệ thống ứng dụng công nghệ thông tin có vai trò quan trọng trong lĩnh vực giáo dục.
+Hệ thống thông tin giúp thu thập, quản lý thông tin, tạo ra các sản phẩm thông tin phục vụ nhu cầu học tập, giảng dạy và quản lý. 
+Thông tin xác thực văn bằng, chứng chỉ, văn bằng chứng chỉ, 
+
 Đó là hệ thống thông tin quản lý đào tạo, quản lý thi, tuy nhiên hệ thống tra cứu văn bằng chứng chỉ phải được công khai theo quy định tại Điều 2 thông tư số 21/2019/TT-BGDĐT.
-Bên cạnh đó, những giải pháp tin học hóa nghiệp vụ, số hóa dữ liệu cần đảm bảo nguyên tắc an toàn thông tin của tổ chức và các cá nhân tham gia theo quy định tại Điều 24 luật số 67/2006/QH11.
+Ngoài ra, văn bằng chứng chỉ là một quan trọng sau khi tốt nghiệp và trong công việc, quan trọng với cá nhân người sở hữu, Do đó văn bằng chứng chỉ cần được ..
 
-Môi trường chia sẻ thông tin hiện nay là những mạng truyền thông như mạng internet, trạm thông tin di động, wifi. Những mạng này rất rủi ro cho an toàn thông tin bởi vì những người không được phép có thể dùng cách tấn công nghe lén để xâm phạm thông tin \cite{phạmnguyênkhang2013}. Ngoài thông tin, các thành phần trong mạng cũng là mục tiêu của tấn công mạng \cite{dothanhnghi2018}.
+Lưu trữ an toàn sẵn sàng, 
 
-Từ năm 2008, công nghệ chuỗi khối (blockchain technology) được hiện thực hóa với Bitcoin \cite{nakamoto2008bitcoin}, đã đánh dấu sự ra đời cách thức lưu trữ và chuyển giao thông tin hoàn toàn mới.
+Môi trường chia sẻ thông tin hiện nay là những mạng truyền thông như mạng internet, trạm thông tin di động, wifi.
+Những mạng này rất rủi ro cho an toàn thông tin bởi vì những người không được phép có thể dùng cách tấn công nghe lén để xâm phạm thông tin \cite{phạmnguyênkhang2013}.
+Ngoài thông tin, các thành phần trong mạng cũng là mục tiêu của tấn công mạng \cite{dothanhnghi2018}.
+Bên cạnh đó, Điều 24 luật số 67/2006/QH11 cũng quy định những giải pháp tin học hóa nghiệp vụ, số hóa dữ liệu cần đảm bảo nguyên tắc an toàn thông tin của tổ chức và các cá nhân tham gia.
+
+
+Công nghệ chuỗi khối (blockchain technology) có nhũng đặc tính rất hữu ích trong việc xử lý và chuyển giao thông tin một cách an toàn, tin cậy.
+
+Công nghệ chuỗi khối như là một cấu trúc dữ liệu (cuốn sổ cái) ghi lại và mã hóa tất cả các giao dịch giữa các thành phần trong hệ thống để bảo đảm tính toàn vẹn thông tin. Công nghệ ngày giúp chống lại sự thoái thác trách nhiệm: một đối tác bất kỳ trong hệ thống không thể từ chối trách nhiệm về hành động mà mình đã thực hiện.
+
+
+A blockchain can be defined as an immutable ledger for recording transactions, maintained within a distributed network of mutually untrusting peers. Every peer maintains a copy of the ledger. The peers execute a consensus protocol to validate transactions, group them into blocks, and build a hash chain over the blocks. This process forms the ledger by ordering the transactions, as is neces- sary for consistency.
+
+Từ năm 2008, công nghệ chuỗi khối được hiện thực với đồng tiền ảo Bitcoin \cite{nakamoto2008bitcoin}, đã đánh dấu sự ra đời cách thức lưu trữ và chuyển giao thông tin hoàn toàn mới.
+
 Một thuộc tính của công nghệ chuỗi khối là sự đồng thuận giữa các thành phần không tin cậy - cùng tham gia vào một hệ thống mạng không tập trung. Công nghệ này đã được rất nhiều nghiên cứu \cite{10.1145/3190508.3190538, ANTWI2021100012, fair2019, 8246573, Fang2020} để hoàn thiện về cơ chế và ứng dụng trong các giải pháp xử lý, truyền tải an toàn thông tin.
 
 Chuỗi khối (blockchain) sử dụng các kỹ thuật mật mã \cite{lequyetthang2016, christofpaar2015, ralphcharlesmerkle1979, shannon-otp} để ghi nhận các giao dịch xảy ra theo thời gian và để kiểm chứng nguồn gốc thông tin.
-Theo đó, chuỗi khối như là một cấu trúc dữ liệu (cuốn sổ cái) ghi lại và mã hóa tất cả các giao dịch giữa các thành phần trong hệ thống để bảo đảm tính toàn vẹn thông tin. Công nghệ ngày giúp chống lại sự thoái thác trách nhiệm: một đối tác bất kỳ trong hệ thống không thể từ chối trách nhiệm về hành động mà mình đã thực hiện.
-Vì vậy, những đặc tính của công nghệ chuỗi khối rất hữu ích trong việc xử lý và chuyển giao thông tin.
 
 Tuy nhiên, công nghệ chuỗi khối cũng có mặt hạn chế.
 Nghiên cứu \cite{CHEN20191122} cho rằng công nghệ này chưa phù hợp để xử lý những giao dịch cần hiệu suất cao hoặc để thay thế cơ sở dữ liệu (database).
