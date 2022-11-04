@@ -2,27 +2,29 @@
 \chapter{Mở đầu}
 
 \section{Giới thiệu}
+
+Đề tài nghiên cứu xây dựng hệ thống quản lý văn bằng, chứng chỉ sử dụng công nghệ blockchain.
 Ngày nay, các hệ thống ứng dụng công nghệ thông tin có vai trò quan trọng trong lĩnh vực giáo dục.
-Hệ thống thông tin giúp thu thập, quản lý thông tin, tạo ra các sản phẩm thông tin phục vụ nhu cầu học tập, giảng dạy và quản lý. 
-Thông tin xác thực văn bằng, chứng chỉ, văn bằng chứng chỉ, 
+Hệ thống thông tin giúp thu thập, quản lý thông tin, tạo ra các sản phẩm thông tin phục vụ nhu cầu học tập, giảng dạy và quản lý.
+Một trong những sản phẩm thông tin đầu ra là văn bằng, chứng chỉ (VBCC).
+Văn bằng, chứng chỉ là một chứng cứ học tập của người sở hữu.
+Ngoài ra, VBCC có vai trò cần thiết trong nghề nghiệp.
+Cá nhân được đào tạo và nhận chứng nhận trước khi có thể bắt đầu công việc của mình.
+Do đó thông tin dữ liệu VBCC cần được quan tâm để bảo đảm lưu trữ an toàn, tin cậy và sẵn sàng.
 
-Đó là hệ thống thông tin quản lý đào tạo, quản lý thi, tuy nhiên hệ thống tra cứu văn bằng chứng chỉ phải được công khai theo quy định tại Điều 2 thông tư số 21/2019/TT-BGDĐT.
-Ngoài ra, văn bằng chứng chỉ là một quan trọng sau khi tốt nghiệp và trong công việc, quan trọng với cá nhân người sở hữu, Do đó văn bằng chứng chỉ cần được ..
-
-Lưu trữ an toàn sẵn sàng, 
-
-Môi trường chia sẻ thông tin hiện nay là những mạng truyền thông như mạng internet, trạm thông tin di động, wifi.
-Những mạng này rất rủi ro cho an toàn thông tin bởi vì những người không được phép có thể dùng cách tấn công nghe lén để xâm phạm thông tin \cite{phạmnguyênkhang2013}.
+Hầu hết hệ thống quản lý VBCC cần có chức năng tra cứu và công khai thông tin VBCC theo quy định tại Điều 2 thông tư số 21/2019/TT-BGDĐT.
+Tuy nhiên, môi trường chia sẻ thông tin hiện nay là những mạng truyền thông như mạng internet, mạng di động, wifi.
+Những mạng này có nhiều rủi ro đối với an toàn thông tin bởi vì những người không được phép có thể dùng cách tấn công nghe lén để xâm phạm thông tin \cite{phạmnguyênkhang2013}.
 Ngoài thông tin, các thành phần trong mạng cũng là mục tiêu của tấn công mạng \cite{dothanhnghi2018}.
 Bên cạnh đó, Điều 24 luật số 67/2006/QH11 cũng quy định những giải pháp tin học hóa nghiệp vụ, số hóa dữ liệu cần đảm bảo nguyên tắc an toàn thông tin của tổ chức và các cá nhân tham gia.
 
+Công nghệ blockchain hay công nghệ chuỗi khối có những đặc tính rất hữu ích trong việc lưu trữ, xử lý và chuyển giao thông tin một cách an toàn, tin cậy có thể đáp ứng các điều kiện về an toàn thông tin.
+Công nghệ chuỗi khối là công nghệ mã hóa và lưu trữ thông tin thành các khối và liên kết lại với nhau.
+Mỗi khi thông tin hoặc giao dịch mới xảy ra, thông tin cũ sẽ không bị mất đi mà thay vào đó, thông tin mới sẽ được lưu vào một khối mới và lần lượt được nối vào khối cũ để tạo thành chuỗi.
+Hơn nữa, dữ liệu của chuỗi khối được lưu trữ phân tán trên các máy chủ kết nối với hệ thống blockchain để mọi người có thể xem và xác minh các giao dịch. Điều này có thể ngăn chặn việc sửa đổi hoặc gian lận và đảm bảo tính minh bạch và an toàn thông tin.
 
-Công nghệ chuỗi khối (blockchain technology) có nhũng đặc tính rất hữu ích trong việc xử lý và chuyển giao thông tin một cách an toàn, tin cậy.
-
-Công nghệ chuỗi khối như là một cấu trúc dữ liệu (cuốn sổ cái) ghi lại và mã hóa tất cả các giao dịch giữa các thành phần trong hệ thống để bảo đảm tính toàn vẹn thông tin. Công nghệ ngày giúp chống lại sự thoái thác trách nhiệm: một đối tác bất kỳ trong hệ thống không thể từ chối trách nhiệm về hành động mà mình đã thực hiện.
-
-
-A blockchain can be defined as an immutable ledger for recording transactions, maintained within a distributed network of mutually untrusting peers. Every peer maintains a copy of the ledger. The peers execute a consensus protocol to validate transactions, group them into blocks, and build a hash chain over the blocks. This process forms the ledger by ordering the transactions, as is neces- sary for consistency.
+Blockchain là xu hướng công nghệ của thời đại hiện nay và được ứng dụng trong nhiều ngành, lĩnh vực khác nhau.
+Một số quốc gia hoặc các doanh nghiệp lớn dành nhiều tiền và thời gian cho việc điều tra và nghiên cứu công nghệ Blockchain vì tính thực tiễn cao và tính bảo mật tốt.
 
 Từ năm 2008, công nghệ chuỗi khối được hiện thực với đồng tiền ảo Bitcoin \cite{nakamoto2008bitcoin}, đã đánh dấu sự ra đời cách thức lưu trữ và chuyển giao thông tin hoàn toàn mới.
 
@@ -38,30 +40,30 @@ Do đó cần có giải pháp linh hoạt kết hợp cơ chế lưu trữ ngo�
 \section{Lý do chọn đề tài}
 
 Trung tâm Tin học Trường Đại học An Giang là đơn vị hoạt động về lĩnh vực đào và có chức năng tổ chức thi và cấp chứng chỉ.
-Công tác quản lý về đào tạo, tổ chức thi và cấp chứng chỉ tại đơn vị đã được tin học hóa một số nghiệp vụ mang lại hiệu quả đáng kể như ghi danh học viên, quản lý hóa đơn, nhận hồ sơ dự thi, tra cứu điểm thi, và công khai thông tin văn bằng chứng chỉ do đơn vị cấp trên hệ thống website.
+Công tác quản lý về đào tạo, tổ chức thi và cấp chứng chỉ tại đơn vị đã được tin học hóa một số nghiệp vụ mang lại hiệu quả đáng kể như ghi danh học viên, quản lý hóa đơn, nhận hồ sơ dự thi, tra cứu điểm thi, và công khai thông tin VBCC do đơn vị cấp trên hệ thống website.
 
-Sổ gốc cấp văn bằng, chứng chỉ theo quy định tại Điều 19 thông tư số 21/2019/TT-BGDĐT yêu cầu ghi thông tin cấp phát văn bằng, chứng chỉ cho người được cấp, đã thi đạt sau khi dự thi tại cơ sở tổ chức thi. Sổ gốc cấp văn bằng, chứng chỉ phải được ghi chính xác, đánh số trang, đóng dấu giáp lai, không được tẩy xóa, đảm bảo quản lý chặt chẽ và lưu trữ vĩnh viễn. Tuy nhiên, việc cập nhật thông tin thay đổi vào sổ, theo dõi sổ gốc còn làm thủ công trong những trường hợp như sau:
+Sổ gốc cấp VBCC theo quy định tại Điều 19 thông tư số 21/2019/TT-BGDĐT yêu cầu ghi thông tin cấp phát VBCC cho người được cấp, đã thi đạt sau khi dự thi tại cơ sở tổ chức thi. Sổ gốc cấp VBCC phải được ghi chính xác, đánh số trang, đóng dấu giáp lai, không được tẩy xóa, đảm bảo quản lý chặt chẽ và lưu trữ vĩnh viễn. Tuy nhiên, việc cập nhật thông tin thay đổi vào sổ, theo dõi sổ gốc còn làm thủ công trong những trường hợp như sau:
 
 \begin{enumerate}
-\item Nhân viên phát văn bằng, chứng chỉ cho người nhận chứng chỉ đến trực tiếp và có giấy tờ khớp thông tin với sổ gốc thì nhân viên phát cho người đó và cập nhật sổ gốc. Ngược lại, nếu giấy tờ người nhận mang theo mà thông tin không khớp với sổ gốc thì nhân viên không phát cho người đó.
+\item Nhân viên phát VBCC cho người nhận chứng chỉ đến trực tiếp và có giấy tờ khớp thông tin với sổ gốc thì nhân viên phát cho người đó và cập nhật sổ gốc. Ngược lại, nếu giấy tờ người nhận mang theo mà thông tin không khớp với sổ gốc thì nhân viên không phát cho người đó.
 
-\item Nhân viên phát văn bằng, chứng chỉ cho người nhận chứng chỉ có giấy ủy quyền đến trực tiếp và có giấy tờ ủy quyền khớp thông tin với sổ gốc thì nhân viên phát cho người đó và cập nhật sổ gốc. Ngược lại, nếu giấy tờ người nhận mang theo mà thông tin không khớp với sổ gốc thì nhân viên không phát cho người đó.
+\item Nhân viên phát VBCC cho người nhận chứng chỉ có giấy ủy quyền đến trực tiếp và có giấy tờ ủy quyền khớp thông tin với sổ gốc thì nhân viên phát cho người đó và cập nhật sổ gốc. Ngược lại, nếu giấy tờ người nhận mang theo mà thông tin không khớp với sổ gốc thì nhân viên không phát cho người đó.
 
 \item Văn bằng, chứng chỉ chưa phát phải được quản lý, lưu trữ theo quy định.
 \end{enumerate}
 
-Mặt khác những trường hợp 1, 2, dù không phát văn bằng, chứng chỉ vẫn phải so khớp thông tin giấy tờ với sổ gốc, nên công việc chưa được hiệu quả. Thêm vào đó, xử lý trên hồ sơ giấy có thể gặp một số rủi ro như rách trang giấy, thất lạc,\ldots{} làm ảnh hưởng đến công tác lưu trữ, bảo quản hồ sơ theo quy định.
+Mặt khác những trường hợp 1, 2, dù không phát VBCC vẫn phải so khớp thông tin giấy tờ với sổ gốc, nên công việc chưa được hiệu quả. Thêm vào đó, xử lý trên hồ sơ giấy có thể gặp một số rủi ro như rách trang giấy, thất lạc,\ldots{} làm ảnh hưởng đến công tác lưu trữ, bảo quản hồ sơ theo quy định.
 
-Mục tiêu chính của đề tài là ứng dụng công nghệ Blockchain để lưu trữ thông tin văn bằng, chứng chỉ. Ngoài việc tìm hiểu những khái niệm liên quan công nghệ chuỗi khối với các đặc tính công khai, an toàn, minh bạch, đề tài còn hướng đến nhu cầu dùng công nghệ chuỗi khối để kiểm chứng thông tin văn bằng, chứng chỉ khi thông tin được truy vấn từ cơ sở dữ liệu văn bằng, chứng chỉ bên ngoài chuỗi khối.
+Mục tiêu chính của đề tài là ứng dụng công nghệ Blockchain để lưu trữ thông tin VBCC. Ngoài việc tìm hiểu những khái niệm liên quan công nghệ chuỗi khối với các đặc tính công khai, an toàn, minh bạch, đề tài còn hướng đến nhu cầu dùng công nghệ chuỗi khối để kiểm chứng thông tin VBCC khi thông tin được truy vấn từ cơ sở dữ liệu VBCC bên ngoài chuỗi khối.
 
 \section{Mục tiêu nghiên cứu}
 
-Đề tài tập trung đề xuất mô hình ứng dụng công nghệ Blockchain trong quản lý văn bằng chứng chỉ nhằm hỗ trợ theo dõi việc cập nhật thông tin cho người sử dụng nhưng vẫn đảm bảo tính minh bạch, công khai và an toàn. Các mục tiêu cụ thể như sau:
+Đề tài tập trung đề xuất mô hình ứng dụng công nghệ Blockchain trong quản lý VBCC nhằm hỗ trợ theo dõi việc cập nhật thông tin cho người sử dụng nhưng vẫn đảm bảo tính minh bạch, công khai và an toàn. Các mục tiêu cụ thể như sau:
 
 \begin{enumerate}
-\item Phân tích và xây dựng CSDL đáp ứng nghiệp vụ quản lý văn bằng chứng chỉ: cập nhật thông tin sổ gốc cấp văn bằng, chứng chỉ; tra thông tin văn bằng, chứng chỉ.
+\item Phân tích và xây dựng CSDL đáp ứng nghiệp vụ quản lý VBCC: cập nhật thông tin sổ gốc cấp VBCC; tra thông tin VBCC.
 \item Xây dựng hệ thống website tương tác với người sử dụng, giao diện trực quan và phản hồi nhanh.
-\item Xây dựng mạng Hyperledger Fabric và triển khai lưu trữ dữ liệu nhật ký về văn bằng chứng chỉ trên mạng này.
+\item Xây dựng mạng Hyperledger Fabric và triển khai lưu trữ dữ liệu nhật ký về VBCC trên mạng này.
 \end{enumerate}
 
 \section{Đối tượng và phạm vi nghiên cứu}
@@ -71,29 +73,29 @@ Mục tiêu chính của đề tài là ứng dụng công nghệ Blockchain đ�
 \begin{itemize}
 \item Lý thuyết mật mã có liên quan công nghệ chuỗi khối
 \item Mô hình mạng thử nghiệm Hyperledger Fabric
-\item Quy định pháp luật về quản lý văn bằng, chứng chỉ
+\item Quy định pháp luật về quản lý VBCC
 \end{itemize}
 
 Phạm vi nghiên cứu:
 
 \begin{itemize}
 \item Quy trình cấp phát chứng chỉ của Trung tâm Tin học Trường Đại học An Giang
-\item Xây dựng hệ thống quản lý văn bằng chứng chỉ ứng dụng công nghệ blockchain.
+\item Xây dựng hệ thống quản lý VBCC ứng dụng công nghệ blockchain.
 \end{itemize}
 
 \section{Phương pháp nghiên cứu}
 
 \begin{itemize}
-\item Tìm hiểu, phân tích và tổng hợp tài liệu về quản lý văn bằng chứng chỉ (quy định, biểu mẫu hiện hành) và các nền tảng kiến trúc, cơ chế hoạt động của mạng Blockchain.
+\item Tìm hiểu, phân tích và tổng hợp tài liệu về quản lý VBCC (quy định, biểu mẫu hiện hành) và các nền tảng kiến trúc, cơ chế hoạt động của mạng Blockchain.
 \item Xác định các quy trình nghiệp vụ, yêu cầu của hệ thống, cơ sở dữ liệu, thông tin được lưu trên chuỗi khối.
 \item Phương pháp thực nghiệm, ghi nhận kết quả và đánh giá kết quả đạt được.
 \end{itemize}
 \section{Ý nghĩa của đề tài}
 
 Đề tài có tính ứng dụng cao, bên cạnh việc tìm hiểu kiến thức, những khái niệm liên quan công nghệ chuỗi khối.
-Ngoài việc triển khai với bài toán cụ thể tại Trung tâm Tin học Trường Đại học An Giang trong quản lý văn bằng, chứng chỉ, nghiên cứu có thể ứng dụng ở các đơn vị khác có nghiệp vụ tương tự như các trường học, cơ sở đào tạo.
+Ngoài việc triển khai với bài toán cụ thể tại Trung tâm Tin học Trường Đại học An Giang trong quản lý VBCC, nghiên cứu có thể ứng dụng ở các đơn vị khác có nghiệp vụ tương tự như các trường học, cơ sở đào tạo.
 
-Công nghệ chuỗi khối có khả năng xử lý và chia sẻ thông tin, dữ liệu minh bạch theo thời gian và có độ an toàn cao. Các nghiên cứu về công nghệ chuỗi khối có thể mở rộng ứng dụng trong nhiều lĩnh vực như nông nghiệp, y tế, ngân hàng, vận tải.
+Công nghệ chuỗi khối có khả năng lưu trữ, xử lý và chia sẻ thông tin, dữ liệu minh bạch theo thời gian và có độ an toàn cao. Các nghiên cứu về công nghệ chuỗi khối có thể mở rộng ứng dụng trong nhiều lĩnh vực như nông nghiệp, y tế, ngân hàng, vận tải.
 \section{Tiểu kết chương 1}
 
-Chương 1 trình bày các mục tiêu của hệ thống cần đạt được trong quá trình nghiên cứu và thực hiện. Chương 2 sẽ tập trung giới thiệu cơ sở lý thuyết quản lý văn bằng chứng chỉ, đặc tính an toàn, bảo mật của công nghệ chuỗi khối, và mô hình mạng thử nghiệm Hyperledger Fabric.
+Chương 1 trình bày các mục tiêu của hệ thống cần đạt được trong quá trình nghiên cứu và thực hiện. Chương 2 sẽ tập trung giới thiệu cơ sở lý thuyết quản lý VBCC, đặc tính an toàn, bảo mật của công nghệ chuỗi khối, và mô hình mạng thử nghiệm Hyperledger Fabric.
