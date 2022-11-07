@@ -19,13 +19,13 @@ Hơn nữa, dữ liệu của chuỗi khối được lưu trữ phân tán trê
 
 Trong đề tài, công nghệ blockchain được ứng dụng vào quản lý VBCC trong việc lưu trữ thông tin VBCC trên chuỗi khối để đảm bảo thông tin an toàn, tin cậy, minh bạch và bền vững theo thời gian.
 Ngày nay, VBCC chủ yếu được quản lý dưới dạng hồ sơ giấy và việc cấp VBCC chưa được số hóa.
-Hồ sơ giấy là các hồ sơ gốc bao gồm VBCC được in lên mẫu phôi và các hồ sơ theo quy định. Hồ sơ gốc có chữ ký tay và được đóng dấu của đơn vị cấp VBCC theo quy định tại Điều 20 của Thông tư số 21/2019/TT-BGDĐT.
-Ứng dụng của blockchain để số hóa việc cấp VBCC và xác thực thông tin VBCC được khảo sát trên một số công nghệ blockchain khá phổ biến hiện nay như Hyperledger Fabric, Ethereum.
-Trong những công nghệ blockchain này, ứng dụng của hợp đồng thông minh sẽ thực hiện số hóa việc cấp VBCC, thông tin của VBCC được mã hóa và lưu trữ vào chuỗi khối.
+Hồ sơ giấy được xem là dữ liệu gốc bao gồm các VBCC được in lên mẫu phôi và những hồ sơ theo quy định. Hồ sơ gốc có chữ ký tay và được đóng dấu của đơn vị cấp VBCC theo quy định tại Điều 20 của Thông tư số 21/2019/TT-BGDĐT.
+Ứng dụng của blockchain để số hóa việc cấp VBCC và xác thực thông tin VBCC được khảo sát trên một số công nghệ blockchain khá phổ biến hiện nay như Hyperledger Fabric, Ethereum, BigchainDB.
+Trong những công nghệ blockchain này, ứng dụng của hợp đồng thông minh trên nền tảng Hyperledger Fabric sẽ thực hiện số hóa việc cấp VBCC, thông tin của VBCC được mã hóa và lưu trữ vào chuỗi khối.
 
 Công nghệ blockchain là một xu hướng công nghệ ngày nay và được ứng dụng trong nhiều ngành, lĩnh vực khác nhau. Một số công trình nghiên cứu liên quan công nghệ blockchain như sau.
 
-Trong lĩnh vực mật mã, nghiên cứu \cite{ralphcharlesmerkle1979} của Ralphe Charles Merkle về ứng dụng hệ mật mã khóa công khai trong an toàn thông tin.
+Trong lĩnh vực an toàn thông tin có các ứng dụng giúp dữ liệu trên blockchain được toàn vẹn, chống làm giả. Nghiên cứu \cite{ralphcharlesmerkle1979} của Ralphe Charles Merkle về ứng dụng hệ mật mã khóa công khai trong an toàn thông tin.
 Với các hệ mật mã chỉ dùng một khóa duy nhất trong mật mã và giải mật, khóa này được tạo ra và được mỗi bên giữ bí mật để bảo mật thông tin. 
 Tuy nhiên, vấn đề trao đổi khóa gặp nhiều khó khăn trong thực tiễn.
 Ngoài ra, với một khóa duy nhất thì vai trò mỗi bên như nhau trong liên lạc.
@@ -37,25 +37,22 @@ Bài giảng \cite{lequyetthang2016} có giải thích rằng các giải pháp 
 Các giải pháp này vẫn còn nguyên giá trị đến ngày nay.
 Chữ ký số ra đời sau đó và được phát triển cùng với các giải pháp Băm (Hash) kết hợp với mật mã khóa công khai. 
 
+Trong lĩnh vực y tế và chăm sóc sức khỏe, nghiên cứu \cite{ANTWI2021100012} đề xuất giải pháp ứng dụng công nghệ blockchain riêng tư trong quản lý và bảo vệ quyền sở hữu thông tin sức khỏe của bệnh nhân.
+Những thông tin này quan trọng đối với người bệnh, nhà thuốc, công ty bảo hiểm và nhà nghiên cứu.
+Do đó, thông tin này cần được quan tâm tránh rò rỉ khi chia sẻ thông tin người bệnh.
+Nghiên cứu chỉ ra rằng Hyperledger Fabric có thể đáp ứng về tính an toàn, dễ mở rộng, tuân thủ luật pháp và linh hoạt trong quản lý thông tin sức khỏe của bệnh nhân.   
 
-Trong lĩnh vực y tế
-
-Trong lĩnh vực giáo dục
-
-Trong lĩnh vực tiền ảo
-
-Từ năm 2008, công nghệ chuỗi khối được hiện thực với đồng tiền ảo Bitcoin \cite{nakamoto2008bitcoin}, đã đánh dấu sự ra đời cách thức lưu trữ và chuyển giao thông tin hoàn toàn mới.
-
-Một thuộc tính của công nghệ chuỗi khối là sự đồng thuận giữa các thành phần không tin cậy - cùng tham gia vào một hệ thống mạng không tập trung. Công nghệ này đã được rất nhiều nghiên cứu \cite{10.1145/3190508.3190538, ANTWI2021100012, fair2019, 8246573, Fang2020} để hoàn thiện về cơ chế và ứng dụng trong các giải pháp xử lý, truyền tải an toàn thông tin.
-
-Chuỗi khối (blockchain) sử dụng các kỹ thuật mật mã \cite{lequyetthang2016, christofpaar2015, ralphcharlesmerkle1979, shannon-otp} để ghi nhận các giao dịch xảy ra theo thời gian và để kiểm chứng nguồn gốc thông tin.
-
-Tuy nhiên, công nghệ chuỗi khối cũng có mặt hạn chế.
-Nghiên cứu \cite{CHEN20191122} cho rằng công nghệ này chưa phù hợp để xử lý những giao dịch cần hiệu suất cao hoặc để thay thế cơ sở dữ liệu (database).
-Cơ chế lưu trữ của chuỗi khối cũng không dành để lưu dữ liệu lớn.
-Do đó cần có giải pháp linh hoạt kết hợp cơ chế lưu trữ ngoài chuỗi khối (off -- chain) bên cạnh khả năng lưu dữ liệu và xử lý hạn chế của công nghệ.
-
+Trong lĩnh vực giáo dục ở các nước trên thế giới và Việt Nam đang đẩy mạnh số hóa thông tin đào tạo.
+Trong đó công nghệ blockchain được dùng để làm cơ sở dữ liệu bảo mật trong việc lưu trữ thông tin bằng cấp của sinh viên và thông tin quá trình đào tạo.
+Công nghệ blockchain giúp tránh tình trạng gian lận trong quá trình học tập của sinh viên.
+Phòng nghiên cứu truyền thông thuộc Viện Công nghệ Massachusetts, Hoa Kỳ nghiên cứu dự án Blockcerts để số hóa chứng nhận cho các học viên hoàn thành chương trình MIT trên nền tảng blockchain.
+Blockcerts cung cấp tiêu chuẩn mở để tạo, phát hành, xem và xác minh các chứng chỉ dựa trên blockchain.
 \section{Lý do chọn đề tài}
+
+Hiện nay, các hồ sơ dữ liệu liên quan VBCC được quản lý lưu trữ tập trung tại đơn vị cấp VBCC.
+Sinh viên nhận được VBCC dưới dạng bản in.
+Tuy nhiên, khi có yêu cầu xác thực thông tin VBCC, phải thông qua đơn vị quản lý VBCC tra cứu hồ sơ và thường tốn nhiều thời gian.
+Vì vậy, công nghệ blockchain có thể giải quyết vấn đề liên quan đến tra cứu, xác minh, công nhận VBCC. Thông tin VBCC được lưu trên blockchain có đặc tính chống sửa đổi và đảm bảo tính toàn vẹn dữ liệu.  
 
 Trung tâm Tin học Trường Đại học An Giang là đơn vị hoạt động về lĩnh vực đào và có chức năng tổ chức thi và cấp chứng chỉ.
 Công tác quản lý về đào tạo, tổ chức thi và cấp chứng chỉ tại đơn vị đã được tin học hóa một số nghiệp vụ mang lại hiệu quả đáng kể như ghi danh học viên, quản lý hóa đơn, nhận hồ sơ dự thi, tra cứu điểm thi, và công khai thông tin VBCC do đơn vị cấp trên hệ thống website.
