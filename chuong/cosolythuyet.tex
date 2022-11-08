@@ -173,9 +173,12 @@ Chữ ký số được định nghĩa là một loại chữ ký điện tử, 
 \item Sự toàn vẹn nội dung của thông điệp dữ liệu kể từ khi thực hiện việc biến đổi nêu trên.
 \end{enumerate}
 
-Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Đó là cách xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai. Tuy nhiên, chữ ký số chỉ có thể đảm bảo khi khóa bí mật không bị lộ. Khi khóa bí mật bị lộ thì người sở hữu chữ ký không thể ngăn chặn được việc bị giả mạo chữ ký.
+Chữ ký số có chung mục tiêu như chữ ký tay trên văn bản. Chữ ký tay xác định một người bằng dấu vết riêng tác động lên văn bản và qua đó văn bản được ký là chứng cứ sự thật do người đó tạo lập nên. Chữ ký số là thành phần quan trọng trong những giải pháp ứng dụng mật mã, và được áp dụng rộng rãi trong thực tiễn cho đến nay. Chữ ký số cùng với cơ chế trao đổi khóa là cơ sở quan trọng trong hạ tầng khóa công khai. Tuy nhiên, chữ ký số chỉ có thể đảm bảo khi khóa bí mật không bị lộ. Khi khóa bí mật bị lộ thì người sở hữu chữ ký không thể ngăn chặn được việc bị giả mạo chữ ký.
 
-Chữ ký số bao gồm 3 thành phần: thuật toán tạo ra khóa, hàm tạo chữ ký và hàm kiểm tra chữ ký.
+Công nghệ blockchain và chữ ký số cùng đảm bảo thông tin không bị thoái thác. Weidong Fang và cộng sự \cite{Fang2020} nghiên cứu các sơ đồ chữ ký số điển hình trong blockchain gồm các chữ ký số hiện đại nhất được điều tra và so sánh về các lĩnh vực ứng dụng, phương pháp, bảo mật và hiệu suất.
+Sơ đồ chữ ký số phổ biến hiện nay là sơ đồ chữ ký RSA được Diffie-Hellman đề xuất vào năm 1976 và được Ronald Linn Rivest, Adi Shamir và Leonard Adleman thực hiện vào năm 1977. \cite{10.5555/1721909}. 
+
+Sơ đồ chữ ký số bao gồm 3 thành phần: thuật toán tạo ra khóa, hàm tạo chữ ký và hàm kiểm tra chữ ký.
 
 Hàm tạo ra chữ ký là hàm tính toán chữ ký trên cơ sở khóa mật và dữ liệu cần ký.
 
@@ -213,8 +216,6 @@ Chữ ký số đảm bảo 2 tiêu chí an toàn thông tin như sau:
 \item Tính không chối bỏ hay chống thoái thác trách nhiệm: vì chỉ có chủ thông điệp mới có khóa bí mật để ký lên thông điệp nên người ký không thể chối bỏ thông điệp của mình.
 \end{enumerate}
 
-Sơ đồ chữ ký số phổ biến hiện nay là sơ đồ chữ ký RSA được Diffie-Hellman đề xuất vào năm 1976 và được Ronald Linn Rivest, Adi Shamir và Leonard Adleman thực hiện vào năm 1977. \cite{10.5555/1721909}. 
-
 \subsection{Chứng thư số}
 
 Chứng thư số là một dạng chứng thư điện tử do tổ chức cung cấp dịch vụ chứng thực số (Certification Authority) cấp nhằm cung cấp thông tin định danh cho khóa công khai của một cơ quan, tổ chức, cá nhân, từ đó xác nhận cơ quan, tổ chức, cá nhân là người ký chữ ký số bằng việc sử dụng khóa bí mật tương ứng. 
@@ -245,14 +246,15 @@ Phân loại chứng thư số
 \end{itemize}
 
 \subsection{Dịch vụ chứng thực số}
-“Dịch vụ chứng thực chữ ký số” là một loại hình dịch vụ chứng thực chữ ký điện tử, do tổ chức cung cấp dịch vụ chứng thực chữ ký số cung cấp cho thuê bao để xác thực việc thuê bao là người đã ký số trên thông điệp dữ liệu. 
+Dịch vụ chứng thực số là một loại hình dịch vụ chứng thực chữ ký số, do tổ chức cung cấp dịch vụ chứng thực chữ ký số cung cấp cho thuê bao để xác thực việc thuê bao là người đã ký số trên thông điệp dữ liệu. 
 
 Dịch vụ chứng thực chữ ký số bao gồm: 
 
 \begin{itemize}
 \item Tạo cặp khóa hoặc hỗ trợ tạo cặp khóa bao gồm khóa công khai và khóa bí mật cho thuê bao;
 \item Cấp, gia hạn, tạm dừng, phục hồi và thu hồi chứng thư số của thuê bao; 
-\item Duy trì trực tuyến cơ sở dữ liệu về chứng thư số; 4. Cung cấp thông tin cần thiết để giúp chứng thực chữ ký số của thuê bao đã ký số trên thông điệp dữ liệu.
+\item Duy trì trực tuyến cơ sở dữ liệu về chứng thư số; 
+\item Cung cấp thông tin cần thiết để giúp chứng thực chữ ký số của thuê bao đã ký số trên thông điệp dữ liệu.
 \end{itemize}
 
 \subsection {Hạ tầng khóa công khai}
