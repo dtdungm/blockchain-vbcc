@@ -142,9 +142,11 @@ Khóa cá nhân dùng để tạo mật mã và tạo chữ ký số. Khóa côn
 
 Hàm băm là phép biến đổi một chiều có đầu vào là thông điệp chiều dài bất kỳ thành một dãy bit có độ dài cố định (tùy thuộc vào thuật toán băm). Giá trị băm còn gọi là hash value (hay Digest) là đặc trưng cho thông điệp ban đầu.
 
-Ví dụ: Với thông điệp ban đầu là Hello world sẽ có các giá trị băm tương ứng với một số hàm băm, như sau:
+Hàm băm là hàm một chiều, theo nghĩa từ giá trị của hàm băm rất khó để suy ngược lại nội dung hay độ dài ban đầu của thông điệp gốc.
 
-Adler32: 18ab043d
+Các hàm băm dòng MD: MD2, MD4, MD5 được Rivest đưa ra có kết quả đầu ra với độ dài là 128 bit. Chuẩn hàm băm an toàn: SHA, được Viện Tiêu Chuẩn và Công Nghệ Quốc Gia (NIST) công bố, SHA1 có kết quả đầu ra dài 160bit, SHA2: SHA-256, SHA-384, SHA-512 có kết quả đầu ra dài lần lượt là 256, 384, 512 bit \cite{10.5555/1721909}.
+
+Ví dụ: Với thông điệp ban đầu là Hello world sẽ có các giá trị băm tương ứng với một số hàm băm, như sau:
 
 MD5: 3e25960a79dbc69b674cd4ec67a72c62
 
@@ -258,7 +260,7 @@ Dịch vụ chứng thực chữ ký số bao gồm:
 \end{itemize}
 
 \subsection {Hạ tầng khóa công khai}
-Hạ tầng khóa công khai (Public Key Infrastructure) là một cơ chế để cho một bên thứ ba (thường là nhà cung cấp chứng thực số) cung cấp và xác thực định danh tính các bên tham gia vào quá trình trao đổi thông tin. Cơ chế này cũng cho phép gán cho mỗi người sử dụng trong hệ thống một cặp khóa công khai/khóa riêng tư. Các quá trình này thường được thực hiện bởi một phần mềm đặt tại trung tâm và các phần mềm khác tại các địa điểm của người dùng. Khóa công khai thường được phân phối trong hạ tầng khóa công khai.
+Hạ tầng khóa công khai (Public Key Infrastructure) là một cơ chế để cho một bên thứ ba (thường là nhà cung cấp chứng thực số) cung cấp và xác thực danh tính các bên tham gia vào quá trình trao đổi thông tin. Cơ chế này cũng cho phép gán cho mỗi người sử dụng trong hệ thống một cặp khóa công khai/khóa riêng tư. Các quá trình này thường được thực hiện bởi một phần mềm đặt tại trung tâm và các phần mềm khác tại các địa điểm của người dùng. Khóa công khai thường được phân phối trong hạ tầng khóa công khai.
 
 Khái niệm hạ tầng khóa công khai PKI thường được dùng chỉ toàn bộ hệ thống bao gồm cả nhà cung cấp chứng thực số (CA) cùng các cơ chế liên quan đồng thời với toàn bộ việc sử dụng các thuật toán mã hóa công khai trong trao đổi thông tin. Tuy nhiên, các cơ chế trong PKI không nhất thiết sử dụng các thuật toán mã hóa công khai.
 
@@ -266,32 +268,31 @@ Khái niệm hạ tầng khóa công khai PKI thường được dùng chỉ to�
 \subsection{Giới thiệu}
 Blockchain là cuốn sổ cái kỹ thuật số chống giả mạo được triển khai theo mô hình phân tán (không có kho lưu trữ trung tâm), còn gọi là công nghệ sổ cái phân tán (Decentralized Ledger Technology).
 Khi người dùng ghi các giao dịch vào cuốn sổ cái chia sẻ của mạng Blockchain thì không giao dịch nào có thể bị thay đổi sau khi được cộng đồng chấp nhận. 
-Công nghệ này được biết đến rộng rãi vào năm 2009 với sự ra đời của mạng Bitcoin\cite{nakamoto2008bitcoin}, một trong những đồng tiền mã hóa hiện đại đầu tiên được bảo vệ bởi các cơ chế mật mã học thay vì nhờ vào bên chứng thực hoặc kho lưu trữ trung tâm.
+Công nghệ này được biết đến rộng rãi vào năm 2009 với sự ra đời của mạng Bitcoin\cite{nakamoto2008bitcoin}, một trong những đồng tiền mã hóa hiện đại đầu tiên được bảo vệ bởi các cơ chế mật mã học thay vì nhờ vào bên chứng thực hoặc kho lưu trữ trung tâm.
 
-\begin{table}
-\caption{Một số ví dụ loại sổ cái phân tán}
-	\label{table:ex-dlt}
-	\begin{tabularx} {\textwidth} {|X|X|X|p{5cm}|}
-\hline
-	Data Model   & Number of ledgers & Owner & Example \\ \hline
-	Account   & 1 & Người quản trị & Traditional ledgers\\ \hline
-	Tài sản   & Nhiều  &  Một nhóm & Private ledger\\ \hline
-	Tiền và tải khoản   &  1 & Một người  & Crypto-currencies Bitcoin Ethereum \\ \hline
-\end{tabularx}
-\end{table}
+\textbf{Phân loại Blockchain}
 
-Bảng \ref{table:ex-dlt} minh họa distribute ledger
+Mạng Blockchain có thể được phân loại thành Blockchain công khai và Blockchain riêng tư \cite{8246573}. Loại thứ nhất ai cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, vai trò ngang hàng nhau. Loại thứ hai, việc tham gia mạng Blockchain được kiểm soát bằng cơ chế xác định danh tính của người tham gia.
 
-
+Blockchain công khai: đại diện là mạng Bitcoin.
 \subsection{Bitcoin}
 Mạng Bitcoin gồm có thành phần miner và Blockchain.
+
 Miner là một node trên mạng kết nối với nhau theo giao thức mạng ngang hàng.
 Miner kết nối người dùng trong mạng và Blockchain.
 Bitcoin cho phép phát hành tiền mới thông qua cơ chế ``phần thưởng" cho miner sau khi khối của mình tạo ra được xác thực hợp lệ. Cơ chế đồng thuận để duy trì và tự kiểm soát để đảm bảo rằng chỉ có các giao dịch và các khối hợp lệ mới được thêm vào Blockchain.
 
-Blockchain là một hệ thống cơ sở dữ liệu phân tán trên mạng lưu trữ các khối liên kết với nhau sau khi đã xác thực thành công bởi các miner.
-Mỗi khối gồm nhiều giao dịch được ký số bởi các bên tham gia như hình \ref{fig:trans_bitcoin}.
-Mỗi khối có các liên kết thông qua giá trị băm tạo thành cây nhị phân như hình \ref{fig:merkle}, dữ liệu lưu ở các nút lá. Các khối đều chứa thông tin thời gian khởi tạo và liên kết với khối trước thành chuỗi thông qua giá trị băm và kèm một mã thời gian và thông tin giao dịch như hình \ref{fig:blockchain}. Vì thế, blockchain được thiết kế để chống lại sự thay đổi của dữ liệu. Khi dữ liệu đã lưu trữ trên mạng blockchain thì sẽ khó thay đổi được và nếu được cập nhật sẽ được lưu vết dưới dạng nhật ký.
+Blockchain là một hệ thống cơ sở dữ liệu phân tán lưu trữ các khối liên kết với nhau sau khi đã xác thực thành công bởi các miner. Hình \ref{fig:merkle_bitcoin} mô tả cấu trúc một khối bao gồm các thành phần: định danh khối (blockheader) và dữ liệu.
+Blockheader là giá trị băm của các thành phần gồm: Root hash của các dữ liệu giao dịch, giá trị blockheader của khối trước, số thứ tự khối, số nounce, nhãn thời gian.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.5\linewidth]{img/merkle_tree.jpg}
+\caption{Mô tả cấu trúc một khối}
+\label{fig:merkle_bitcoin}
+\end{figure}
+
+Một dữ liệu giao dịch gồm có nhiều giao dịch được ký số bởi các bên tham gia như hình \ref{fig:trans_bitcoin}.
 
 \begin{figure}[htbp]
 \centering
@@ -300,6 +301,8 @@ Mỗi khối có các liên kết thông qua giá trị băm tạo thành cây n
 \label{fig:trans_bitcoin}
 \end{figure}
 
+Mỗi dữ liệu giao dịch A, B, C, D, E được tính giá trị băm, sau đó gộp 2 khối dữ liệu thành từng cặp, tính giá trị băm trung gian, công việc này lặp lại cho đến khi tính được giá trị băm các giao dịch (Root Hash) được mô tả như hình \ref{fig:merkle}. 
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/merkle.png}
@@ -307,26 +310,17 @@ Mỗi khối có các liên kết thông qua giá trị băm tạo thành cây n
 \label{fig:merkle}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/blockchain.png}
-\caption{Mô tả chuỗi Blockchain}
-\label{fig:blockchain}
-\end{figure}
+Giao dịch trong Blockchain có thể chia thành 3 loại: giao dịch  thuộc về khối đầu tiên của Blockchain, giao dịch thưởng cho các miner và giao dịch thông thường.
+
+\begin{itemize}
+\item Giao dịch thuộc về khối đầu tiên của Blockchain sẽ được chèn vào trong mã nguồn của Blockchain tại khối đầu tiên của Blockchain. Các loại tiền số có quy định số lượng tiền giới hạn trong hệ thống.
+\item Giao dịch thưởng cho những người tạo ra khối mới: hệ thống Blockchain tự tạo tự động và sẽ chuyển số. tiền thưởng cho người tạo ra khối mới.
+\item Giao dịch thông thường là những giao dịch được tạo bởi những người dùng. 
+\end{itemize}
 
 Mạng Bitcoin và các hệ thống tương tự, việc chuyển thông tin kỹ thuật số với đại diện là tiền điện tử diễn ra trong một hệ thống phân tán.
 Người dùng Bitcoin ký chữ ký số và chuyển tài sản của mình sang người khác và Bitcoin ghi lại các giao dịch này công khai, cho phép những người tham gia mạng xác minh độc lập tính hợp lệ của giao dịch. 
-Công nghệ blockchain do đó được xem là giải pháp chung cho các đồng tiền mã hóa sau này.
-
-Blockchain xác nhận giao dịch bằng hợp đồng thông minh. Hợp đồng thông minh là các chương trình chạy trên blockchain. Hợp đồng thông minh cũng giống như một hợp đồng kỹ thuật số bị bắt buộc thực hiện bởi một bộ quy tắc cụ thể. Các quy tắc này được lập trình trước và tất cả các nút (node) trong mạng đều phải sao chép và thực thi các quy tắc đó.
-\subsection{Phân loại Blockchain}
-
-Mạng Blockchain có thể phân loại dựa trên mô hình quyền hạn của nó mà xác định ai có thể duy trì chúng (chẳng hạn xuất bản các khối). Nếu bất kỳ ai có thể xuất bản một khối mới, gọi là Blockchain mở. Nếu chỉ có những người dùng cụ thể xuất bản các khối, gọi là Blockchain đóng. Hiểu đơn giản, một mạng Blockchain đóng giống như một mạng Intranet của tổ chức, trong khi đó Blockchain mở lại giống như mạng Internet công cộng vậy.
-
-Mạng blockchain có thể được chia làm 3 nhóm. (1) Nhóm hệ thống blockchain công cộng cho phép mọi người dùng có thể truy cập dữ liệu như Bitcoin, Ethereum,\ldots{}. (2) Nhóm hệ thống blockchain riêng tư do một tổ chức hoặc một cá nhân đầu tư và kiểm soát, thông tin được kiểm soát chặt chẽ và chỉ được phổ biến trong nội bộ. (3) Nhóm còn lại là hệ thống blockchain cộng đồng là hiệp hội các tổ chức có thể xây dựng riêng mạng cho các thành viên của mình theo nguyên lý blockchain, cơ chế đồng thuận trong cộng đồng phát triển theo xu hướng tin cậy theo đa số trong cộng đồng. Mỗi hệ thống blockchain có những đặc điểm riêng và được ứng dụng trong từng lĩnh vực cụ thể.
-
-Giới thiệu các nền tảng blockchain như Bitcoin,  
-hyperledger fabric, bigchaindb.
+Do đó, công nghệ blockchain được xem là giải pháp chung cho các đồng tiền mã hóa sau này.
 
 \subsection{Ethereum}
 
@@ -334,9 +328,9 @@ hyperledger fabric, bigchaindb.
 
 Phân tích các ưu khuyết điểm của các nền tảng này.
 
-\section{Hyperledger Fabric}
+\subsection{Hyperledger Fabric}
 
-\subsection{Giới thiệu}
+\textbf{Giới thiệu}
 
 Hyperledger Fabric là một nền tảng blockchain trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror. Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
 
@@ -362,7 +356,7 @@ Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu đượ
 
 Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Các giải thuật đồng thuận gồm có: Kafka, Raft. Các thực giao dịch được xử lý song song, xử lý khối bất động bộ, phân trang chaincode,\ldots.
 
-\subsection{Các thành phần của Hyperledger Fabric}
+\textbf{Các thành phần của Hyperledger Fabric}
 
 \begin{figure}[htbp]
 \centering
@@ -390,4 +384,7 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 
 \textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
 
-Bổ túc kiến trúc
+\textbf{Bổ kiến trúc xử lý giao dịch}
+
+\textbf{Thiết lập mạng Hyperledger Fabric}
+
