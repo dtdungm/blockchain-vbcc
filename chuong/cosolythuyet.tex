@@ -76,7 +76,7 @@ Việc xác minh VBCC là một trong những giai đoạn cần thực hiện �
 Hồ sơ VBCC, sổ gốc hay dữ liệu VBCC khi lưu trên máy tính cũng phải theo quy định để đảm bảo tính pháp lý.
 Theo quy định, nhân viên thực hiện kiểm tra, đối chiếu bản chính giấy tờ tùy thân, giấy tờ liên quan, thông tin sổ gốc nhằm tránh giả mạo người nhận.
 Chữ ký vào hồ sơ văn bản nhằm chứng minh cho sự hiện diện của người nhận và là một đặc điểm thể hiện dấu riêng của một người.
-Chữ ký số (hay chữ ký điện tử) là giải pháp được công nhận về tính pháp lý. Chữ ký số có các thuộc tính định danh, xác thực đúng nguồn gốc, đảm bảo được tính toàn vẹn của dữ liệu nhận được và chống thoái thác. Chữ ký số được xem như tương đương chữ ký tay trong giao dịch để đảm bảo tính pháp lý, tin cậy, tiết kiệm thời gian.
+Chữ ký số (hay chữ ký điện tử) là giải pháp được công nhận về tính pháp lý. Chữ ký số có các thuộc tính định danh, xác thực đúng dữ liệu gốc, đảm bảo được tính toàn vẹn của dữ liệu nhận được và chống thoái thác. Chữ ký số trong các giao dịch điện tử được xem như tương đương chữ ký tay, đảm bảo về tính pháp lý, tin cậy và tiết kiệm thời gian hơn so với cách xử lý các hồ sơ giấy
 
 Phần tiếp theo sẽ giới thiệu về chữ ký số và các ứng dụng chữ ký số được nghiên cứu trong mật mã và blockchain.
 
@@ -236,8 +236,24 @@ Chứng thư X.509 phiên bản 3 có những thông tin sau:
 
 \end{itemize}
 
-\subsection{Dịch vụ chứng thực số}
+Phân loại chứng thư số
 
+\begin{itemize}
+\item \emph{Chứng thư số tổ chức} là chứng thư số dùng để nhận diện các chủ thể là các tổ chức trên môi trường điện tử. Chữ ký số tạo bởi chứng thư số này có giá trị pháp lý như con dấu của tổ chức.
+\item \emph{Chứng thư số cá nhân} là chứng thư số dùng để nhận diện các cá nhân trên môi trường điện tử. Chữ ký số tạo bởi từ chứng thư số cá nhân có giá trị pháp lý như chữ ký tay của cá nhân khi thực hiện các giao dịch. Chữ ký số tạo bởi từ chứng thư số này có giá trị pháp lý như chữ ký tay của cá nhân khi thực hiện các giao dịch điện tử
+\item \emph{Chứng thư số cá nhân thuộc tổ chức} là chứng thư số dùng để nhận diện chủ thể là các cá nhân thuộc các tổ chức trên môi trường điện tử. Chữ ký số tạo bởi chứng thư số này có giá trị pháp lý như chữ ký tay của cá nhân trong tổ chức. Chứng thư số này thường gắn với các chức danh nội bộ của chủ thể như: Tổng giám đốc, Giám đốc, Trưởng phòng, kế toán trưởng…
+\end{itemize}
+
+\subsection{Dịch vụ chứng thực số}
+“Dịch vụ chứng thực chữ ký số” là một loại hình dịch vụ chứng thực chữ ký điện tử, do tổ chức cung cấp dịch vụ chứng thực chữ ký số cung cấp cho thuê bao để xác thực việc thuê bao là người đã ký số trên thông điệp dữ liệu. 
+
+Dịch vụ chứng thực chữ ký số bao gồm: 
+
+\begin{itemize}
+\item Tạo cặp khóa hoặc hỗ trợ tạo cặp khóa bao gồm khóa công khai và khóa bí mật cho thuê bao;
+\item Cấp, gia hạn, tạm dừng, phục hồi và thu hồi chứng thư số của thuê bao; 
+\item Duy trì trực tuyến cơ sở dữ liệu về chứng thư số; 4. Cung cấp thông tin cần thiết để giúp chứng thực chữ ký số của thuê bao đã ký số trên thông điệp dữ liệu.
+\end{itemize}
 
 \subsection {Hạ tầng khóa công khai}
 Hạ tầng khóa công khai (Public Key Infrastructure) là một cơ chế để cho một bên thứ ba (thường là nhà cung cấp chứng thực số) cung cấp và xác thực định danh tính các bên tham gia vào quá trình trao đổi thông tin. Cơ chế này cũng cho phép gán cho mỗi người sử dụng trong hệ thống một cặp khóa công khai/khóa riêng tư. Các quá trình này thường được thực hiện bởi một phần mềm đặt tại trung tâm và các phần mềm khác tại các địa điểm của người dùng. Khóa công khai thường được phân phối trong hạ tầng khóa công khai.
@@ -245,10 +261,27 @@ Hạ tầng khóa công khai (Public Key Infrastructure) là một cơ chế đ�
 Khái niệm hạ tầng khóa công khai PKI thường được dùng chỉ toàn bộ hệ thống bao gồm cả nhà cung cấp chứng thực số (CA) cùng các cơ chế liên quan đồng thời với toàn bộ việc sử dụng các thuật toán mã hóa công khai trong trao đổi thông tin. Tuy nhiên, các cơ chế trong PKI không nhất thiết sử dụng các thuật toán mã hóa công khai.
 
 \section{Công nghệ Blockchain}
+\subsection{Giới thiệu}
+Blockchain là cuốn sổ cái kỹ thuật số chống giả mạo được triển khai theo mô hình phân tán (tức là không có kho lưu trữ trung tâm) và thường không cần một đơn vị đáng tin cậy chứng thực (như ngân hàng, công ty, chính phủ). 
+Ở mức độ cơ bản, nó cho phép một cộng đồng người dùng ghi các giao dịch vào cuốn sổ cái chia sẻ, mà trong đó, với sự điều hành bình thường của mạng Blockchain thì không giao dịch nào có thể bị thay đổi sau khi được cộng đồng chấp nhận. 
+Vào năm 2008, ý tưởng Blockchain được kết hợp với một số công nghệ và mạng internet để tạo ra đồng tiền mã hóa hiện đại: tiền điện tử được bảo vệ bởi các cơ chế mật mã học thay vì nhờ vào bên chứng thực hoặc kho lưu trữ trung tâm.
 
-Giới thiệu các nền tảng blockchain như Bitcoin, ethereum, hyperledger fabric, bigchaindb.
+Công nghệ này được biết đến rộng rãi vào năm 2009 với sự ra đời của mạng Bitcoin,  một trong những đồng tiền mã hóa hiện đại đầu tiên.
+Ở hệ thống Bitcoin và các hệ thống tương tự, việc chuyển thông tin kỹ thuật số với đại diện là tiền điện tử diễn ra trong một hệ thống phân tán.
+Người dùng Bitcoin có thể ký chữ ký số và chuyển tài sản của mình sang người khác và Bitcoin ghi lại các giao dịch này công khai, cho phép những người tham gia mạng xác minh độc lập tính hợp lệ của giao dịch. 
+Công nghệ Blockchain do đó được xem là giải pháp chung cho các đồng tiền mã hóa sau này.
 
-Phân tích các ưu khuyết điểm của các nền tảng này.
+Blockchain có thể được định nghĩa như sau
+
+“Blockchain là cuốn sổ cái kỹ thuật số của các giao dịch được ký bằng mật mã. Mỗi khối được liên kết mã hóa với khối trước nó sau khi được xác thực thì trải qua một quyết định đồng thuận. Khi một khối mới thêm vào, khối cũ hơn trở nên khó bị chỉnh sửa. Cuốn sổ cái sau đó được sao chép đến toàn bộ mạng và bất kỳ xung đột nào được giải quyết tự động thông qua các quy tắc được thiết lập.”
+
+\subsection{Lịch sử ra đời}
+
+Ý tưởng chính đứng sau công nghệ Blockchain này nổi lên vào cuối những năm 1980, đầu năm 1990. Vào năm 1989, Leslie Lamport2 đã phát triển giao thức Paxos.
+
+Năm 1990, ông có bài báo The Part-Time Parliament được gửi đến ACM Transaction on Computer Systems; bài báo được phát hành cuối cùng vào một số của năm 1998. Bài báo miêu tả một mô hình đồng thuận giúp đạt được thỏa thuận trên một kết quả của mạng lưới máy tính – nơi mà các máy tính hoặc bản thân mạng có thể không ổn định. Năm 1991, một chuỗi thông tin được ký đã được dùng như một cuốn sổ cái điện tử cho các tài liệu có chữ ký kỹ thuật số theo cách mà không dễ dàng để tài liệu được ký nào bị thay đổi. Các khái niệm này được kết hợp và áp dụng vào tiền điện tử năm 2008 và được miêu tả trong bài báo – Bitcoin: A Peer to Peer Electronic Cash System – được xuất bản giả bởi Satoshi Nakamoto, và sau đó năm 2009 với sự ra đời của tiền điện tử Bitcoin.
+
+Việc sử dụng Blockchain cho phép Bitcoin được triển khai theo kiểu phân tán, như vậy không có người dùng đơn lẻ điều khiển được tiền điện tử và không có khuyết điểm tồn tại đơn lẻ. Lợi ích chính là cho phép các giao dịch trực triếp giữa những người dùng mà không cần bên thứ ba đáng tin cậy. Nó cũng cho phép phát hành tiền mới theo cách được định nghĩa đến những người quản lý việc xuất bản các khối mới và duy trì bản sao của sổ cái, thì những đó được gọi là các miner ở Bitcoin. Bằng cách sử dụng cơ chế đồng thuận để duy trì và một cơ chế tự kiểm soát được tạo ra để đảm bảo rằng chỉ có các giao dịch và các khối hợp lệ mới được thêm vào Blockchain.
 
 Công nghệ Blockchain được hình thành vào năm 2008 theo ý tưởng của Satoshi Nakamoto và trở thành cơ chế hoạt động của tiền điện tử Bitcoin \cite{nakamoto2008bitcoin}. Công nghệ này đóng vai trò như một quyển sổ cái ghi lại tất cả giao dịch công khai trên hệ thống máy tính ngang hàng theo phương thức mã hoá các giao dịch. Từ đó, các giao dịch phát sinh mà không cần các tổ chức trung gian, tạo ra giải pháp cho các ứng dụng cần sự minh bạch, tính trách nhiệm, bảo mật cao và giảm thiểu các quy trình thủ tục phức tạp. Công nghệ blockchain đang được nghiên cứu và ứng dụng vào nhiều lĩnh vực quan trọng trong giáo dục, dịch vụ công, y tế tại nhiều nước trên thế giới.
 
@@ -277,8 +310,22 @@ Công nghệ này mang đặc điểm của cơ sở dữ liệu phân tán. Tuy
 \end{figure}
 
 Blockchain xác nhận giao dịch bằng hợp đồng thông minh. Hợp đồng thông minh là các chương trình chạy trên blockchain. Hợp đồng thông minh cũng giống như một hợp đồng kỹ thuật số bị bắt buộc thực hiện bởi một bộ quy tắc cụ thể. Các quy tắc này được lập trình trước và tất cả các nút (node) trong mạng đều phải sao chép và thực thi các quy tắc đó.
+\subsection{Phân loại Blockchain}
 
-Hệ thống mạng blockchain có thể được chia làm 3 nhóm. (1) Nhóm hệ thống blockchain công cộng cho phép mọi người dùng có thể truy cập dữ liệu như Bitcoin, Ethereum,\ldots{}. (2) Nhóm hệ thống blockchain riêng tư do một tổ chức hoặc một cá nhân đầu tư và kiểm soát, thông tin được kiểm soát chặt chẽ và chỉ được phổ biến trong nội bộ. (3) Nhóm còn lại là hệ thống blockchain cộng đồng là hiệp hội các tổ chức có thể xây dựng riêng mạng cho các thành viên của mình theo nguyên lý blockchain, cơ chế đồng thuận trong cộng đồng phát triển theo xu hướng tin cậy theo đa số trong cộng đồng. Mỗi hệ thống blockchain có những đặc điểm riêng và được ứng dụng trong từng lĩnh vực cụ thể.
+Mạng Blockchain có thể phân loại dựa trên mô hình quyền hạn của nó mà xác định ai có thể duy trì chúng (chẳng hạn xuất bản các khối). Nếu bất kỳ ai có thể xuất bản một khối mới, gọi là Blockchain mở. Nếu chỉ có những người dùng cụ thể xuất bản các khối, gọi là Blockchain đóng. Hiểu đơn giản, một mạng Blockchain đóng giống như một mạng Intranet của tổ chức, trong khi đó Blockchain mở lại giống như mạng Internet công cộng vậy.
+
+Mạng blockchain có thể được chia làm 3 nhóm. (1) Nhóm hệ thống blockchain công cộng cho phép mọi người dùng có thể truy cập dữ liệu như Bitcoin, Ethereum,\ldots{}. (2) Nhóm hệ thống blockchain riêng tư do một tổ chức hoặc một cá nhân đầu tư và kiểm soát, thông tin được kiểm soát chặt chẽ và chỉ được phổ biến trong nội bộ. (3) Nhóm còn lại là hệ thống blockchain cộng đồng là hiệp hội các tổ chức có thể xây dựng riêng mạng cho các thành viên của mình theo nguyên lý blockchain, cơ chế đồng thuận trong cộng đồng phát triển theo xu hướng tin cậy theo đa số trong cộng đồng. Mỗi hệ thống blockchain có những đặc điểm riêng và được ứng dụng trong từng lĩnh vực cụ thể.
+
+\section{Một số nền tảng dựa trên Blockchain hiện nay}
+
+Giới thiệu các nền tảng blockchain như Bitcoin,  
+hyperledger fabric, bigchaindb.
+
+\subsection{Ethereum}
+
+\subsection{Bigchaindb}
+
+Phân tích các ưu khuyết điểm của các nền tảng này.
 
 \section{Hyperledger Fabric}
 
