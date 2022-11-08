@@ -272,13 +272,35 @@ Công nghệ này được biết đến rộng rãi vào năm 2009
 
 \textbf{Phân loại Blockchain}
 
-Mạng Blockchain có thể được phân loại thành Blockchain công khai và Blockchain riêng tư \cite{8246573}. Loại thứ nhất ai cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, vai trò ngang hàng nhau. Loại thứ hai, việc tham gia mạng Blockchain được kiểm soát bằng cơ chế xác định danh tính của người tham gia.
+Mạng Blockchain có thể được phân loại thành Blockchain công khai và Blockchain riêng tư \cite{8246573}. Loại thứ nhất gồm Bitcoin, Ethereum, ai cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, mỗi nút có vai trò ngang hàng nhau. Loại thứ hai gồm Hyperledger, BigchainDB,\ldots, việc tham gia mạng Blockchain được kiểm soát bằng cơ chế xác định danh tính của người tham gia.
 
-Blockchain công khai: đại diện là mạng Bitcoin.
+\textbf{So sánh giữa các mạng Blockchain}
 
-\textbf{Sổ cái phân tán}
+Mạng Blockchain được Tien Tuan Anh Dinh và cộng sự nghiên cứu \cite{8246573} dựa theo 4 khái niệm chính của Blockchain: sổ cái phân tán, cơ chế đồng thuận (concensus), mô hình mật mã, hợp đồng thông minh (smart contract),
+
+\emph{Sổ cái phân tán}
+
+Blockchain không dựa vào các tổ chức thứ ba để quản lý và xác thực và không có sự kiểm soát trung tâm.
+Tất cả thông tin được các nút kiểm tra, truyền tải và quản lý đặt sự tin tưởng và các nút. 
+Các nút có bảo sao lưu trữ các giao dịch trong một khối ghép nối với nhau thành chuỗi.
+Cấu trúc phân tán là đặc điểm nổi bật và quan trọng nhất của Blockchain
+
+Khái niệm sổ cái có 3 tiêu chí phân loại được mô tả ở bảng \ref{table:ex-dlt} 
+\begin{table}
+\caption{So sánh sổ cái phân tán}
+	\label{table:ex-dlt}
+	\begin{tabularx} {\textwidth} {|X|X|X|p{5cm}|}
+\hline
+	Dữ liệu mô tả & Số lượng sổ & Quyền kiểm soát & Ứng dụng \\ \hline
+	Tài khoản  & 1 & Người quản trị & Số cái thông thường với hình thức lưu trữ tập trung ở những ngân hàng\\ \hline
+	Tài sản   & Nhiều  &  Nhiều người & Số cái riêng của một tổ chức hoặc nhóm các tổ chức\\ \hline
+	Tiền hoặc tài khoản   &  1 & Bất cứ người nào & Lĩnh vực tiển số: Bitcoin, Ethereum \\ \hline
+\end{tabularx}
+\end{table}
 
 \textbf{Thuận toán đồng thuận}
+
+\textbf{Mô hình mật mã}
 
 \textbf{Hợp đồng thông minh}
 
@@ -333,8 +355,6 @@ Do đó, công nghệ blockchain được xem là giải pháp chung cho 
 
 \subsection{Bigchaindb}
 
-Phân tích các ưu khuyết điểm của các nền tảng này.
-
 \subsection{Hyperledger Fabric}
 
 \textbf{Giới thiệu}
@@ -353,7 +373,6 @@ Hyperledger Fabric thuộc nhóm phần mềm mã nguồn mở dưới sự cố
 Nhờ vào thiết kế mô-đun linh hoạt và quản lý người tham gia nên Hyperledger Fabric trở thành nền tảng blockchain có tốc độ xử lý giao dịch nhanh và phù hợp với tổ chức muốn kiểm soát danh tính người tham gia, và xác minh các giao dịch với hợp đồng thông minh.
 
 Phiên bản mới nhất của Hyperledger Fabric là 2.x. Hyperledger Fabric được cộng đồng hỗ trợ các vấn đề bảo mật, cập nhật. Hệ thống sẽ được cập nhật cho đến khi một phiên bản LTS mới được phát hành.
-
 
 Trong phiên bản Fabric 2.x, các hợp đồng thông minh (smart contract) được cài đặt trên các peer tham gia chung channel và được đánh số các phiên bản. Các tổ chức thuộc kênh (channel) đồng ý các tham số của hợp đồng thông minh, chứng thực hợp đồng thông minh sau đó hợp đồng thông minh mới thực hiện tương tác với sổ cái (ledger).
 
