@@ -272,19 +272,20 @@ Công nghệ này được biết đến rộng rãi vào năm 2009
 
 \textbf{Phân loại Blockchain}
 
-Mạng Blockchain có thể được phân loại thành Blockchain công khai và Blockchain riêng tư \cite{8246573}. Loại thứ nhất gồm Bitcoin, Ethereum, ai cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, mỗi nút có vai trò ngang hàng nhau. Loại thứ hai gồm Hyperledger, BigchainDB,\ldots, việc tham gia mạng Blockchain được kiểm soát bằng cơ chế xác định danh tính của người tham gia.
+Mạng Blockchain có thể được phân loại thành Blockchain công khai và Blockchain riêng tư \cite{8246573}. 
+Loại thứ nhất gồm Bitcoin, Ethereum, bất kỳ nút nào cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, mỗi nút có vai trò ngang hàng nhau.
+Loại thứ hai gồm Hyperledger, BigchainDB, Ripple, Parity,\ldots, việc tham gia mạng Blockchain được kiểm soát chặt chẽ danh tính của thành viên.
 
 \textbf{So sánh giữa các mạng Blockchain}
 
-Mạng Blockchain được Tien Tuan Anh Dinh và cộng sự nghiên cứu \cite{8246573} dựa theo 4 khái niệm chính của Blockchain: sổ cái phân tán, cơ chế đồng thuận (concensus), mô hình mật mã, hợp đồng thông minh (smart contract),
+Mạng Blockchain được Tien Tuan Anh Dinh và cộng sự  \cite{8246573} nghiên cứu và so sánh dựa trên 4 khái niệm chính của Blockchain: sổ cái phân tán, cơ chế đồng thuận (concensus), mô hình ứng dụng mật mã, hợp đồng thông minh (smart contract),
 
 \emph{Sổ cái phân tán}
 
 Blockchain không dựa vào các tổ chức thứ ba để quản lý và xác thực và không có sự kiểm soát trung tâm.
-Tất cả thông tin được các nút kiểm tra, truyền tải và quản lý đặt sự tin tưởng và các nút. 
-Các nút có bảo sao lưu trữ các giao dịch trong một khối ghép nối với nhau thành chuỗi.
-Cấu trúc phân tán là đặc điểm nổi bật và quan trọng nhất của Blockchain
-
+Tất cả thông tin được các nút kiểm tra, truyền tải và quản lý. 
+Các nút lưu trữ bản sao lưu trữ các giao dịch trong một khối ghép nối với nhau thành chuỗi.
+Cấu trúc phân tán là đặc điểm nổi bật và quan trọng nhất của Blockchain.
 Khái niệm sổ cái có 3 tiêu chí phân loại được mô tả ở bảng \ref{table:ex-dlt} 
 \begin{table}
 \caption{So sánh sổ cái phân tán}
@@ -298,11 +299,46 @@ Khái niệm sổ cái có 3 tiêu chí phân loại được mô tả ở bản
 \end{tabularx}
 \end{table}
 
-\textbf{Thuận toán đồng thuận}
+\emph{Cơ chế đồng thuận}
 
-\textbf{Mô hình mật mã}
+Trong Blockchain, sổ cái lưu trữ toàn bộ lịch sử các giao dịch và trạng thái dữ liệu hiện tại.
+Để sổ cái được lưu trữ, cập nhật dữ liệu giống nhau ở tất cả các nút thì cần có sự thống nhất giữa các bên tham gia. Ngược lại việc một tổ chức có quyền cập nhật dữ liệu trong các ứng dụng CSDL truyền thống.
+Tuy nhiên, Blockchain không phụ thuộc vào độ tin cậy của một nút. Các nút không tin cậy như bài toán các vị tướng Byzantine. Do đó các nút sẽ yêu cầu thực hiện giải thuật đồng thuận để có chung một quyết định.
+Cơ chế đồng thuận hiện nay có thể chia thành ba loại \cite{lequyetthang2016}
 
-\textbf{Hợp đồng thông minh}
+(1) POW (Proof of Work) là cơ chế của Bitcoin:
+Cơ chế này yêu cầu các nút tính toán đề xuất block và được đa số nút kiểm tra thành công tính tin cậy của các giao dịch phát sinh trong block. Đối với Bitcoin với POW mật độ giao dịch (năm 2008) là 7 trans/giây dẫn đến trung bình 10 phút xác thực thành công 1 block. 
+
+(2) PBFT (Practical Byzantine Fault Tolerance): mỗi thành viên tạo khối của mình kiểm tra xong thì chuyển cho thành viên khác kiểm tra, đồng thời nhận khối từ thành viên khác để kiểm tra. Khối nào được đa số chấp nhận thì được chọn đưa vào blockchain. 
+Cơ chế này được dùng trong mạng Blockchain riêng tư bởi các nút đã xác định danh tính.
+
+(3) POS (Proof of Stake): Mỗi thành viên tham gia mạng có một cổ phần (Stake) với một lượng lớn hay nhỏ tùy đầu tư ban đầu. Đầu tư càng cao thì trách nhiệm càng cao. Trách nhiệm càng cao thì khả năng kiểm tra một giao dịch đúng càng cao. 
+
+\emph{Mô hình ứng dụng mật mã}
+
+Blockchain ứng dụng mật mã khóa công khai. Trong giao dịch phát sinh, khóa công khai và chữ ký sẽ được dùng để kiểm tra danh tính.
+Khi thực hiện mã hóa thì khóa công khai, chữ ký, thông tin người dùng của giao dịch trước đó phải khớp nhau.
+
+Các thuộc tính khóa có vai trò quan trọng để xác định danh tính và xác minh giao dịch, nên cần được giữ an toàn. Trong những ứng dụng Blockchain vào tiền số, nếu xảy ra sự cố làm mất khóa thì gây thiệt hại thất thoát tiền, vì không thể khôi phục, xử lý dữ liệu của Blockchain.
+Ngược lại trong Blockchain riêng tư, thành phần quản lý cấp phép truy cập tách biệt với mã hóa giao dịch. Đối với Hyperldger, các dịch vụ chứng thực số và dịch vụ thành viên (Membership Service Provider) sẽ cấp phép truy cập. Do đó một tài khoản quản lý thuộc tổ chức sẽ có quyền thiết lập cấp phép những dịch vụ, người dùng được truy cập vào mạng Blockchain. 
+
+\emph{Hợp đồng thông minh}
+
+
+
+\begin{table}
+\caption{So sánh các Blockchain theo hợp đồng thông minh}
+	\label{table:ssblochchain}
+	\begin{tabularx} {\textwidth} {|X|X|X|p{5cm}|}
+\hline
+	Blockchain & Thực thi HĐTM & Ngôn ngữ HĐTM  & Dữ liệu mô tả \\ \hline
+	Bitcoin  & Thuộc ứng dụng & Go, C++ & Giao dịch\\ \hline
+	Ethereum  & EVM & Solidity, Serpent, LLL, C++ & Giao dịch\\ \hline
+	Hyperledger Farbic v1.x  & Dockers & Go, Java & Khóa-Giá trị\\ \hline
+	BigchainDB   & Thuộc ứng dụng  &  Python & Giao dịch\\ \hline
+	Ripple   & -  & - & Tài khoản \\ \hline
+\end{tabularx}
+\end{table}
 
 \subsection{Bitcoin}
 Mạng Bitcoin gồm có thành phần miner và Blockchain.
