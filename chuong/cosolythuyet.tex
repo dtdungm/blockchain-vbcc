@@ -275,7 +275,7 @@ Công nghệ này được biết đến rộng rãi vào năm 2009
 
 Mạng Blockchain có thể được phân loại thành: Blockchain công khai và Blockchain riêng tư \cite{8246573}. 
 Loại thứ nhất gồm Bitcoin, Ethereum, \ldots, bất kỳ nút nào cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, mỗi nút có vai trò như nhau.
-Loại thứ hai gồm Hyperledger, BigchainDB, Ripple, Parity,\ldots, việc tham gia mạng Blockchain được kiểm soát chặt chẽ, xác định rõ danh tính của thành viên.
+Loại thứ hai gồm Hyperledger, BigchainDB,\ldots, việc tham gia mạng Blockchain được kiểm soát chặt chẽ, xác định rõ danh tính của thành viên.
 
 \textbf{So sánh giữa các mạng Blockchain}
 
@@ -332,12 +332,12 @@ Container tạo môi trường riêng để chương trình hoạt động và k
 \begin{table}
 \caption{So sánh các Blockchain}
 	\label{table:ssblockchain}
-	\begin{tabularx} {\textwidth} {|X|X|X|X|}
+	\begin{tabularx} {\textwidth} {|X|X|X|p{2.5cm}|}
 \hline
 	Blockchain & Thực thi HĐTM & Ngôn ngữ HĐTM  & Dữ liệu mô tả \\ \hline
 	Bitcoin  & Thuộc ứng dụng & Go, C++ & Giao dịch\\ \hline
 	Ethereum  & EVM & Solidity, Serpent, LLL, C++ & Giao dịch\\ \hline
-	Hyperledger Farbic v1.x  & Docker & Go, Java & Khóa-Giá trị\\ \hline
+	Hyperledger Farbic v2.x  & Docker & Go, Java, JavaScript & Khóa-Giá trị\\ \hline
 	BigchainDB   & Thuộc ứng dụng  &  Python & Giao dịch\\ \hline
 	Ripple   & -  & - & Tài khoản \\ \hline
 \end{tabularx}
@@ -468,6 +468,7 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 \end{figure}
 
 Các thành phần của mạng Blockchain
+
 \textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản (dữ liệu trong mạng blockchain) của mạng sẽ được “chuỗi khối” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value). Toàn bộ ledger được lưu trên các Peer trong cùng Channel, và dữ liệu được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
 
 \textbf{Smart contract} (Chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các Peer.
