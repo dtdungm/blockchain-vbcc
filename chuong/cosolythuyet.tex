@@ -417,19 +417,64 @@ Ethereum có một số đặc điểm sau:
 \end{itemize}
 
 
-\subsection{Bigchaindb}
+\subsection{BigchainDB}
 
-BigchainDB là một nền tảng mã nguồn mở. Thiết kế của BigchainDB là một cơ sở dữ liệu và mang các tính chất của Blockchain.
+BigchainDB có mã nguồn mở. Mục tiêu thiết kế của BigchainDB trở thành nền tảng xây dựng ứng dụng có tính chất của cơ sở dữ liệu và tính chất của Blockchain tiền số.
 
 Trang chủ: https://www.bigchaindb.com/
 
 BigchainDB có một số đặc điểm sau:
 
 \begin{itemize}
-	\item Tùy biến mô hình dữ liệu tài sản
+	\item Cho tùy biến dữ liệu tài sản
 	\item Không tích hợp sẵn tiền số
 	\item Có thể dùng cho cả hai loại mạng Bockchain công cộng và riêng tư.
 \end{itemize}
+
+\begin{table}
+\caption{Mục tiêu thiết kế của BigchainDB 2.x}
+	\label{table:bigchaindb}
+	\begin{tabularx} {\textwidth} {|X|p{2.8cm}|p{3cm}|p{2.2cm}|}
+\hline
+	 & Blockchain & CSDL phân tán & BigchainDB \\ \hline
+	Tính phi tập trung & có &   & có \\ \hline
+	Cơ chế đồng thuận BFT   & có  &   & có \\ \hline
+	Chống sửa đổi  & có  &   & có \\ \hline
+	Tốc độ giao dịch cao &  & có  & có \\ \hline
+	Lập chỉ mục và truy vấn dữ liệu có cấu trúc   &   & có & có \\ \hline
+\end{tabularx}
+\end{table}
+
+BigchainDB dựa trên nền tảng Blockchain của Tendermint.
+BigchainDB bao gồm hai thành phần chính: Tendermint Core và môi trường ứng dụng (Application BlockChain Interface) (ABCI).
+
+\textbf{Tendermint Core} được mô tả hoạt đông theo hai cơ chế: thứ nhất là dịch vụ điều phối hiệu suất cao cho các ứng dụng phân tán. Zookeeper, etcd và consul; thứ hai là cơ chế của blockchain bao gồm nền tảng tiền số và sổ cái phân tán.
+
+\textbf{Môi trường ứng dụng ABCI} là lớp giao tiếp ở giữa ứng dụng và Tendermint.
+Ứng dụng có thể phát triển bằng nhiều ngôn ngữ lập trình Java, C++, Python, or Go. ABCI cung cấp ba thông điệp cơ bản giúp ứng dụng giao tiếp với Tendermint Core.
+
+\emph{DeliverTx} là mã công việc của ứng dụng. Mỗi giao dịch trong chuỗi khối được gửi kèm theo thông điệp này. Ứng dụng cần xác thực từng giao dịch nhận được với thông báo DeliverTx dựa trên trạng thái hiện tại, giao thức ứng dụng và thông tin đăng nhập mật mã của giao dịch. Sau đó, một giao dịch đã được xác thực cần cập nhật trạng thái ứng dụng - bằng cách ràng buộc một giá trị vào một kho lưu trữ các giá trị khóa, hoặc bằng cách cập nhật cơ sở dữ liệu UTXO chẳng hạn.
+
+\emph{CheckTx} tương tự như DeliverTx, nhưng nó chỉ để xác thực các giao dịch. Đầu tiên, mempool của Tendermint Core kiểm tra tính hợp lệ của một giao dịch với CheckTx và chỉ chuyển tiếp các giao dịch hợp lệ cho các giao dịch tương tự của nó. Ví dụ: một ứng dụng có thể kiểm tra số thứ tự tăng dần trong giao dịch và trả về lỗi khi CheckTx nếu số thứ tự cũ.
+
+\emph{Commit} được sử dụng để tính toán mật mã cho trạng thái ứng dụng hiện tại, được đặt vào tiêu đề khối tiếp theo. Điều này cũng đơn giản hóa việc phát triển các ứng dụng an toàn, vì các bằng chứng Merkle-hash có thể được xác minh bằng cách kiểm tra đối với hàm băm khối và rằng hàm băm khối được ký bởi một số thành viên.
+
+Hình \ref{fig:bc_abci} mô tả đường đi của thông điệp trong ABCI.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bigchaindb.png}
+\caption{Sơ đồ thông điệp trong ABCI}
+\label{fig:bc_abci}
+\end{figure}
+
+Hình \ref{fig:bc_consensus} mô tả cơ chế đồng thuận Blockchain.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bc_consensus.png}
+\caption{Sơ đồ hoạt động của cơ chế đồng thuận}
+\label{fig:bc_consensus}
+\end{figure}
 
 \subsection{Hyperledger Fabric}
 
