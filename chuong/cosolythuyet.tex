@@ -268,7 +268,7 @@ Khái niệm hạ tầng khóa công khai PKI thường được dùng chỉ to�
 \subsection{Giới thiệu}
 Blockchain là cuốn sổ cái kỹ thuật số chống giả mạo được triển khai theo mô hình phân tán (không có kho lưu trữ trung tâm), còn gọi là công nghệ sổ cái phân tán (Decentralized Ledger Technology).
 Khi người dùng phát sinh các giao dịch, sau khi được cộng đồng chấp nhận ghi vào sổ cái thì giao dịch đó không thể bị thay đổi.
-Công nghệ này được biết đến rộng rãi vào năm 2009 với sự ra đời của mạng Bitcoin\cite{nakamoto2008bitcoin}, một trong những đồng tiền mã hóa hiện đại đầu tiên được bảo vệ bởi các cơ chế mật mã học thay vì nhờ vào bên chứng thực hoặc kho lưu trữ trung tâm.
+Công nghệ này được biết đến rộng rãi vào năm 2009 với sự ra đời của mạng Bitcoin \cite{nakamoto2008bitcoin}, một trong những đồng tiền mã hóa hiện đại đầu tiên được bảo vệ bởi các cơ chế mật mã học thay vì nhờ vào bên chứng thực hoặc kho lưu trữ trung tâm.
 
 \textbf{Phân loại Blockchain}
 
@@ -290,7 +290,7 @@ Khái niệm sổ cái phân tán có 3 tiêu chí phân loại được mô t�
 \begin{table}
 \caption{So sánh sổ cái phân tán}
 	\label{table:ex-dlt}
-	\begin{tabularx} {\textwidth} {|X|X|X|p{5cm}|}
+	\begin{tabularx} {\textwidth} {|X|p{2.3cm}|X|p{5cm}|}
 \hline
 	Dữ liệu mô tả & Số lượng sổ & Quyền kiểm soát & Ứng dụng \\ \hline
 	Tài khoản  & 1 & Người quản trị & Số cái thông thường với hình thức lưu trữ tập trung ở những ngân hàng\\ \hline
@@ -324,17 +324,19 @@ Ngược lại trong Blockchain riêng tư, thành phần quản lý cấp phép
 
 \emph{Hợp đồng thông minh}
 
-
+Hợp đồng thông minh (Smart Contract) là chương trình giải quyết logic của việc xử lý giao dịch trong mạng Blockchain.
+Hai thuộc tính phân biệt hợp đồng thông minh (HĐTM) là ngôn ngữ lập trình và môi trường thực thi HĐTM. Bảng \ref{table:ssblockchain} so sánh các Blockchain cùng thuộc tính của HĐTM. Hyperledger Fabric có khả năng chuyển dễ dàng giữa nhiều hệ điều hành, nhờ vào cơ chế hoạt động của container.
+Container tạo môi trường riêng để chương trình hoạt động và không ảnh hưởng tới phần còn lại của hệ điều hành.
 
 \begin{table}
 \caption{So sánh các Blockchain}
-	\label{table:ssblochchain}
+	\label{table:ssblockchain}
 	\begin{tabularx} {\textwidth} {|X|X|X|X|}
 \hline
 	Blockchain & Thực thi HĐTM & Ngôn ngữ HĐTM  & Dữ liệu mô tả \\ \hline
 	Bitcoin  & Thuộc ứng dụng & Go, C++ & Giao dịch\\ \hline
 	Ethereum  & EVM & Solidity, Serpent, LLL, C++ & Giao dịch\\ \hline
-	Hyperledger Farbic v1.x  & Dockers & Go, Java & Khóa-Giá trị\\ \hline
+	Hyperledger Farbic v1.x  & Docker & Go, Java & Khóa-Giá trị\\ \hline
 	BigchainDB   & Thuộc ứng dụng  &  Python & Giao dịch\\ \hline
 	Ripple   & -  & - & Tài khoản \\ \hline
 \end{tabularx}
@@ -383,21 +385,58 @@ Giao dịch trong Blockchain có thể chia thành 3 loại: giao dịch  thuộ
 \item Giao dịch thông thường là những giao dịch được tạo bởi những người dùng. 
 \end{itemize}
 
+\textbf{Ví Bitcoin}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/P2PKH.png}
+\caption{Tạo khóa để thực hiện giao dịch trong bitcoin}
+\label{fig:wallet_bitcoin}
+\end{figure}
+
+Mỗi người dùng Bitcoin cần tạo một ví Bitcoin để lưu trữ khóa bí mật để truy cập vào địa chỉ Bitcoin để có thể thực hiện các giao dịch. Theo hình \ref{fig:wallet_bitcoin}, khi Alice muốn gửi tiền Bitcoin (BTC) cho Bob, Bob cần tạo ra cặp khóa gồm khóa bí mật và khóa công khai, Bitcoin sử dụng thuật toán chữ ký số đường cong Elliptic (ECDSA) \cite{10.5555/1721909} để thực hiện ký các giao dịch. Địa chỉ ví của Bob chính là giá trị băm của khóa công khai được mã hóa base58, Alice gửi BTC vào địa chỉ ví của Bob bằng cách giải mã base58 để lấy giá trị băm khóa công khai của Bob, Alice tạo các Outputs của các giao dịch cho phép bất cứ ai cũng có thể tiêu các Output đó nếu chứng minh được họ có khóa bí mật của Bob. Quá trình giao dịch như trên được gọi là thanh toán qua giá trị băm khóa công khai (P2PKH – Pay to Public Key Hash).
+
 Mạng Bitcoin và các hệ thống Blockchain tương tự, việc chuyển thông tin kỹ thuật số với đại diện là tiền điện tử diễn ra trong một hệ thống phân tán.
 Người dùng Bitcoin ký chữ ký số và chuyển tài sản của mình sang người khác và Bitcoin ghi lại các giao dịch này công khai, cho phép những người tham gia mạng xác minh độc lập tính hợp lệ của giao dịch. 
 Do đó, công nghệ blockchain được xem là giải pháp chung cho các đồng tiền mã hóa sau này.
 
 \subsection{Ethereum}
 
+Ethereum là mạng Blockchain của ứng dụng tiền số ETH. Ethereum cho phép mọi người xây dựng và sử dụng các ứng dụng phi tập trung dựa trên công nghệ Blockchain. Dự án Ethererum thuộc nhóm mã nguồn mở.
+
+Trang chủ: https://ethereum.org/
+
+Ethereum có một số đặc điểm sau:
+
+\begin{itemize}
+	\item Là mạng Blockchain công cộng
+	\item Sử dụng cơ chế đồng thuận bằng chứng công việc PoW
+	\item Tích hợp sẵn tiền số ETH
+	\item Hỗ trợ các ngôn ngữ như C++, Go và Python
+\end{itemize}
+
+
 \subsection{Bigchaindb}
+
+BigchainDB là một nền tảng mã nguồn mở. Thiết kế của BigchainDB là một cơ sở dữ liệu và mang các tính chất của Blockchain.
+
+Trang chủ: https://www.bigchaindb.com/
+
+BigchainDB có một số đặc điểm sau:
+
+\begin{itemize}
+	\item Tùy biến mô hình dữ liệu tài sản
+	\item Không tích hợp sẵn tiền số
+	\item Có thể dùng cho cả hai loại mạng Bockchain công cộng và riêng tư.
+\end{itemize}
 
 \subsection{Hyperledger Fabric}
 
 \textbf{Giới thiệu}
 
-Hyperledger Fabric là một nền tảng blockchain trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror. Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
+Hyperledger Fabric là một nền tảng blockchain riêng tư trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror. Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
 
-Hyperledger Fabric thuộc nhóm phần mềm mã nguồn mở dưới sự cố vấn của công ty IBM. Mục đích thiết kế Hyperledger Fabric là cung cấp rộng rãi nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công, \ldots{}
+Hyperledger Fabric là phần mềm mã nguồn mở. Công ty IBM đề xuất dự án Hyperledger Fabric làm nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum, \ldots đề đáp ứng nhu cầu cần thiết của môi trường tổ chức. Đó là nhu cầu định danh thành viên tham gia, mạng được cấp quyền truy cập và bảo mật thông tin riêng của tổ chức. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công, \ldots{}
 
 \begin{figure}[htbp]
 \centering
@@ -418,7 +457,7 @@ Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu đượ
 
 Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Các giải thuật đồng thuận gồm có: Kafka, Raft. Các thực giao dịch được xử lý song song, xử lý khối bất động bộ, phân trang chaincode,\ldots.
 
-\textbf{Các thành phần của Hyperledger Fabric}
+\textbf{Kiến trúc mạng Hyperledger Fabric}
 
 \begin{figure}[htbp]
 \centering
@@ -427,6 +466,7 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 \label{fig:hlf_network}
 \end{figure}
 
+Các thành phần của mạng Blockchain
 \textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản (dữ liệu trong mạng blockchain) của mạng sẽ được “chuỗi khối” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value). Toàn bộ ledger được lưu trên các Peer trong cùng Channel, và dữ liệu được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
 
 \textbf{Smart contract} (Chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các Peer.
@@ -446,7 +486,7 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 
 \textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
 
-\textbf{Bổ kiến trúc xử lý giao dịch}
 
 \textbf{Thiết lập mạng Hyperledger Fabric}
+
 
