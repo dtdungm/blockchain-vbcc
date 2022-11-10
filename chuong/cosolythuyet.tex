@@ -139,16 +139,16 @@ Có thể phân loại mật mã theo đặc điểm phụ thuộc vào loại k
 
 Mật mã không phụ thuộc vào khóa: Hàm băm (Hash Function) là ánh xạ thu nhỏ một chiều (không có ánh xạ ngược).
 
-\textbf{Mật mã Khóa Đối xứng} có chung một khóa khi mật mã và giải mã trong các thuật toán mật mã luồng và mật mã khối. Mật mã luồng xử lý từng ký tự một nhưng thường xuyên là từng bit một. Ngược lại, mật mã khối xử lý từng khối dữ liệu có độ dài chuẩn như nhau. Ưu điểm của mật mã Khóa Đối xứng là tốc độ xử lý nhanh. Thuộc tính khóa phải được chia sẻ an toàn cho người nhận để có thể giải mật dữ liệu. Các thuật toán mật mã Khóa Bất Đối xứng có thể dùng để chia sẻ khóa dùng chung một cách an toàn. Tên gọi khác của mật mã Khóa Đối xứng là: mật mã Khóa Bí mật (Secret Key Cryptosystems).
+\textbf{Mật mã Khóa đối xứng} có chung một khóa khi mật mã và giải mã trong các thuật toán mật mã luồng và mật mã khối. Mật mã luồng xử lý từng ký tự một nhưng thường xuyên là từng bit một. Ngược lại, mật mã khối xử lý từng khối dữ liệu có độ dài chuẩn như nhau. Ưu điểm của mật mã Khóa đối xứng là tốc độ xử lý nhanh. Thuộc tính khóa phải được chia sẻ an toàn cho người nhận để có thể giải mật dữ liệu. Các thuật toán mật mã Khóa bất đối xứng có thể dùng để chia sẻ khóa dùng chung một cách an toàn. Tên gọi khác của mật mã Khóa đối xứng là: mật mã Khóa bí mật (Secret Key Cryptosystems).
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/sym_alg.png}
-\caption{Sơ đồ hệ mật mã Khóa Đối xứng}
+\caption{Sơ đồ hệ mật mã Khóa đối xứng}
 \label{fig:sym_alg}
 \end{figure}
 
-Sơ đồ \ref{fig:sym_alg} minh họa một ứng dụng mật mã Khóa Đối xứng trong thực tế\cite{10.5555/1721909}. Alice và Bob là 2 người bạn cần trao đổi thông tin bí mật bằng phương pháp sử dụng mật mã Khóa Đối xứng. Trong khi đó Oscar luôn tìm cách giải mật thông tin nghe được giữa Alice và Bob. Nhưng Alice và Bob có được khóa nên liên lạc được, chỉ Oscar thiếu duy nhất khóa để giải mật nên không thể hiểu thông tin.
+Sơ đồ \ref{fig:sym_alg} minh họa một ứng dụng mật mã Khóa đối xứng trong thực tế\cite{10.5555/1721909}. Alice và Bob là 2 người bạn cần trao đổi thông tin bí mật bằng phương pháp sử dụng mật mã Khóa đối xứng. Trong khi đó Oscar luôn tìm cách giải mật thông tin nghe được giữa Alice và Bob. Nhưng Alice và Bob có được khóa nên liên lạc được, chỉ Oscar thiếu duy nhất khóa để giải mật nên không thể hiểu thông tin.
 
 Các ký hiệu trong sơ đồ \ref{fig:sym_alg}:
 \begin{itemize}
@@ -157,7 +157,7 @@ Các ký hiệu trong sơ đồ \ref{fig:sym_alg}:
 \item k là khóa 
 \end{itemize}
 
-\textbf{Mật mã Khóa Bất đối xứng} dùng hai khóa Cá nhân và khóa Công khai trong thuật toán tạo mật mã và giải mật, cặp khóa có liên hệ chặt chẽ nhau về toán học. Khóa Công khai được công bố cho cộng đồng sử dụng nên dễ bị lộ, còn khóa Cá nhân chỉ có cá nhân được sở hữu. Mặc khác khóa Công khai bị lộ thì cũng rất khó (sử dụng Phân tích mật mã) có thể tìm được khóa Cá nhân.
+\textbf{Mật mã Khóa bất đối xứng} dùng hai khóa cá nhân và khóa công khai trong thuật toán tạo mật mã và giải mật, cặp khóa có liên hệ chặt chẽ nhau về toán học. Khóa công khai được công bố cho cộng đồng sử dụng nên dễ bị lộ, còn khóa cá nhân chỉ có cá nhân được sở hữu. Mặc khác khóa công khai bị lộ thì cũng rất khó (sử dụng Phân tích mật mã) có thể tìm được khóa cá nhân.
 Khóa cá nhân dùng để tạo mật mã và tạo chữ ký số. Khóa công khai dùng để giải mật mã và xác thực chữ ký số. Ví dụ: khi mật mã dùng một khóa công khai thì chỉ có khóa cá nhân của cặp khóa đó mới giải mã được; Tương tự, dùng một khóa cá nhân tạo chữ ký số thì chỉ có khóa công khai tương ứng mới xác thực chữ ký số đó.
 
 \subsection{Hàm băm}
@@ -221,7 +221,6 @@ Quy trình bắt đầu khi Bob ký thông điệp x. Thuật toán ký số (si
  
 Tiếp theo Alice xác minh chữ ký nhận được có hợp lệ hay không. Hàm xác thực (ver) có 2 tham số (x,s) và $k_{pub}$  của Bob. Nếu x do Bob ký số thì được kết quả true, ngược lại false.
 
-
 Tuy nhiên, với thông điệp x rất lớn thì chữ ký số lớn và ký chậm. Như vậy, thay vì ký số lên thông điệp x, thì có thể ký số lên giá trị băm của x = h(x), giá trị h(x) nhỏ hơn thông điệp x và luôn có chiều dài cố định, đồng nghĩa sẽ nhanh hơn. 
 
 \begin{figure}[H]
@@ -242,7 +241,7 @@ Chữ ký số đảm bảo 2 tiêu chí an toàn thông tin như sau:
 
 \subsection{Chứng thư số}
 
-Chứng thư số là một dạng chứng thư điện tử do tổ chức cung cấp dịch vụ chứng thực số (Certification Authority) cấp nhằm cung cấp thông tin định danh cho khóa công khai của một cơ quan, tổ chức, cá nhân, từ đó xác nhận cơ quan, tổ chức, cá nhân là người ký chữ ký số bằng việc sử dụng khóa bí mật tương ứng. 
+Chứng thư số là một dạng chứng thư điện tử do tổ chức cung cấp dịch vụ chứng thực số (Certificate Authority) cấp nhằm cung cấp thông tin định danh cho khóa công khai của một cơ quan, tổ chức, cá nhân, từ đó xác nhận cơ quan, tổ chức, cá nhân là người ký chữ ký số bằng việc sử dụng khóa bí mật tương ứng. 
 
 Chứng thư X.509 phiên bản 3 có những thông tin sau:
 \begin{figure}[H]
@@ -272,7 +271,7 @@ Phân loại chứng thư số
 \subsection{Dịch vụ chứng thực số}
 Dịch vụ chứng thực số là một loại hình dịch vụ chứng thực chữ ký số, do tổ chức cung cấp dịch vụ chứng thực chữ ký số cung cấp cho thuê bao để xác thực việc thuê bao là người đã ký số trên thông điệp dữ liệu. 
 
-Dịch vụ chứng thực chữ ký số bao gồm: 
+Dịch vụ chứng thực chữ số bao gồm: 
 
 \begin{itemize}
 \item Tạo cặp khóa hoặc hỗ trợ tạo cặp khóa bao gồm khóa công khai và khóa bí mật cho thuê bao;
@@ -282,7 +281,7 @@ Dịch vụ chứng thực chữ ký số bao gồm:
 \end{itemize}
 
 \subsection {Hạ tầng khóa công khai}
-Hạ tầng khóa công khai (Public Key Infrastructure) là một cơ chế để cho một bên thứ ba (thường là nhà cung cấp chứng thực số) cung cấp và xác thực danh tính các bên tham gia vào quá trình trao đổi thông tin. Cơ chế này cũng cho phép gán cho mỗi người sử dụng trong hệ thống một cặp khóa công khai/khóa riêng tư. Các quá trình này thường được thực hiện bởi một phần mềm đặt tại trung tâm và các phần mềm khác tại các địa điểm của người dùng. Khóa công khai thường được phân phối trong hạ tầng khóa công khai.
+Hạ tầng khóa công khai (Public Key Infrastructure) là cơ chế cho bên thứ ba (thường là nhà cung cấp chứng thực số) cung cấp và xác thực danh tính các bên tham gia vào quá trình trao đổi thông tin. Cơ chế này cũng cho phép gán cho mỗi người sử dụng trong hệ thống một cặp khóa công khai/khóa riêng tư. Các quá trình này thường được thực hiện bởi một phần mềm đặt tại trung tâm và các phần mềm khác tại các địa điểm của người dùng. Khóa công khai thường được phân phối trong hạ tầng khóa công khai.
 
 Khái niệm hạ tầng khóa công khai PKI thường được dùng chỉ toàn bộ hệ thống bao gồm cả nhà cung cấp chứng thực số (CA) cùng các cơ chế liên quan đồng thời với toàn bộ việc sử dụng các thuật toán mã hóa công khai trong trao đổi thông tin. Tuy nhiên, các cơ chế trong PKI không nhất thiết sử dụng các thuật toán mã hóa công khai.
 
@@ -300,13 +299,13 @@ Loại thứ hai gồm Hyperledger, BigchainDB,\ldots, việc tham gia mạng Bl
 
 \textbf{So sánh giữa các mạng Blockchain}
 
-Tien Tuan Anh Dinh và cộng sự  \cite{8246573} nghiên cứu và so sánh mạng Blockchain dựa trên 4 khái niệm chính của Blockchain: sổ cái phân tán, cơ chế đồng thuận (concensus), mô hình ứng dụng mật mã, hợp đồng thông minh (smart contract),
+Tien Tuan Anh Dinh và cộng sự  \cite{8246573} có nghiên cứu và so sánh mạng Blockchain dựa trên 4 khái niệm chính của Blockchain: sổ cái phân tán, cơ chế đồng thuận (concensus), mô hình ứng dụng mật mã, hợp đồng thông minh (smart contract),
 
 \emph{Sổ cái phân tán}
 
 Blockchain không dựa vào các tổ chức thứ ba để xử lý giao dịch, không có sự kiểm soát trung tâm.
 Tất cả thông tin được các nút kiểm tra, truyền tải và quản lý. 
-Các nút lưu trữ bản sao của sổ cái, gồm các giao dịch trong từng khối ghép nối với nhau thành chuỗi.
+Các nút lưu trữ bản sao của sổ cái, có các khối ghép nối với nhau thành chuỗi.
 Cơ chế sổ cái phân tán là đặc điểm nổi bật và quan trọng nhất của Blockchain.
 Khái niệm sổ cái phân tán có 3 tiêu chí phân loại được mô tả ở bảng \ref{table:ex-dlt} 
 \begin{table}[H]
@@ -324,10 +323,10 @@ Khái niệm sổ cái phân tán có 3 tiêu chí phân loại được mô t�
 \emph{Cơ chế đồng thuận}
 
 Trong Blockchain, sổ cái lưu trữ toàn bộ lịch sử các giao dịch và trạng thái dữ liệu hiện tại.
-Để sổ cái được lưu trữ, cập nhật dữ liệu giống nhau ở tất cả các nút thì cần có sự thống nhất giữa các bên tham gia. 
+Để sổ cái được lưu trữ và cập nhật dữ liệu giống nhau ở tất cả các nút thì cần có sự thống nhất giữa các bên tham gia. 
 Ngược lại việc một tổ chức có đặc quyền cập nhật dữ liệu trong các ứng dụng CSDL truyền thống.
 Tuy nhiên, Blockchain không phụ thuộc vào độ tin cậy của một nút. Các nút không tin cậy như bài toán các vị tướng Byzantine. 
-Do đó các nút sẽ yêu cầu thực hiện giải thuật đồng thuận để có chung một quyết định.
+Vì vậy các nút sẽ yêu cầu thực hiện giải thuật đồng thuận để có chung một quyết định.
 Cơ chế đồng thuận hiện nay có thể chia thành ba loại \cite{lequyetthang2016}
 
 (1) POW (Proof of Work) là cơ chế của Bitcoin:
@@ -345,10 +344,10 @@ Trách nhiệm càng cao thì khả năng kiểm tra một giao dịch đúng c�
 
 Blockchain ứng dụng mật mã khóa công khai. 
 Khi giao dịch phát sinh, khóa công khai và chữ ký sẽ được dùng để kiểm tra danh tính.
-Khi thực hiện mã hóa giao dịch thì khóa công khai, chữ ký và thông tin người dùng của giao dịch trước đó phải khớp nhau.
+Khi thực hiện mã hóa giao dịch thì khóa công khai, chữ ký số và thông tin người dùng của giao dịch trước đó phải khớp nhau.
 
 Trong mạng Blockchain, thuộc tính khóa có vai trò quan trọng để xác định danh tính và xác minh giao dịch, nên cần được giữ an toàn. 
-Trong những ứng dụng Blockchain vào tiền số, nếu xảy ra sự cố mất khóa thì gây thiệt hại thất thoát tiền, vì không thể khôi phục, xử lý dữ liệu của Blockchain.
+Trong những ứng dụng Blockchain vào tiền số, nếu xảy ra sự cố mất khóa thì gây thiệt hại thất thoát tiền số, vì không thể khôi phục, xử lý dữ liệu của Blockchain.
 Ngược lại trong Blockchain riêng tư, thành phần quản lý cấp phép truy cập tách biệt với mã hóa giao dịch. 
 Đối với Hyperledger, các dịch vụ chứng thực số và dịch vụ thành viên (Membership Service Provider) sẽ cấp phép truy cập, nên một tài khoản quản lý thuộc tổ chức sẽ có quyền thiết lập cấp phép những dịch vụ, người dùng được truy cập vào mạng Blockchain.
 
@@ -392,7 +391,7 @@ Blockheader là giá trị băm của các thành phần gồm: Root hash của 
 \label{fig:merkle_bitcoin}
 \end{figure}
 
-Một dữ liệu giao dịch gồm có nhiều giao dịch được ký số bởi các bên tham gia như hình \ref{fig:trans_bitcoin}.
+Một dữ liệu giao dịch gồm có nhiều giao dịch thành phần được ký số bởi các bên tham gia như hình \ref{fig:trans_bitcoin}.
 
 \begin{figure}[htbp]
 \centering
@@ -401,7 +400,7 @@ Một dữ liệu giao dịch gồm có nhiều giao dịch được ký số b�
 \label{fig:trans_bitcoin}
 \end{figure}
 
-Mỗi dữ liệu giao dịch A, B, C, D, E được tính giá trị băm, sau đó gộp 2 khối dữ liệu thành từng cặp, tính giá trị băm trung gian, công việc này lặp lại cho đến khi tính được giá trị băm các giao dịch (Root Hash) được mô tả như hình \ref{fig:merkle}. 
+Dữ liệu A, B, C, D, E được tính giá trị băm, sau đó gộp 2 giá trị băm của dữ liệu thành từng cặp, tính giá trị băm trung gian, công việc này lặp lại cho đến khi tính được giá trị băm các giao dịch (Root Hash) được mô tả như hình \ref{fig:merkle}. 
 
 \begin{figure}[htbp]
 \centering
@@ -410,10 +409,10 @@ Mỗi dữ liệu giao dịch A, B, C, D, E được tính giá trị băm, sau 
 \label{fig:merkle}
 \end{figure}
 
-Giao dịch trong Blockchain có thể chia thành 3 loại: giao dịch  thuộc về khối đầu tiên của Blockchain, giao dịch thưởng cho các miner và giao dịch thông thường.
+Giao dịch trong Blockchain có thể chia thành 3 loại: giao dịch thuộc về khối đầu tiên của Blockchain, giao dịch thưởng cho các miner và giao dịch thông thường.
 
 \begin{itemize}
-\item Giao dịch thuộc về khối đầu tiên của Blockchain sẽ được chèn vào trong mã nguồn của Blockchain tại khối đầu tiên của Blockchain. Các loại tiền số có quy định số lượng tiền giới hạn trong hệ thống.
+\item Giao dịch thuộc về khối đầu tiên của Blockchain sẽ được ấn định sẵn trong mã nguồn của Blockchain tại khối đầu tiên của Blockchain. Các loại tiền số có quy định số lượng tiền giới hạn trong hệ thống.
 \item Giao dịch thưởng cho những người tạo ra khối mới: hệ thống Blockchain tự tạo tự động và sẽ chuyển tiền thưởng cho người tạo ra khối mới.
 \item Giao dịch thông thường là những giao dịch được tạo bởi những người dùng. 
 \end{itemize}
@@ -434,7 +433,7 @@ Quá trình giao dịch như trên được gọi là thanh toán qua giá trị
 
 Mạng Bitcoin và các hệ thống Blockchain tương tự, việc chuyển thông tin kỹ thuật số với đại diện là tiền điện tử diễn ra trong một hệ thống phân tán.
 Người dùng Bitcoin ký chữ ký số và chuyển tài sản của mình sang người khác và Bitcoin ghi lại các giao dịch này công khai, cho phép những người tham gia mạng xác minh độc lập tính hợp lệ của giao dịch. 
-Do đó, công nghệ blockchain được xem là giải pháp chung cho các đồng tiền mã hóa sau này.
+Do đó, công nghệ blockchain được xem là giải pháp chung cho các đồng tiền mã hóa sau này như Ethereum.
 
 \subsection{Ethereum}
 
@@ -462,7 +461,7 @@ BigchainDB được thiết kế vừa có tính chất của CSDL và Blockchai
 Trang chủ: https://www.bigchaindb.com/
 
 \begin{table}[H]
-\caption{Mục tiêu thiết kế BigchainDB 2.x}
+\caption{Đặc điểm của BigchainDB 2.x}
 	\label{table:bigchaindb}
 	\begin{tabularx} {\textwidth} {|X|p{2.2cm}|p{2.2cm}|p{2.2cm}|}
 \hline
