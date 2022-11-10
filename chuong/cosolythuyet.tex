@@ -585,14 +585,45 @@ Trong HF, hợp đồng thông minh còn được gọi là chaincode, được 
 
 \textbf{Thiết lập mạng Hyperledger Fabric}
 
-Từ kiến trúc HF, các docker container giúp triển khai nhanh chóng  mô hình phân tán trên nhiều tổ chức. Mạng HF được thiết lập từ khung phần mềm HF tải địa chỉ dự án HF.
-
-Docker container có thể hoạt động trên nhiều nền tảng Windows, Linux, Macos. Các docker container giảm thiểu yêu cầu sử dụng bộ nhớ máy và bộ nhớ trên đĩa. Docker tạo các container từ máy vật lý như mô tả ở hình 
-
-Docker container tạo môi trường riêng cho ứng dụng hoạt động gồm có các chương trình thực thi và các thư viện chương trình. Một máy vật lý hoặc máy ảo sẽ cần cài đặt Docker Engine. Sau đó các docker containers sẽ chạy trên Docker Engine. Các chương trình và thư viện chạy ứng dụng sẽ lưu trữ trong môi trường của từng container.  
+Từ kiến trúc HF, các docker container giúp triển khai nhanh chóng  mô hình mạng HF phân tán trên nhiều tổ chức. Ứng dụng Blockchain được minh họa ở hình \ref{fig:getting_started_image2.png}.
+Mạng HF được thiết lập từ khung phần mềm HF, mã nguồn dự án, tài liệu HF: https://hyperledger-fabric.readthedocs.io/en/latest/ 
 
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/getting_started_image2.png}
+\caption{Ứng dụng blockchain Hyperledger Fabric}
+\label{fig:getting_started_image2.png}
+\end{figure}
 
+\emph{Docker container}
+
+Docker container, được minh họa ở hình \ref{fig:docker.png}, có thể hoạt động trên nhiều nền tảng Windows, Linux, Macos.
+Các docker container giảm thiểu yêu cầu sử dụng bộ nhớ máy và bộ nhớ trên đĩa.
+Docker tạo các container hoạt động từ các file cấu hình Dockerfile. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/docker.png}
+\caption{Docker container}
+\label{fig:docker.png}
+\end{figure}
+
+Ứng dụng Blockchain HF sẽ chạy trong các docker container. Docker container tạo môi trường riêng cho ứng dụng hoạt động gồm có các chương trình thực thi và các thư viện chương trình. Một máy vật lý hoặc máy ảo sẽ cần cài đặt Docker Engine. Sau đó các docker containers sẽ chạy trên Docker Engine.
+
+\emph{Tiện ích mở rộng  IBM Blockchain Platform Extension trên VS Code}
+
+HF được hỗ trợ  qua tiện ích mở rộng IBM Blockchain Platform Extension trên VS Code. Tiện ích mở rộng của IBM giúp tạo,  phát triển kiểm tra và gỡ lỗi các hợp đồng thông minh, kết nối với môi trường Hyperledger Fabric và xây dựng các ứng dụng giao dịch trên mạng blockchain.
+
+\emph{Quy trình phát triển hợp đồng thông minh}
+
+Môi trường phát triển là VS Code và tiện ích giúp hỗ trợ quy trình phát  triển hợp đồng thông minh trên Blockchain, gồm các bước sau:
+\begin{enumerate}
+	\item Tạo và đóng gói smart contract
+	\item Kết nối với mạng HF
+	\item Cài đặt chaincode
+	\item Gửi giao dịch, chạy kiểm tra smart contract
+\end{enumerate}
 
 
 
