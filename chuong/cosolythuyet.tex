@@ -313,19 +313,19 @@ Cơ chế này yêu cầu các nút tính toán đề xuất khối mới và đ
 (2) PBFT (Practical Byzantine Fault Tolerance): mỗi thành viên tạo khối mới của mình, kiểm tra xong thì chuyển cho thành viên khác kiểm tra, đồng thời nhận khối mới từ thành viên khác để kiểm tra. Khối nào được đa số chấp nhận thì được chọn đưa vào blockchain. 
 Cơ chế này được dùng trong mạng Blockchain riêng tư bởi các nút đã xác định danh tính.
 
-(3) POS (Proof of Stake): Mỗi thành viên tham gia mạng có một cổ phần (Stake) với một lượng lớn hay nhỏ tùy đầu tư ban đầu. Đầu tư càng cao thì trách nhiệm càng cao. Trách nhiệm càng cao thì khả năng kiểm tra một giao dịch đúng càng cao. 
+(3) POS (Proof of Stake): Mỗi thành viên tham gia mạng có một cổ phần (Stake) với một lượng lớn hay nhỏ tùy đầu tư ban đầu. Đầu tư càng cao thì trách nhiệm càng cao. Trách nhiệm càng cao thì khả năng kiểm tra một giao dịch đúng càng cao. Cơ chế này được dùng trong BigchainDB và Ethereum. 
 
 \emph{Mô hình ứng dụng mật mã}
 
 Blockchain ứng dụng mật mã khóa công khai. Khi giao dịch phát sinh, khóa công khai và chữ ký sẽ được dùng để kiểm tra danh tính.
 Khi thực hiện mã hóa giao dịch thì khóa công khai, chữ ký và thông tin người dùng của giao dịch trước đó phải khớp nhau.
 
-Do đó thuộc tính khóa có vai trò quan trọng để xác định danh tính và xác minh giao dịch, nên cần được giữ an toàn. Trong những ứng dụng Blockchain vào tiền số, nếu xảy ra sự cố mất khóa thì gây thiệt hại thất thoát tiền, vì không thể khôi phục, xử lý dữ liệu của Blockchain.
+Trong mạng Blockchain, thuộc tính khóa có vai trò quan trọng để xác định danh tính và xác minh giao dịch, nên cần được giữ an toàn. Trong những ứng dụng Blockchain vào tiền số, nếu xảy ra sự cố mất khóa thì gây thiệt hại thất thoát tiền, vì không thể khôi phục, xử lý dữ liệu của Blockchain.
 Ngược lại trong Blockchain riêng tư, thành phần quản lý cấp phép truy cập tách biệt với mã hóa giao dịch. Đối với Hyperledger, các dịch vụ chứng thực số và dịch vụ thành viên (Membership Service Provider) sẽ cấp phép truy cập, nên một tài khoản quản lý thuộc tổ chức sẽ có quyền thiết lập cấp phép những dịch vụ, người dùng được truy cập vào mạng Blockchain.
 
 \emph{Hợp đồng thông minh}
 
-Hợp đồng thông minh (Smart Contract) là chương trình giải quyết logic của việc xử lý giao dịch trong mạng Blockchain.
+Hợp đồng thông minh (Smart Contract) là chương trình máy tính giải quyết logic (hay trình tự) khi giao dịch phát sinh trong mạng Blockchain. Các trình tự trong Blockchain tiền số gồm có: đầu tiên kiểm tra tính hợp lệ của các địa chỉ, ký số trong giao dịch, kế tiếp kiểm tra số dư của các địa chỉ gửi và nhận trong giao dịch, cuối cùng là lưu lại các thay đổi các dữ liệu giao dịch. 
 Hai thuộc tính phân biệt hợp đồng thông minh (HĐTM) là ngôn ngữ lập trình và môi trường thực thi HĐTM. Bảng \ref{table:ssblockchain} so sánh các Blockchain cùng thuộc tính của HĐTM. Hyperledger Fabric có khả năng chuyển dễ dàng giữa nhiều hệ điều hành, nhờ vào cơ chế hoạt động của container.
 Container tạo môi trường riêng để chương trình hoạt động và không ảnh hưởng tới phần còn lại của hệ điều hành.
 
@@ -338,7 +338,7 @@ Container tạo môi trường riêng để chương trình hoạt động và k
 	Bitcoin  & Thuộc ứng dụng & Go, C++ & Giao dịch\\ \hline
 	Ethereum  & EVM & Solidity, Serpent, LLL, C++ & Giao dịch\\ \hline
 	Hyperledger Farbic v2.x  & Docker & Go, Java, JavaScript & Khóa-Giá trị\\ \hline
-	BigchainDB   & Thuộc ứng dụng  &  Python & Giao dịch\\ \hline
+	BigchainDB   & Thuộc ứng dụng  &  Python, Go, C++, Javascript  & Giao dịch\\ \hline
 	Ripple   & -  & - & Tài khoản \\ \hline
 \end{tabularx}
 \end{table}
@@ -419,20 +419,15 @@ Ethereum có một số đặc điểm sau:
 
 \subsection{BigchainDB}
 
-BigchainDB có mã nguồn mở. Mục tiêu thiết kế của BigchainDB trở thành nền tảng xây dựng ứng dụng có tính chất của cơ sở dữ liệu và tính chất của Blockchain tiền số.
+\textbf{Giới thiệu}
+
+BigchainDB có mã nguồn mở.
+BigchainDB được thiết kế vừa có tính chất của CSDL phân tán và Blockchain như bảng \ref{table:bigchaindb}.
 
 Trang chủ: https://www.bigchaindb.com/
 
-BigchainDB có một số đặc điểm sau:
-
-\begin{itemize}
-	\item Cho tùy biến dữ liệu tài sản
-	\item Không tích hợp sẵn tiền số
-	\item Có thể dùng cho cả hai loại mạng Bockchain công cộng và riêng tư.
-\end{itemize}
-
 \begin{table}
-\caption{Mục tiêu thiết kế của BigchainDB 2.x}
+\caption{Mục tiêu thiết kế BigchainDB 2.x}
 	\label{table:bigchaindb}
 	\begin{tabularx} {\textwidth} {|X|p{2.8cm}|p{3cm}|p{2.2cm}|}
 \hline
@@ -444,6 +439,40 @@ BigchainDB có một số đặc điểm sau:
 	Lập chỉ mục và truy vấn dữ liệu có cấu trúc   &   & có & có \\ \hline
 \end{tabularx}
 \end{table}
+
+\textbf{Kiến trúc của BigchanDB}
+
+Một node trong BigchainDB được mô tả như hình \ref{fig:bigchaindb_mechaism}, mỗi thành phần có vai trò như sau:
+
+\begin{itemize}
+	\item BigchainDB Server: Là phần giao tiếp giữa Tendermint và ứng dụng.
+Thực hiện giao tiếp với BigChainDB Client.
+Nhận các giao dịch và chuyển cho Tendermint.
+Nếu các giao dịch hợp lệ sẽ được lưu trữ vào MongoDB.
+	\item Tendermint: Giao tiếp với các tendermint ở các node khác.
+Thực hiện xác thực giao dịch, nhận các giao dịch từ các node khác trong mạng.
+Lưu trữ giao dịch vào MongoDB nếu hợp lệ.
+Đảm nhiệm khi có bất kì một Tendermint ở node nào trong mạng gây lỗi (ví dụ như bị thay đổi giữ liệu) thì node sẽ bị cô lập.
+	\item MongoDB Server: Lưu trữ giữ liệu trên hệ thống local của node đó. Dữ liệu sẽ được trao đổi giữa BigchainDB Server và Tendermint.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bigchaindb_mechanism.png}
+\caption{Các thành phần của một node BigchainDB}
+\label{fig:bigchaindb_mechaism}
+\end{figure}
+
+Mô hình vận hành mạng BigchainDB được mô tả như hình \ref{fig:bigchaindb_communication}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/bigchaindb_communication.png}
+\caption{Mô hình vận hành mạng BigchainDB}
+\label{fig:bigchaindb_communication}
+\end{figure}
+
+Trong hình \ref{fig:bigchaindb_communication}, giả sử Node 1 tạo dữ liệu giao dịch. BigchainDB server nhận giao dịch gửi cho Terdermint xác thực. Khi giao dịch hợp lệ nó sẽ được lưu tại cơ sở dữ liệu MongoDB trên node, đồng thời dữ liệu được gửi cho các Terdermint khác trong mạng kết nối. Các Terdermint khác nhận và thực hiện các xác thực liên quan sau đó lưu vào cơ sở dữ liệu MongoDB tại node đó.
 
 BigchainDB dựa trên nền tảng Blockchain của Tendermint.
 BigchainDB bao gồm hai thành phần chính: Tendermint Core và môi trường ứng dụng (Application BlockChain Interface) (ABCI).
@@ -468,11 +497,11 @@ Hình \ref{fig:bc_abci} mô tả đường đi của thông điệp trong ABCI.
 \label{fig:bc_abci}
 \end{figure}
 
-Hình \ref{fig:bc_consensus} mô tả cơ chế đồng thuận Blockchain.
+Hình \ref{fig:bc_consensus} mô tả sơ đồ hoạt động cơ chế đồng thuận của Tendermint.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/bc_consensus.png}
-\caption{Sơ đồ hoạt động của cơ chế đồng thuận}
+\caption{Sơ đồ hoạt động của cơ chế đồng thuận của Tendermint}
 \label{fig:bc_consensus}
 \end{figure}
 
@@ -480,9 +509,13 @@ Hình \ref{fig:bc_consensus} mô tả cơ chế đồng thuận Blockchain.
 
 \textbf{Giới thiệu}
 
-Hyperledger Fabric là một nền tảng blockchain riêng tư trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror. Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
+Hyperledger Fabric là một nền tảng blockchain riêng tư trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror.
+Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
+Hyperledger Fabric là phần mềm mã nguồn mở.
+Công ty IBM đề xuất dự án Hyperledger Fabric làm nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. 
 
-Hyperledger Fabric là phần mềm mã nguồn mở. Công ty IBM đề xuất dự án Hyperledger Fabric làm nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum, \ldots đề đáp ứng nhu cầu cần thiết của môi trường tổ chức. Đó là nhu cầu định danh thành viên tham gia, mạng được cấp quyền truy cập và bảo mật thông tin riêng của tổ chức. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công, \ldots{}
+Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum,\ldots để đáp ứng nhu cầu cần thiết của môi trường tổ chức.
+Đó là nhu cầu định danh thành viên tham gia, mạng được cấp quyền truy cập và bảo mật thông tin riêng của tổ chức. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công,\ldots{}
 
 \begin{figure}[htbp]
 \centering
@@ -505,6 +538,8 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 
 \textbf{Kiến trúc mạng Hyperledger Fabric}
 
+Hình \ref{fig:hlf_network} mô tả hai kiến trúc mạng cơ bản nghiệm mạng Hyperledger Fabric. Ngoài First Net và Test Net, mạng Blockchain Hyperledger Fabric có thể mở rộng thêm các thành phần cho phù hợp với yêu cầu của ứng dụng. 
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/hlf_network.png}
@@ -512,9 +547,10 @@ Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghì
 \label{fig:hlf_network}
 \end{figure}
 
-Các thành phần của mạng Blockchain
+Fabric có các thành phần như sau:
 
 \textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản (dữ liệu trong mạng blockchain) của mạng sẽ được “chuỗi khối” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value). Toàn bộ ledger được lưu trên các Peer trong cùng Channel, và dữ liệu được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
+
 
 \textbf{Smart contract} (Chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các Peer.
 
