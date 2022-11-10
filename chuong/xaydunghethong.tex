@@ -1,107 +1,78 @@
 %!TEX root = ../luanvan.tex
 \chapter{Xây dựng hệ thống}
-\section{Tổng quan giải pháp}
 
-\textbf{Mô tả bài toán}
+\section{Mô tả bài toán}
 
-\textbf{Mô tả usecase}
-
-\textbf{Thiết kế CSDL}
-
-\textbf{Thiết blockchain}
-
-\emph{Thông tin tài sản}
-
-\emph{Các đối tượng}
-
-\emph{Hợp đổng thông minh}
-
-
-Trong quy trình tổ chức thi và cấp chứng chỉ.
-
-Thông tin sinh viên được cấp chứng chỉ,
-Đơn vị cấp chứng chỉ
-Thông tin chứng chỉ được ghi lại
-Sinh viên có thể quản lý được chứng chỉ được cấp
-
-Hệ thống quản lý VBCC sử dụng công nghệ blockchain có các chức năng: cấp, quản lý và xác minh VBCC một cách an toàn, bảo mật. Giải pháp được thử nghiệm với nền tảng kỹ thuật số của IBM Blockchain Flatform, Hyperledger Fabric. VBCC có thể được xác thực với tùy chọn hạn chế tiết lộ thông tin và không cần sự can thiệp từ tổ chức cấp chứng chỉ (Trường/Trung tâm).
+Bài toán đặt ra nhu cầu quản lý thông tin của người cấp, người được cấp VBCC để số hóa các quy trình cấp VBCC, sở hữu VBCC, chia sẻ thông tin xác thực VBCC có liên quan đến thông tin cá nhân của người được cấp VBCC theo các quy định hiện hành về bảo vệ bí mật thông tin trong môi trường trực tuyến.
+Sơ đồ bài toán được minh họa như hình \ref{fig:vbcc}.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc.jpg}
-\caption{Sơ đồ tổng quan giải pháp}
+\caption{Sơ đồ bài toán quản lý VBCC}
 \label{fig:vbcc}
-
 \end{figure}
-Những chức năng chính của hệ thống được mô tả như hình \ref{fig:vbcc} bao gồm:
-\begin{itemize}
-\item Trường/Trung tâm: ký số và cấp VBCC.
-\item Sinh viên: xem và chia sẻ VBCC.
-\item Đơn vị xác minh: kiểm tra tính xác thực của các VBCC được chia sẻ.
-\end{itemize}
 
+\section{Tổng quan giải pháp}
 
-\section{Kiến trúc phần mềm}
-Kiến trúc phần mềm được mô tả như hình \ref{fig:vbcc_phanmem} bao gồm các thành phần:
+Nghiên cứu đề xuất một mô hình thử nghiệm ứng dụng Blockchain để đảm bảo tính an toàn thông tin VBCC và tính bí mật thông tin của người được cấp VBCC.
+Hệ thống thực hiện việc ký số khi cấp VBCC và truy vấn dữ liệu Blockchain để xác thực VBCC. 
+Kiến trúc hệ thống được mô tả như hình \ref{fig:vbcc_phanmem}.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc_phanmem.jpg}
-\caption{Sơ đồ kiến trúc phần mềm}
+\caption{Sơ đồ kiến trúc hệ thống}
 \label{fig:vbcc_phanmem}
 \end{figure}
-\begin{enumerate}
-\item Mạng Blockchain Hyperledger Fabric: IBM Blockchain Flatform và Docker container hỗ trợ xây dựng mạng blockchain Fabric, thực thi các hợp đồng thông minh (ngôn ngữ Javascript).
-\item Fabric CA: được dùng để đăng ký và xác thực các thành phần trong mạng.
-\item Webserver: sử dụng Node.js cung cấp giao diện Backend của ứng dụng web, kết hợp sử dụng Nodejs Express.
-\item Cơ sở dữ liệu MongoDB: lưu trữ dữ liệu người dùng và chứng chỉ.
-\item Giao diện Front-end của ứng dụng web: dùng các thư viện Bootstrap, jQuery.
-\end{enumerate}
 
-\section{Các thành phần tham gia}
-Các thành phần tham gia của hệ thống bao gồm: (1) Trường, Trung tâm, (2) Sinh viên (học viên) và (3) Bên xác minh chứng chỉ (Ví dụ: nhà tuyển dụng). Mỗi thành phần sẽ có các hành động như sau:
+Quy trình hoạt động của hệ thống được minh họa như hình \ref{fig:vbcc_diagram}.
 
-\emph{Trường, trung tâm}
-
-\begin{itemize}
-\item Đăng ký tài khoản.
-\item Đăng nhập tài khoản.
-\item Cấp VBCC có xác nhận chứng thực và ký số VBCC.
-\item Xem VBCC đã cấp.
-\end{itemize}
-
-\emph{Sinh viên, học viên}
-
-\begin{itemize}
-\item Đăng ký tài khoản.
-\item Đăng nhập tài khoản.
-\item Xem VBCC đã nhận.
-\item Chia sẻ thông tin VBCC.
-\item Tiết lộ thông tin VBCC có chọn lọc nhằm hạn chế lộ thông tin.
-\end{itemize}
-
-\emph{Bên xác minh chứng chỉ}
-
-\begin{itemize}
-\item Xác minh tính xác thực của VBCC với nền tảng blockchain.
-\end{itemize}
-
-
-Quy trình hoạt động của hệ thống được mô tả như hình \ref{fig:vbcc_diagram}
-
-Mô tả quy trình hoạt động
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc_diagram2.png}
 \caption{Quy trình hoạt động của hệ thống}
 \label{fig:vbcc_diagram}
 \end{figure}
-\subsection{Mô tả usecase}
-\subsection{Thiết kế cơ sở dữ liệu}
-\subsection{Thiết kế mạng blockchain}
 
-Mô tả các asset
+\subsection{Danh sách actor}
 
-Mô tả smartcontract
+\begin{table}[H]
+\caption{Danh sách actor}
+	\label{table:actor}
+	\begin{tabularx} {\textwidth} {|p{1cm}|p{3cm}|X|}
+\hline
+	ID & Tên actor & Mô tả \\ \hline
+	A1 & Sinh viên &  là sinh viên/học viên nhận VBCC \\ \hline
+	A2 & Trường học  & Trường/Đơn vị có quyền cấp VBCC \\ \hline
+	A3 & Người xác minh  & Người/Đơn vị có nhu cầu xác minh VBCC \\ \hline
+\end{tabularx}
+\end{table}
 
-Mô tả cài mạng Hyperledger Fabric
+\subsection{Danh sách Use Case}
+
+\begin{table}[H]
+\caption{Danh sách Use Case}
+	\label{table:usecase}
+	\begin{tabularx} {\textwidth} {|p{1cm}|p{1cm}|p{3cm}|X|X|}
+\hline
+		STT &	ID & Tên Use Case & Mô tả & Yêu cầu nghiệp vụ \\ \hline
+		1 & U1	& Đăng nhập &Đăng nhập vào hệ thống để xác thực người dùng &Được mở rộng bởi tất cả \\ \hline
+		2 & U2 & Đăng ký  & Đăng ký tài khoản vào hệ thống & Được mở rộng bởi tất cả\\ \hline
+		3 & U3	&Cấp VBCC & Cấp VBCC có xác nhận chứng thực và ký số VBCC & \\ \hline
+		4& U4	& Xem VBCC đã cấp& & Xem các VBCC  do Trường cấp \\ \hline
+		5 & U5	&Xem VBCC đã nhận & Xem VBCC sinh viên đã nhận& \\ \hline
+	6	& U6	&Chia sẻ thông tin VBCC &Chia sẻ thông tin VBCC & \\ \hline
+		7& U7	& Xác thực VBCC &Xác minh tính xác thực của VBCC với nền tảng blockchain & \\ \hline
+\end{tabularx}
+\end{table}
+\subsection{Thiết kế CSDL}
+
+\subsection{Thiết blockchain}
+
+\emph{Thông tin tài sản}
+
+\emph{Các đối tượng}
+
+\emph{Hợp đổng thông minh}
 

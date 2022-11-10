@@ -16,6 +16,7 @@
 \RequirePackage{textcomp}
 \RequirePackage{amssymb}
 \RequirePackage{capt-of}
+\RequirePackage{float}
 \RequirePackage{hyperref}
 \RequirePackage{tabularx}
 \RequirePackage[a4paper,left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
