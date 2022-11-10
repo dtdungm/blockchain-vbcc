@@ -422,7 +422,7 @@ Ethereum có một số đặc điểm sau:
 \textbf{Giới thiệu}
 
 BigchainDB có mã nguồn mở.
-BigchainDB được thiết kế vừa có tính chất của CSDL phân tán và Blockchain như bảng \ref{table:bigchaindb}.
+BigchainDB được thiết kế vừa có tính chất của CSDL và Blockchain như bảng \ref{table:bigchaindb}.
 
 Trang chủ: https://www.bigchaindb.com/
 
@@ -431,7 +431,7 @@ Trang chủ: https://www.bigchaindb.com/
 	\label{table:bigchaindb}
 	\begin{tabularx} {\textwidth} {|X|p{2.8cm}|p{3cm}|p{2.2cm}|}
 \hline
-	 & Blockchain & CSDL phân tán & BigchainDB \\ \hline
+	 & Blockchain & CSDL & BigchainDB \\ \hline
 	Tính phi tập trung & có &   & có \\ \hline
 	Cơ chế đồng thuận BFT   & có  &   & có \\ \hline
 	Chống sửa đổi  & có  &   & có \\ \hline
@@ -509,13 +509,8 @@ Hình \ref{fig:bc_consensus} mô tả sơ đồ hoạt động cơ chế đồng
 
 \textbf{Giới thiệu}
 
-Hyperledger Fabric là một nền tảng blockchain riêng tư trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror.
-Hình \ref{fig:hlf_um} mô tả dự án Hyperledger.
-Hyperledger Fabric là phần mềm mã nguồn mở.
-Công ty IBM đề xuất dự án Hyperledger Fabric làm nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. 
-
-Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum,\ldots để đáp ứng nhu cầu cần thiết của môi trường tổ chức.
-Đó là nhu cầu định danh thành viên tham gia, mạng được cấp quyền truy cập và bảo mật thông tin riêng của tổ chức. Hyperledger Fabric có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công,\ldots{}
+Hyperledger Fabric (HF) là một nền tảng blockchain riêng tư trong dự án Hyperledger của tổ chức Linux Foundation gồm: Hyperledger Indy, Hyperledger Fabric, Hyperledger Iroha, Hyperledger Sawtooth, Hyperledger Burror.
+Hình \ref{fig:hlf_um} mô tả các thành phần của dự án Hyperledger.
 
 \begin{figure}[htbp]
 \centering
@@ -524,50 +519,69 @@ Hyperledger Fabric có nhiều tính năng nổi trội so với các nền tả
 \label{fig:hlf_um}
 \end{figure}
 
-Nhờ vào thiết kế mô-đun linh hoạt và quản lý người tham gia nên Hyperledger Fabric trở thành nền tảng blockchain có tốc độ xử lý giao dịch nhanh và phù hợp với tổ chức muốn kiểm soát danh tính người tham gia, và xác minh các giao dịch với hợp đồng thông minh.
+HF là phần mềm mã nguồn mở.
+Công ty IBM đề xuất phát triển dự án HF để làm nền tảng ứng dụng blockchain cho các tổ chức, doanh nghiệp. 
+HF có nhiều tính năng nổi trội so với các nền tảng blockchain phổ biến như Bitcoin, Ethereum,\ldots để đáp ứng nhu cầu cần thiết của môi trường tổ chức.
+Đó là nhu cầu định danh thành viên tham gia, mạng được cấp quyền truy cập và bảo mật thông tin riêng của tổ chức.
+HF có kiến trúc mô-đun linh hoạt và tối ưu hoá cho nhiều ứng dụng trong các lĩnh vực như: giáo dục, tài chính, bảo hiểm, y tế, chuỗi cung ứng, hành chính công,\ldots{}
 
-Phiên bản mới nhất của Hyperledger Fabric là 2.x. Hyperledger Fabric được cộng đồng hỗ trợ các vấn đề bảo mật, cập nhật. Hệ thống sẽ được cập nhật cho đến khi một phiên bản LTS mới được phát hành.
-
-Trong phiên bản Fabric 2.x, các hợp đồng thông minh (smart contract) được cài đặt trên các peer tham gia chung channel và được đánh số các phiên bản. Các tổ chức thuộc kênh (channel) đồng ý các tham số của hợp đồng thông minh, chứng thực hợp đồng thông minh sau đó hợp đồng thông minh mới thực hiện tương tác với sổ cái (ledger).
-
-Việc nâng cấp các hợp đồng thông minh (smart contract) sẽ được gắn với quá trình đồng thuận và được các nút mạng đồng ý. Khi đó các peer có đầy đủ các hợp đồng thông minh (chaincode được cài đặt). Việc thay đổi cơ chế nâng cấp hợp đồng thông minh trên phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
-
-Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. Thay vì tạo thêm một kênh để nhóm các thành viên và mất rất nhiều thời gian để cấu hình (kênh, chính sách, MSP,…) 
-
-Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Các giải thuật đồng thuận gồm có: Kafka, Raft. Các thực giao dịch được xử lý song song, xử lý khối bất động bộ, phân trang chaincode,\ldots.
-
-\textbf{Kiến trúc mạng Hyperledger Fabric}
-
-Hình \ref{fig:hlf_network} mô tả hai kiến trúc mạng cơ bản nghiệm mạng Hyperledger Fabric. Ngoài First Net và Test Net, mạng Blockchain Hyperledger Fabric có thể mở rộng thêm các thành phần cho phù hợp với yêu cầu của ứng dụng. 
+Hình \ref{fig:hlf_network} mô tả hai mô hình mạng cơ bản để thử nghiệm triển khai ứng dụng Blockchain trên nền tảng HF.
+Ngoài First Net, Test Net, mạng Blockchain có thể mở rộng thêm các thành phần, qui mô để phù hợp với yêu cầu của ứng dụng. 
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/hlf_network.png}
-\caption{Kiến trúc mạng Hyperledger Fabric}
+\caption{Mô hình mạng thử nghiệm Hyperledger Fabric}
 \label{fig:hlf_network}
 \end{figure}
 
-Fabric có các thành phần như sau:
+\textbf{Kiến trúc của Hyperledger Fabric}
 
-\textbf{Ledger}: Một quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”. Các giao dịch thay đổi các tài sản (dữ liệu trong mạng blockchain) của mạng sẽ được “chuỗi khối” ghi nhận theo dạng nhật ký và không thể xóa hay chỉnh sửa. Ngược lại, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value). Toàn bộ ledger được lưu trên các Peer trong cùng Channel, và dữ liệu được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
+Kiến trúc HF có các kênh bảo mật riêng kết nối trong mạng Blockchain, giúp các   sổ cái được chia sẻ thông qua nhiều kênh riêng. Mạng HF phù hợp với các ứng   dụng Blockchain và không yêu cầu khái niệm đồng tiền số.
 
+Kiến trúc của HF gồm các thành phần chính như Dịch vụ chứng thực số và Dịch vụ thành viên (Membership service provider, Certificate Authority), Hợp đồng thông minh (Chaincode), các node thành viên (Peers, Nodes), Dịch vụ xử lý hàng đợi (ordering service), Kênh kết nối, Sổ cái (ledger), được mô tả ở hình \ref{fig:hlf_arch} 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.9\linewidth]{img/hlf_arch.png}
+\caption{Kiến trúc mạng Hyperledger Fabric}
+\label{fig:hlf_arch}
+\end{figure}
 
-\textbf{Smart contract} (Chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, quản lý tài sản. Trong Hyperledger Fabric, các hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các Peer.
+Nhờ vào thiết kế mô-đun linh hoạt và quản lý người tham gia nên Hyperledger Fabric trở thành nền tảng blockchain có tốc độ xử lý giao dịch nhanh và phù hợp với tổ chức muốn kiểm soát danh tính người tham gia, và xác minh các giao dịch với hợp đồng thông minh.
 
-\textbf{Peer nodes}: Là những nút cơ bản của mạng có chức năng lưu trữ bản sao của Ledgers và thực thi Hợp đồng thông minh. Các peer được quản lý và duy trì bởi các thành viên trong mạng. Peer được chia làm 2 dạng:
+Phiên bản mới nhất của Hyperledger Fabric là 2.x. Hyperledger Fabric được cộng đồng hỗ trợ các vấn đề bảo mật, cập nhật. Hệ thống sẽ được cập nhật cho đến khi một phiên bản LTS mới được phát hành.
+
+Trong phiên bản Fabric 2.x, các hợp đồng thông minh được cài đặt trên các nút tham gia chung kênh an toàn và được đánh số các phiên bản. Các tổ chức trong mạng cùng thuộc kênh an toàn, đồng ý các tham số của hợp đồng thông minh, chứng thực hợp đồng thông minh sau đó hợp đồng thông minh mới thực hiện tương tác với sổ cái. 
+
+Việc nâng cấp các hợp đồng thông minh sẽ được gắn với quá trình đồng thuận và được các nút mạng đồng ý. Khi đó các nút peer có đầy đủ các hợp đồng thông minh, gọi là chaincode. Việc thay đổi cơ chế nâng cấp hợp đồng thông minh trên phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
+
+Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. Tùy chọn này tối ưu hơn cách tạo thêm một kênh riêng mới cho một số thành viên, giảm được thời gian để cấu hình, thiết lập thông số kênh, chính sách, MSP,\ldots. 
+
+Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. Một trong những điểm nổi bật của phiên bản Fabric 2.x là tối ưu hóa hiệu suất hoạt động của mạng Blockchain. Các giải thuật đồng thuận gồm có: Kafka, Raft. Các thực giao dịch được xử lý song song, xử lý khối bất động bộ, phân trang chaincode,\ldots.
+
+HF gồm các thành phần trong hình \ref{fig:hlf_arch} được mô tả như sau:
+
+\textbf{Ledger}: Quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”.
+Khi các giao dịch làm thay đổi các tài sản trong mạng blockchai, dữ liệu sẽ đượcghi nhận tất cả lên “chuỗi khối” theo dạng nhật ký và không thể xóa hay chỉnh sửa. Đồng thời, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value).
+Toàn bộ sổ cái được lưu trên các nút Peer trong cùng kênh, đồng thời sổ cái được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
+
+\textbf{Smart contract} (hay chaincode): Hợp đồng thông minh trong blockchain là các ứng dụng được lập trình bằng ngôn ngữ lập trình như: Javascript, Go, Java. Hợp đồng thông minh tương tác với mạng, thực hiện logic (trình tự thực hiện) trong xử lý giao dịch.
+Trong HF, hợp đồng thông minh còn được gọi là chaincode, được cài đặt trên các nút Peer.
+
+\textbf{Peer nodes}: Là những nút cơ bản của mạng có chức năng lưu trữ bản sao của Sổ cái và thực thi Hợp đồng thông minh. Các nút peer được quản lý và duy trì bởi các dịch vụ thành viên trong mạng. Nút Peer được chia làm hai dạng:
 
 \begin{itemize}
 \item \textbf{Endorsing peer}: thực thi các giao dịch trong chaincode và đề xuất giao dịch.
 \item \textbf{Committing peer}: có thể không cần cài đặt chaincode, lưu trữ sổ cái đầy đủ.
 \end{itemize}
 
-\textbf{Ordering Service (Solo, Raft, Kafka)}: Là những nút chứa thuật toán đồng thuận và đảm nhận nhiệm vụ xác minh, bảo mật, kiểm định phân quyền, quản lý cấu hình Channel.
+\textbf{Ordering Service (Solo, Raft, Kafka)}: Là những nút chứa thuật toán đồng thuận và đảm nhận nhiệm vụ xác minh, bảo mật, kiểm định phân quyền, quản lý cấu hình Kênh.
 
-\textbf{Channel}: Kênh là một “mạng con” riêng kết nối giữa hai hoặc nhiều nút trong mạng blockchain. Mỗi kênh sẽ kết nối các nút như Orgs(tổ chức), Peer, Ordering service, MSP. Mỗi Peer có thể tham gia nhiều kênh và sẽ được cấp các định danh riêng với từng kênh bởi dịch vụ xác thực thành viên (MSP).
+\textbf{Channel}: Kênh là một “mạng con” riêng kết nối giữa hai hoặc nhiều nút trong mạng blockchain. Mỗi kênh sẽ kết nối các nút như của tổ chức (các Orgs) như, Peer, Ordering service, MSP. Một nút Peer có thể tham gia nhiều kênh và sẽ được cấp các định danh riêng với từng kênh bởi dịch vụ xác thực thành viên (MSP).
 
 \textbf{Fabric Certificate Authorities}: Hyperledger Fabric CA là thành phần phát hành chứng thư số. Chứng thư số được cấp dựa trên hạ tầng khóa công khai PKI cho các nút trong mạng và người dùng. CA phát hành một chứng thư gốc (rootCert) cho mỗi thành viên và một chứng nhận đăng ký (ECert) cho mỗi người dùng được uỷ quyền.
 
-\textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính (Identities) mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
+\textbf{Membership Service Provider (MSP)}: MSP là dịch vụ xác minh các nút trong mạng, thông qua chứng thư số (cấp từ CA). Do đó HyperLedger Fabric có thể xác thực các thực thể kết nối với mạng thông qua danh tính mà không cần khóa bí mật. Ngoài ra, nó còn có vai trò xác định quyền truy cập trong phạm vi mạng và kênh của một thành phần nào đó trong mạng.
 
 \textbf{Thiết lập mạng Hyperledger Fabric}
 
