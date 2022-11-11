@@ -3,43 +3,103 @@
 
 \section{Mô tả bài toán}
 
-Bài toán đặt ra nhu cầu quản lý thông tin của người cấp, người được cấp và VBCC; số hóa các quy trình cấp VBCC, sở hữu VBCC, chia sẻ thông tin xác thực VBCC có liên quan đến thông tin cá nhân của người được cấp VBCC theo các quy định hiện hành về bảo vệ bí mật thông tin trong môi trường trực tuyến.
-Sơ đồ bài toán được minh họa như hình \ref{fig:vbcc}.
+Hiện nay, việc quản lý VBCC được quy định cụ thể riêng theo từng Trường, nhằm hướng dẫn việc thực hiện, báo cáo, lưu trữ hồ sơ và phân cấp chịu trách nhiệm của cá nhân và đơn vị liên quan trong khi thực hiện công việc.
+Tuy nhiên, công việc quản lý VBCC có nhiều hồ sơ, quy trình như bàn giao, in phôi VBCC, trình ký và đóng dấu, rà soát thông tin in lên phôi VBCC, lập sổ gốc, quản lý phát VBCC, xác minh VBCC, \ldots. còn thủ công nên ảnh hưởng chất lượng hiệu quả công việc.
+Chẳng hạn như VBCC phát cho sinh viên dễ sai sót, do VBCC phải được in thông tin, ký tên, đóng dấu. Thông tin VBCC gồm có: số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp. 
+
+Do đó, bài toán đặt ra nhu cầu cải tiến trong quản lý thông tin của người cấp, người được cấp và VBCC; số hóa các quy trình cấp VBCC, sở hữu VBCC, chia sẻ thông tin xác thực VBCC có liên quan đến thông tin cá nhân của người được cấp VBCC theo các quy định hiện hành về bảo vệ bí mật thông tin trong môi trường trực tuyến.
+
+Quy trình quản lý VBCC ứng dụng blockchain được mô tả ở hình \ref{fig:vbcc}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc.jpg}
-\caption{Sơ đồ bài toán quản lý VBCC}
+\caption{Sơ đồ bài toán quản lý VBCC ứng dụng blockchain}
 \label{fig:vbcc}
 \end{figure}
 
-{\color{red} Todo: Cần phải diễn giải quy trình quản lý theo hình  \ref{fig:vbcc}}
+\begin{enumerate}
+\item Phát hành VBCC cho sinh viên/học viên:
+Thông tin VBCC của sinh viên được lưu trên hệ thống blockchain để đảm bào tính an toàn và tin cậy. Ngoài ra, Trường ký số các thông tin VBCC, nên thông tin VBCC của sinh viên sẽ chống được sự giả mạo trên môi trường điện tử.
+
+\item Cung cấp thông tin xác minh VBCC:
+Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp. Khi cần xác minh VBCC thì chỉ cần gửi thông tin VBCC, có thể lựa chọn thông tin cá nhân như giới tính, dân tộc \ldots khi chia sẻ cho đơn vị xác minh
+
+\item Kiểm tra xác minh VBCC:
+Đơn vị xác minh chỉ cần nhận thông tin VBCC được chia sẻ từ sinh viên, sau đó có thể xác thực thông tin VBCC với dữ liệu trong Blockchain.
+
+\end{enumerate}
+
 
 \section{Tổng quan giải pháp}
 
 Nghiên cứu đề xuất một mô hình thử nghiệm ứng dụng Blockchain để đảm bảo tính an toàn thông tin VBCC và tính bí mật thông tin của người được cấp VBCC.
 Hệ thống thực hiện việc ký số khi cấp VBCC, lưu VBCC đã cấp vào blockchain và truy vấn dữ liệu blockchain để xác thực VBCC. 
-Kiến trúc hệ thống được mô tả như hình \ref{fig:vbcc_phanmem}.
 
-\begin{figure}[htbp]
+Hình \ref{fig:vbcc_phanmem} mô tả sơ đồ kiến trúc hệ thống. Trong đó gồm có 3 thành phần chính:
+
+- Phần ứng dụng web: giao tiếp với người dùng, truy vấn, cập nhật dữ liệu vào Blockchain, CSDL
+
+- Phần CSDL: mongoDB để lưu thông tin VBCC và các thông tin không được lưu trong Blockchain.
+
+- Phần Blockchain: để lưu trữ VBCC trên nền tảng Hyperledger Fabric và CA quản lý truy cập người dùng và ứng dụng bằng mật mã khóa công khai.
+
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc_phanmem.jpg}
 \caption{Sơ đồ kiến trúc hệ thống}
 \label{fig:vbcc_phanmem}
 \end{figure}
 
-{\color{red} Todo: bổ sung diễn giải thêm về các bước hoạt động \ref{fig:vbcc_phanmem}}
-
 Quy trình hoạt động của hệ thống được minh họa như hình \ref{fig:vbcc_diagram}.
 
+\begin{enumerate}
+\item Trường phát hành VBCC cho sinh viên/học viên
+
+	\begin{itemize}
+		\item 
+	Bước 1. Trường đăng ký tài khoản sử dụng hệ thống.
+\item 
+		Bước 2. Trường điền thông tin đăng ký tài khoản.
+	\item
+		Bước 3. Trường đăng nhập để sử dụng hệ thống.
+	\item 
+		Bước 4. Trường chọn chức năng phát VBCC.
+	\item
+		Bươc 5. Trường nhập thông tin VBCC, số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp.
+		Trong đó thông tin Email của sinh viên để cần để lấy thông tin khóa công khai dành để ký số với khóa cá nhân của Trường. VBCC được lưu trên Blockchain và chữ ký số của Trường.
+	\end{itemize}
+\item Sinh viên quản lý VBCC được cấp
+
+	\begin{itemize}
+		\item 
+	Bước 1. Sinh viên đăng ký tài khoản sử dụng hệ thống.
+\item 
+		Bước 2. Sinh viên điền thông tin đăng ký tài khoản.
+		Trong đó thông tin Email của sinh viên để cần để lấy thông tin khóa công khai để truy cập thông tin VBCC của sinh viên, được lưu trên Blockchain.
+	\item
+		Bước 3. Sinh viên  đăng nhập để sử dụng hệ thống.
+	\item 
+		Bước 4. Sinh viên chọn chức năng phát VBCC.
+	\item
+		Bươc 5. Thông tin VBCC được truy vần từ Blockchain, số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp. 
+Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp. 
+	\item Bước 6. Sinh viên chia sẻ VBCC với đơn vị xác minh. 
+	\item Bước 7. Sinh viên chọn thông tin cá nhân muốn chia sẻ.
+	\item Bước 8. Sinh viên gửi thông tin xác minh VBCC cho Đơn vị xác minh VBCC.
+	\end{itemize}
+\item Kiểm tra xác minh VBCC
+
+Đơn vị xác minh chỉ cần nhận thông tin VBCC được chia sẻ từ sinh viên, sau đó có thể xác thực thông tin VBCC với dữ liệu trong Blockchain. Kết quả hợp lệ và không hợp lệ.
+
+\end{enumerate}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc_diagram2.png}
 \caption{Quy trình hoạt động của hệ thống}
 \label{fig:vbcc_diagram}
 \end{figure}
-
-{\color{red} Todo: bổ sung tên bước và diễn giải thêm về các bước quy trình hoạt động \ref{fig:vbcc_diagram}.}
 
 \subsection{Danh sách tác nhân}
 
@@ -137,7 +197,6 @@ Chức năng Xác thực VBCC
 
 Danh sách cấu trúc dữ liệu trong hệ thống
 
-{\color{red} Todo: Bổ sung diễn giải các trường trong từng bảng}
 
 \begin{table}[H]
 \caption{Danh sách cấu trúc dữ liệu trong hệ thống}
@@ -161,19 +220,19 @@ Thuộc tính của các cấu trúc dữ liệu
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
 		1 & studentName	& String & Họ tên  & not null \\ \hline
 		2 & studentEmail & String  & Email   & not null \\ \hline
-		3 & studentID	&  String & Mã số  & \\ \hline
-		4 & birthday	& String & Ngày sinh & \\ \hline
-		5 & place	& String & Nơi sinh & \\ \hline
-		6 & gender & String & Giới tính & \\ \hline
-		7& ethnic	& String & Dân tộc & \\ \hline
+		3 & studentID	&  String & Mã số  & not null\\ \hline
+		4 & birthday	& String & Ngày sinh & not null\\ \hline
+		5 & place	& String & Nơi sinh & not null\\ \hline
+		6 & gender & String & Giới tính & not null\\ \hline
+		7& ethnic	& String & Dân tộc & not null\\ \hline
 		8& universityName	& String & Tên trường cấp VBCC & not null \\ \hline
-		9& universityEmail	& String & Email trường cấp VBCC&\\ \hline
+		9& universityEmail	& String & Email trường cấp VBCC&not null\\ \hline
 		10& major 	& String & Khóa  học  & not null\\ \hline
 		11& number	& String & Số hiệu VBCC & not null\\ \hline
 		12& regNo	& String & Số vào sổ gốc & not null \\ \hline
 		13& departmentName	& String & Tên khoa &\\ \hline
 		14& cgpa	& String & Kết quả & not null \\  \hline
-		15& dateOfIssuing	& String & Ngày cấp &\\ \hline
+		15& dateOfIssuing	& String & Ngày cấp &not null\\ \hline
 		
 \end{tabularx}
 \end{table}
@@ -187,8 +246,8 @@ Thuộc tính của các cấu trúc dữ liệu
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
 		1 & email	& String & Email  & not null \\ \hline
 		2 & name & String  & Họ tên   & not null \\ \hline
-		3 & password	&  String & Mật khẩu  & \\ \hline
-		4 & publicKey	& String & Khóa công khai  & \\ \hline
+		3 & password	&  String & Mật khẩu  & not null\\ \hline
+		4 & publicKey	& String & Khóa công khai  & not null\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -201,9 +260,9 @@ Thuộc tính của các cấu trúc dữ liệu
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
 		1 & email	& String & Email  & not null \\ \hline
 		2 & name & String  & Tên trường   & not null \\ \hline
-		3 & location	&  String & Địa chỉ  & \\ \hline
-		4 & password	& String & Mật khẩu  & \\ \hline
-		5 & publicKey	& String & Khóa công khai   & \\ \hline
+		3 & location	&  String & Địa chỉ  &not null \\ \hline
+		4 & password	& String & Mật khẩu  &not null \\ \hline
+		5 & publicKey	& String & Khóa công khai   &not null \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -212,7 +271,6 @@ Thuộc tính của các cấu trúc dữ liệu
 \item 
 Danh sách các đối tượng trong hệ thống
 
-{\color{red} Todo: trình bày phần này theo đúng thiết kế theo chuẩn blockchain: blockchain participant, asset, chaincode....}
 
 \begin{table}[H]
 \caption{Danh sách các đối tượng trong hệ thống}
@@ -234,14 +292,14 @@ Danh sách các đối tượng trong hệ thống
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
 		1 & certHash	& String & Lưu giá trị băm của VBCC  & not null \\ \hline
 		2 & universitySignature & String  & Chữ ký số lên certHash dùng khóa cá nhân của Trường cấp VBCC  & not null \\ \hline
-		3 & studentSignature	&  String & Chữ ký số lên certHash dùng khóa cá nhân của sinh viên nhận VBCC  & \\ \hline
-		4 & dateOfIssuing	& String & Ngày cấp  & \\ \hline
-		5 & certNumber	& String & Số hiệu VBCC  & \\ \hline
-		6 & certRegNo	& String & Số vào sổ gốc  & \\ \hline
-		7 & certNumber	& String & Số hiệu VBCC  & \\ \hline
-		8 & certUUID	& String & Mã số VBCC  & \\ \hline
-		9 & universityPK	& String & Khóa công khai của Trường cấp VBCC  & \\ \hline
-		10 & studentPK	& String & Khóa công khai của sinh viên nhận VBCC  & \\ \hline
+		3 & studentSignature	&  String & Chữ ký số lên certHash dùng khóa cá nhân của sinh viên nhận VBCC  & not null\\ \hline
+		4 & dateOfIssuing	& String & Ngày cấp  &not null \\ \hline
+		5 & certNumber	& String & Số hiệu VBCC  & not null\\ \hline
+		6 & certRegNo	& String & Số vào sổ gốc  & not null\\ \hline
+		7 & certNumber	& String & Số hiệu VBCC  & not null\\ \hline
+		8 & certUUID	& String & Mã số VBCC  & not null\\ \hline
+		9 & universityPK	& String & Khóa công khai của Trường cấp VBCC  &not null \\ \hline
+		10 & studentPK	& String & Khóa công khai của sinh viên nhận VBCC  &not null \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -267,8 +325,8 @@ Danh sách các đối tượng trong hệ thống
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
 		1 & name	& String & Tên Trường cấp VBCC  & not null \\ \hline
 		2 & publicKey & String  & Khóa công khai của Trường cấp VBCC  & not null \\ \hline
-		3 & location	&  String & Địa điểm  & \\ \hline
-		4 & description	& String & Thông tin mô tả  & \\ \hline
+		3 & location	&  String & Địa điểm  &not null \\ \hline
+		4 & description	& String & Thông tin mô tả  &not null \\ \hline
 \end{tabularx}
 \end{table}
 

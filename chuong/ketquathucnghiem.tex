@@ -2,8 +2,6 @@
 \chapter{Kết quả thực nghiệm}
 \section{Mạng blockchain}
 
-{\color{red} Todo: phần này nên chia làm 2 subsection: subsection đầu tiên mô tả mô trường, công cụ, nền tảng để xây dựng mạng. Subsection tiếp theo mô tả các bước xây dựng mạng và kết quả đạt được.}
-
 Mạng Blockchain được cài đặt  trên máy tính cá nhân có cấu hình như sau:
 \begin{itemize}
 \item CPU: Intel(R) Core(TM) i3-10100F 3.00 GHz
@@ -27,10 +25,6 @@ Mạng Blockchain Fabric hoạt động như hình \ref{fig:ide_start}, blockcha
 
 \section{Ứng dụng Web}
 
-{\color{red} Todo: Cần bổ sung diễn giải ý nghĩa của các giao điện màn hình theo các bước của quy trình tổng thể ở chương 3.
-
-Không thể trình bày như thế này: chỉ chụp màn hình đưa vào là xong đc, phải mô tả, diễn giải thông tin, chức năng, ý nghĩa, sực khác biệt giữa có và không có Blockchain ở từng bước này!
-}
 
 Giao diện ứng dụng web hoạt động tại địa chỉ http://localhost:3000/ như hình \ref{fig:main_vbcc}. 
 
@@ -41,14 +35,21 @@ Giao diện ứng dụng web hoạt động tại địa chỉ http://localhost:
 \label{fig:main_vbcc}
 \end{figure}
 
-Trường, trung tâm có chức năng
+\textbf{Màn hình chức năng quản lý VBCC của Trường, trung tâm}
 
+\emph{Màn hình phát VBCC cho sinh viên}, hình \ref{fig:tt_phathanh}
+
+Trường thực hiện đăng nhập sử dụng hệ thống. Sau đó, chọn chức năng phát VBCC. 
+
+Sau đó nhập tất cả thông tin VBCC cần thiết để cấp VBCC, trong đó Email của Sinh viên được dùng để tạo mật mã VBCC.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/tt_phathanh.PNG}
 \caption{Màn hình cấp VBCC cho sinh viên}
 \label{fig:tt_phathanh}
 \end{figure}
+
+\emph{Màn hình xem các VBCC đã cấp cho sinh viên}  yêu cầu Trường thực hiện đăng nhập sử dụng hệ thống. Sau đó,  chọn chức năng xem VBCC. 
 
 \begin{figure}[H]
 \centering
@@ -60,6 +61,10 @@ Trường, trung tâm có chức năng
 
 Sinh viên, học viên có chức năng
 
+Màn hình đăng ký tài khoản.
+Sinh viên cần đăng ký tải khoản để sử dụng hệ thống.
+Sinh viên nhập thông tin đăng ký, trong đó Email sinh viên dùng để mật mã VBCC.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/std_new.PNG}
@@ -67,7 +72,9 @@ Sinh viên, học viên có chức năng
 \label{fig:std_new}
 \end{figure}
 
-
+Màn hình xem các VBCC đã nhận.
+Sinh viên cần đăng nhập tải khoản để sử dụng hệ thống.
+Sinh viên chọn xem VBCC.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/sv_hva.PNG}
@@ -75,6 +82,9 @@ Sinh viên, học viên có chức năng
 \label{fig:sv_hva}
 \end{figure}
 
+Màn hình chia sẻ VBCC đã nhận.
+Sinh viên cần đăng nhập tải khoản để sử dụng hệ thống.
+Sinh viên chọn chức năng chia sẻ VBCC.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/sv_chiase.PNG}
@@ -82,6 +92,10 @@ Sinh viên, học viên có chức năng
 \label{fig:sv_chiase}
 \end{figure}
 
+Màn hình chọn thông tin cá nhân chia sẻ.
+Sinh viên cần đăng nhập tải khoản để sử dụng hệ thống.
+Sinh viên chọn chức năng chia sẻ VBCC.
+Sinh viên chọn những thông tin cá nhân cần chia sẻ.
 \begin{figure}[H]
 \centering
 \includegraphics[width=.9\linewidth]{img/sv_minhchung.PNG}
