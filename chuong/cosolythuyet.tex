@@ -295,7 +295,7 @@ Công nghệ này được biết đến rộng rãi vào năm 2009
 
 Mạng Blockchain có thể được phân loại thành: Blockchain công khai và Blockchain riêng tư \cite{8246573}. 
 Loại thứ nhất gồm Bitcoin, Ethereum, \ldots, bất kỳ nút nào cũng có thể tham gia và rời khỏi mạng Blockchain, mô hình này phân tán hoàn toàn, mỗi nút có vai trò như nhau.
-Loại thứ hai gồm Hyperledger, BigchainDB,\ldots, việc tham gia mạng Blockchain được kiểm soát chặt chẽ, xác định rõ danh tính của thành viên.
+Loại thứ hai gồm Hyperledger,\ldots, việc tham gia mạng Blockchain được kiểm soát chặt chẽ, xác định rõ danh tính của thành viên.
 
 \textbf{So sánh giữa các mạng Blockchain}
 
@@ -533,7 +533,7 @@ Hình \ref{fig:bc_abci} mô tả đường đi của thông điệp trong ABCI.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.9\linewidth]{img/bigchaindb.png}
+\includegraphics[width=.7\linewidth]{img/bigchaindb.png}
 \caption{Sơ đồ thông điệp trong ABCI}
 \label{fig:bc_abci}
 \end{figure}
@@ -593,7 +593,7 @@ Việc nâng cấp các hợp đồng thông minh sẽ được gắn với quá
 Khi đó các nút peer có đầy đủ các hợp đồng thông minh, gọi là chaincode. 
 Việc thay đổi cơ chế nâng cấp hợp đồng thông minh trên phiên bản 2.x mang lại tính an toàn, đồng nhất dữ liệu so với phiên bản trước.
 
-Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẽ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. 
+Dữ liệu riêng tư (Data Privacy) cho phép một phần dữ liệu được chia sẻ riêng tư giữa một số thành viên thuộc kênh thay vì tất cả thành viên đều có thể sở hữu. 
 Tùy chọn này tối ưu hơn cách tạo thêm một kênh riêng mới cho một số thành viên, giảm được thời gian để cấu hình, thiết lập thông số kênh, chính sách, MSP,\ldots. 
 
 Hyperledger Fabric 2.x có hiệu suất xử lý giao dịch đến hàng nghìn giao dịch mỗi giây. 
@@ -603,8 +603,8 @@ Các thực giao dịch được xử lý song song, xử lý khối bất độ
 
 HF gồm các thành phần trong hình \ref{fig:hlf_arch} được mô tả như sau:
 
-\emph{Ledger}: Quyển sổ cái bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”.
-Khi các giao dịch làm thay đổi các tài sản trong mạng blockchai, dữ liệu sẽ đượcghi nhận tất cả lên “chuỗi khối” theo dạng nhật ký và không thể xóa hay chỉnh sửa. 
+\emph{Ledger}: Quyển sổ cái kỹ thuật số bao gồm 2 thành phần có liên quan nhau là “chuỗi khối” và “cơ sở dữ liệu trạng thái”.
+Khi các giao dịch làm thay đổi các tài sản trong mạng blockchain, dữ liệu sẽ được ghi nhận tất cả lên “chuỗi khối” theo dạng nhật ký và không thể xóa hay chỉnh sửa. 
 Đồng thời, “cơ sở dữ liệu trạng thái” (cơ sở dữ liệu LevelDB hoặc CouchDB) lưu trạng thái mới nhất của các tài sản hiện có trong mạng theo cặp khóa-giá trị (key-value).
 Toàn bộ sổ cái được lưu trên các nút Peer trong cùng kênh, đồng thời sổ cái được đồng bộ khi có phát sinh giao dịch thông qua cơ chế đồng thuận.
 
@@ -648,38 +648,36 @@ Một máy vật lý,  máy ảo sẽ cần cài đặt Docker Engine.
 Sau đó các docker containers sẽ chạy trên Docker Engine.
 Các ứng dụng chạy trên Docker Engine được minh họa như hình \ref{fig:docker.png},
 
-
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/docker.png}
+\includegraphics[width=.5\linewidth]{img/docker.png}
 \caption{Docker container}
 \label{fig:docker.png}
 \end{figure}
-
 
 Ứng dụng Blockchain HF sẽ chạy trong các docker container. Sơ đồ ứng dụng Blockchain được minh họa ở hình \ref{fig:getting_started_image2.png}.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/getting_started_image2.png}
+\includegraphics[width=.7\linewidth]{img/getting_started_image2.png}
 \caption{Sơ đồ ứng dụng blockchain Hyperledger Fabric}
 \label{fig:getting_started_image2.png}
 \end{figure}
 
 \emph{Tiện ích mở rộng  IBM Blockchain Platform Extension trên VS Code}
 
-HF được hỗ trợ  qua tiện ích mở rộng IBM Blockchain Platform Extension trên VS Code. 
-Tiện ích mở rộng của IBM giúp tạo,  phát triển kiểm tra và gỡ lỗi các hợp đồng thông minh, kết nối với môi trường Hyperledger Fabric và xây dựng các ứng dụng giao dịch trên mạng blockchain.
+HF được hỗ trợ qua tiện ích mở rộng IBM Blockchain Platform Extension trên VS Code. 
+Tiện ích mở rộng của IBM giúp tạo, phát triển kiểm tra và gỡ lỗi các hợp đồng thông minh của mạng blockchain từ đó xây dựng các ứng dụng trên mạng blockchain.
 
 \emph{Quy trình phát triển hợp đồng thông minh}
 
-Môi trường phát triển là VS Code và tiện ích giúp hỗ trợ quy trình phát  triển hợp đồng thông minh trên Blockchain, gồm các bước sau:
+Môi trường phát triển là VS Code và tiện ích IBM Blockchain hỗ trợ quy trình phát  triển hợp đồng thông minh trên blockchain, gồm các bước sau:
 \begin{enumerate}
 	\item Tạo và đóng gói smart contract
-	\item Kết nối với mạng HF
+	\item Kết nối với mạng blockchain
 	\item Cài đặt chaincode
 	\item Gửi giao dịch, chạy kiểm tra smart contract
 \end{enumerate}
 
-
-Todo: Điều chỉnh hình và text cho tương đối, bổ sung tiểu kết của chương này
+\section{Tiểu kết chương 2}
+Chương 2 giới thiệu tổng quan về thực trạng quản lý VBCC, những ứng dụng của mật mã hiện đại và công nghệ blockchain phổ biến như Bitcoin, Ethereum, BigchainDB, Hyperledger Fabric với các khái niệm liên quan cơ chế đồng thuận, sổ cái phân tán, hợp đồng thông minh. Chương 3 sẽ trình bày mô hình ứng dụng công nghệ blockchain Hyperledger Fabric vào quản lý VBCC.

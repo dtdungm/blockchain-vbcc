@@ -3,8 +3,8 @@
 
 \section{Mô tả bài toán}
 
-Hiện nay, việc quản lý VBCC được quy định cụ thể riêng theo từng Trường, nhằm hướng dẫn việc thực hiện, báo cáo, lưu trữ hồ sơ và phân cấp chịu trách nhiệm của các cá nhân và đơn vị liên quan trong khi thực hiện công việc.
-Tuy nhiên, công việc quản lý VBCC có nhiều hồ sơ, quy trình như bàn giao, in phôi VBCC, trình ký và đóng dấu, rà soát thông tin in lên phôi VBCC, lập sổ gốc, quản lý phát VBCC, xác minh VBCC, \ldots. còn thủ công nên ảnh hưởng chất lượng hiệu quả công việc.
+Hiện nay, việc quản lý VBCC được quy định cụ thể riêng theo từng Trường, nhằm để hướng dẫn quy trình thực hiện, báo cáo, lưu trữ hồ sơ và phân cấp chịu trách nhiệm của các cá nhân và đơn vị liên quan trong khi thực hiện công việc.
+Tuy nhiên, công việc quản lý VBCC có nhiều hồ sơ, quy trình như bàn giao, in phôi VBCC, trình ký và đóng dấu, rà soát thông tin in lên phôi VBCC, lập sổ gốc, quản lý phát VBCC, xác minh VBCC, \ldots. còn thủ công nên ảnh hưởng đến chất lượng hiệu quả công việc.
 Chẳng hạn như VBCC phát cho sinh viên dễ sai sót, do VBCC phải được in thông tin, ký tên, đóng dấu. Thông tin VBCC gồm có: số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp. 
 
 Do đó, bài toán đặt ra nhu cầu cải tiến trong quản lý thông tin của người cấp, người được cấp và VBCC; số hóa các quy trình cấp VBCC, sở hữu VBCC, chia sẻ thông tin xác thực VBCC có liên quan đến thông tin cá nhân của người được cấp VBCC theo các quy định hiện hành về bảo vệ bí mật thông tin trong môi trường trực tuyến.
@@ -20,7 +20,7 @@ Quy trình quản lý VBCC ứng dụng blockchain được mô tả ở hình \
 
 \begin{enumerate}
 \item Phát hành VBCC cho sinh viên/học viên:
-Thông tin VBCC của sinh viên được lưu trên hệ thống blockchain để đảm bào tính an toàn và tin cậy. Ngoài ra, Trường ký số các thông tin VBCC, nên thông tin VBCC của sinh viên sẽ chống được sự giả mạo trên môi trường điện tử.
+Thông tin VBCC của sinh viên được lưu trên hệ thống blockchain để đảm bào tính an toàn và tin cậy. Ngoài ra, ứng dụng ký số các thông tin VBCC của sinh viên nhằm bảo vệ tính minh bạch trên môi trường điện tử.
 
 \item Cung cấp thông tin xác minh VBCC:
 Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp. Khi cần xác minh VBCC thì chỉ cần gửi thông tin VBCC, có thể lựa chọn thông tin cá nhân như giới tính, dân tộc \ldots khi chia sẻ cho đơn vị xác minh
@@ -30,20 +30,18 @@ Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp.
 
 \end{enumerate}
 
-
 \section{Tổng quan giải pháp}
 
-Nghiên cứu đề xuất một mô hình thử nghiệm ứng dụng Blockchain để đảm bảo tính an toàn thông tin VBCC và tính bí mật thông tin của người được cấp VBCC.
-Hệ thống thực hiện việc ký số khi cấp VBCC, lưu VBCC đã cấp vào blockchain và truy vấn dữ liệu blockchain để xác thực VBCC. 
+Nghiên cứu đề xuất hệ thống quản lý VBCC ứng dụng blockchain để đảm bảo tính an toàn thông tin VBCC và tính bí mật thông tin của người được cấp VBCC.
+Hệ thống thực hiện các chức năng chính: ký số lên thông tin VBCC, lưu chữ ký số vào blockchain, đồng thời lưu thông tin VBCC vào blockchain và CSDL, từ đó truy vấn dữ liệu trong blockchain để xác thực VBCC. 
 
 Hình \ref{fig:vbcc_phanmem} mô tả sơ đồ kiến trúc hệ thống. Trong đó gồm có 3 thành phần chính:
 
-- Phần ứng dụng web: giao tiếp với người dùng, truy vấn, cập nhật dữ liệu vào Blockchain, CSDL
+- Phần ứng dụng web: Nodejs, Express và giao diện Bootstrap để giao tiếp với người dùng, truy vấn, cập nhật dữ liệu vào Blockchain, CSDL
 
-- Phần CSDL: mongoDB để lưu thông tin VBCC và các thông tin không được lưu trong Blockchain.
+- Phần CSDL: hệ CSDL mongoDB lưu thông tin VBCC và các thông tin không được lưu trong Blockchain.
 
-- Phần Blockchain: để lưu trữ VBCC trên nền tảng Hyperledger Fabric và CA quản lý truy cập người dùng và ứng dụng bằng mật mã khóa công khai.
-
+- Phần Blockchain: nền tảng Hyperledger Fabric và CA quản lý định danh người dùng và ứng dụng bằng mật mã khóa công khai.
 
 \begin{figure}[H]
 \centering
@@ -54,6 +52,13 @@ Hình \ref{fig:vbcc_phanmem} mô tả sơ đồ kiến trúc hệ thống. Trong
 
 Quy trình hoạt động của hệ thống được minh họa như hình \ref{fig:vbcc_diagram}.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.8\linewidth]{img/vbcc_diagram2.png}
+\caption{Quy trình hoạt động của hệ thống}
+\label{fig:vbcc_diagram}
+\end{figure}
+
 \begin{enumerate}
 \item Trường phát hành VBCC cho sinh viên/học viên
 
@@ -62,13 +67,14 @@ Quy trình hoạt động của hệ thống được minh họa như hình \ref
 	Bước 1. Trường đăng ký tài khoản sử dụng hệ thống.
 \item 
 		Bước 2. Trường điền thông tin đăng ký tài khoản.
+		Trong đó thông tin Email của Trường cần để CA tạo định danh, cặp khóa cá nhân, khóa công khai của Trường.
 	\item
 		Bước 3. Trường đăng nhập để sử dụng hệ thống.
 	\item 
 		Bước 4. Trường chọn chức năng phát VBCC.
 	\item
 		Bươc 5. Trường nhập thông tin VBCC, số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp.
-		Trong đó thông tin Email của sinh viên để cần để lấy thông tin khóa công khai dành để ký số với khóa cá nhân của Trường. VBCC được lưu trên Blockchain và chữ ký số của Trường.
+		Trong đó thông tin Email của sinh viên cần để định danh sinh viên bằng CA, khóa cá nhân, công khai của sinh viên. Thông tin VBCC được lưu trên Blockchain và lưu trên CSDL.
 	\end{itemize}
 \item Sinh viên quản lý VBCC được cấp
 
@@ -77,13 +83,13 @@ Quy trình hoạt động của hệ thống được minh họa như hình \ref
 	Bước 1. Sinh viên đăng ký tài khoản sử dụng hệ thống.
 \item 
 		Bước 2. Sinh viên điền thông tin đăng ký tài khoản.
-		Trong đó thông tin Email của sinh viên để cần để lấy thông tin khóa công khai để truy cập thông tin VBCC của sinh viên, được lưu trên Blockchain.
+		Trong đó thông tin Email của sinh viên cần để CA tạo định danh, cặp khóa cá nhân, khóa công khai của sinh viên.
 	\item
 		Bước 3. Sinh viên  đăng nhập để sử dụng hệ thống.
 	\item 
-		Bước 4. Sinh viên chọn chức năng phát VBCC.
+		Bước 4. Sinh viên chọn chức năng xem VBCC.
 	\item
-		Bươc 5. Thông tin VBCC được truy vần từ Blockchain, số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp. 
+		Bươc 5. Thông tin VBCC: số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp, được truy vấn từ Blockchain với khóa công khai của sinh viên.
 Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp. 
 	\item Bước 6. Sinh viên chia sẻ VBCC với đơn vị xác minh. 
 	\item Bước 7. Sinh viên chọn thông tin cá nhân muốn chia sẻ.
@@ -91,15 +97,9 @@ Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp.
 	\end{itemize}
 \item Đơn vị kiểm tra xác minh VBCC
 
-Đơn vị xác minh chỉ cần nhận thông tin VBCC được chia sẻ từ sinh viên, sau đó có thể xác thực thông tin VBCC với dữ liệu trong Blockchain. Kết quả hợp lệ và không hợp lệ.
+Đơn vị xác minh chỉ cần nhận thông tin VBCC được chia sẻ từ sinh viên, sau đó có thể xác thực thông tin VBCC với dữ liệu trong Blockchain. Kết quả hợp lệ, không hợp lệ.
 
 \end{enumerate}
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=.9\linewidth]{img/vbcc_diagram2.png}
-\caption{Quy trình hoạt động của hệ thống}
-\label{fig:vbcc_diagram}
-\end{figure}
 
 \subsection{Danh sách tác nhân}
 
@@ -108,7 +108,7 @@ Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp.
 	\label{table:actor}
 	\begin{tabularx} {\textwidth} {|p{1cm}|p{3cm}|X|}
 \hline
-	ID & Tên actor & Mô tả \\ \hline
+	ID & Tên tác nhân & Mô tả \\ \hline
 	A1 & Sinh viên &  là sinh viên/học viên nhận VBCC \\ \hline
 	A2 & Trường học  & Trường/Đơn vị có quyền cấp VBCC \\ \hline
 	A3 & Người xác minh  & Người/Đơn vị có nhu cầu xác minh VBCC \\ \hline
@@ -122,14 +122,14 @@ Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp.
 	\label{table:usecase}
 	\begin{tabularx} {\textwidth} {|p{1cm}|p{1cm}|p{3cm}|X|X|}
 \hline
-		STT &	ID & Tên Use Case & Mô tả & Yêu cầu nghiệp vụ \\ \hline
-		1 & U1	& Đăng nhập &Đăng nhập vào hệ thống để xác thực người dùng &Được mở rộng bởi tất cả \\ \hline
-		2 & U2 & Đăng ký  & Đăng ký tài khoản vào hệ thống & Được mở rộng bởi tất cả\\ \hline
-		3 & U3	&Cấp VBCC & Cấp VBCC có xác nhận chứng thực và ký số VBCC & \\ \hline
+		STT &	ID & Tên chức năng & Mô tả & Yêu cầu nghiệp vụ \\ \hline
+		1 & U1	& Đăng nhập &Đăng nhập vào hệ thống để xác thực người dùng bằng email và mật khẩu &Được mở rộng bởi tất cả \\ \hline
+		2 & U2 & Đăng ký  & Đăng ký tài khoản vào hệ thống, tạo cặp khóa cá nhân và khóa công khai của tài khoản& Được mở rộng bởi tất cả\\ \hline
+		3 & U3	&Cấp VBCC & Cấp VBCC và ký số thông tin VBCC & \\ \hline
 		4& U4	& Xem VBCC đã cấp&  Xem các VBCC Trường cấp & \\ \hline
 		5 & U5	&Xem VBCC đã nhận & Xem VBCC sinh viên đã nhận& \\ \hline
-	6	& U6	&Chia sẻ thông tin VBCC &Chia sẻ thông tin VBCC & \\ \hline
-		7& U7	& Xác thực VBCC &Xác minh tính xác thực của VBCC với nền tảng blockchain & \\ \hline
+	6	& U6	&Chia sẻ thông tin VBCC &Chia sẻ thông tin VBCC, tạo minh chứng xác thực VBCC & \\ \hline
+		7& U7	& Xác thực VBCC &Xác minh tính xác thực của VBCC với dữ liệu trong blockchain& \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -178,9 +178,9 @@ Chức năng Xem VBCC đã nhận
 \item 
 Chức năng Chia sẻ thông tin VBCC
 \begin{itemize}
-\item Mô tả: chức năng cho phép người dùng chia sẽ thông tin VBCC 
+\item Mô tả: chức năng cho phép người dùng lựa chọn và chia sẻ thông tin cá nhân, tạo minh chứng xác thực VBCC. 
 \item Tác nhân: sinh viên 
-\item Yêu cầu: người dùng đã đăng nhập vào hệ thống; người dùng chọn chức năng chia sẽ VBCC
+\item Yêu cầu: người dùng đã đăng nhập vào hệ thống; người dùng chọn chức năng chia sẻ VBCC
 \end{itemize}
 
 \item 
@@ -230,7 +230,7 @@ Thuộc tính của các cấu trúc dữ liệu
 		10& major 	& String & Khóa  học  & not null\\ \hline
 		11& number	& String & Số hiệu VBCC & not null\\ \hline
 		12& regNo	& String & Số vào sổ gốc & not null \\ \hline
-		13& departmentName	& String & Tên khoa &\\ \hline
+		13& departmentName	& String & Tên khoa &not null\\ \hline
 		14& cgpa	& String & Kết quả & not null \\  \hline
 		15& dateOfIssuing	& String & Ngày cấp &not null\\ \hline
 		
@@ -269,7 +269,7 @@ Thuộc tính của các cấu trúc dữ liệu
 \subsection{Thiết kế blockchain}
 \begin{enumerate}
 \item 
-Danh sách các đối tượng trong hệ thống
+Danh sách các đối tượng trong hệ thống blockchain
 
 
 \begin{table}[H]
@@ -290,7 +290,7 @@ Danh sách các đối tượng trong hệ thống
 	\begin{tabularx} {\textwidth} {|p{0.8cm}|p{3.5cm}|p{2.5cm}|X|p{2cm}|}
 \hline
 		STT &	Tên trường & Kiểu dữ liệu & Diễn giải & Ràng buộc \\ \hline
-		1 & certHash	& String & Lưu giá trị băm của VBCC  & not null \\ \hline
+		1 & certHash	& String & Lưu giá trị băm của VBCC gồm những thông tin: studentEmail, studentName, universityName, universityEmail, number, regNo, major, birthday, cgpa, dateOfIssuing  & not null \\ \hline
 		2 & universitySignature & String  & Chữ ký số lên certHash dùng khóa cá nhân của Trường cấp VBCC  & not null \\ \hline
 		3 & studentSignature	&  String & Chữ ký số lên certHash dùng khóa cá nhân của sinh viên nhận VBCC  & not null\\ \hline
 		4 & dateOfIssuing	& String & Ngày cấp  &not null \\ \hline
@@ -331,3 +331,7 @@ Danh sách các đối tượng trong hệ thống
 \end{table}
 
 \end{enumerate}
+
+\section{Tiểu kết chương 3}
+
+Chương 3 mô tả thiết kế cụ thể của hệ thống quản lý VBCC sử dụng công nghệ blockchain và công cụ xây dựng hệ thống gồm có Hyperledger Fabric, Nodejs, MongoDB, Docker, Visual Code, extension IBM blockchain đã được giới thiệu ở Chương 2. Ngoài ra, chương 3 còn mô tả sơ đồ kiến trúc hệ thống, các thành phần chức năng chính, thiết kế CSDL, thiết kế đối tượng trong Blockchain. 
