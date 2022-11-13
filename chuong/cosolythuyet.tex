@@ -492,7 +492,7 @@ Lưu trữ giao dịch vào MongoDB nếu hợp lệ.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=.9\linewidth]{img/bigchaindb_mechanism.png}
+\includegraphics[width=.6\linewidth]{img/bigchaindb_mechanism.png}
 \caption{Các thành phần của một node BigchainDB}
 \label{fig:bigchaindb_mechaism}
 \end{figure}
@@ -520,7 +520,7 @@ BigchainDB bao gồm hai thành phần chính: Tendermint Core và môi trườn
 
 \emph{DeliverTx} là mã công việc của ứng dụng. Mỗi giao dịch trong chuỗi khối được gửi kèm theo thông điệp này. 
 Ứng dụng cần xác thực từng giao dịch nhận được với thông báo DeliverTx dựa trên trạng thái hiện tại, giao thức ứng dụng và thông tin đăng nhập mật mã của giao dịch. 
-Sau đó, một giao dịch đã được xác thực cần cập nhật trạng thái ứng dụng - bằng cách ràng buộc một giá trị vào một kho lưu trữ các giá trị khóa, hoặc bằng cách cập nhật cơ sở dữ liệu UTXO chẳng hạn.
+Sau đó, một giao dịch đã được xác thực cần cập nhật trạng thái ứng dụng - bằng cách ràng buộc một giá trị vào một kho lưu trữ các giá trị khóa, hoặc bằng cách cập nhật cơ sở dữ liệu UTXO.
 
 \emph{CheckTx} tương tự như DeliverTx, nhưng nó chỉ để xác thực các giao dịch. 
 Đầu tiên, mempool của Tendermint Core kiểm tra tính hợp lệ của một giao dịch với CheckTx và chỉ chuyển tiếp các giao dịch hợp lệ cho các giao dịch tương tự của nó. 
