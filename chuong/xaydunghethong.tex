@@ -267,9 +267,8 @@ Thuộc tính của các cấu trúc dữ liệu
 \end{table}
 
 \subsection{Thiết kế blockchain}
-\begin{enumerate}
-\item 
-Danh sách các đối tượng trong hệ thống blockchain
+
+1. Danh sách các đối tượng trong hệ thống blockchain
 
 
 \begin{table}[H]
@@ -330,8 +329,287 @@ Danh sách các đối tượng trong hệ thống blockchain
 \end{tabularx}
 \end{table}
 
+2. Xây dựng mạng blockchain Hyperledger Fabric
+
+Hình \ref{fig:fab_diagram} minh họa kiến trúc mạng Fabric. Mạng HF được triển khai gồm có 03 tổ chức (ORG0, ORG1, ORG2), mỗi ORG được cài đặt trên một máy chủ ảo riêng.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.8\linewidth]{img/fab.png}
+\caption{Kiến trúc mạng Fabric}
+\label{fig:fab_diagram}
+\end{figure}
+
+Mỗi ORG bao gồm các thành phần:
+
+\begin{itemize}
+    \item 1 CA
+    \item 2 Peer sử dụng CSDL goleveldb
+\end{itemize}
+
+Ngoài ra trong mạng HF cũng được cài đặt Ordering Service, các nút Orderer dùng cơ chế đồng thuận RAFT.
+
+Tất các các tổ chức sẽ cùng tham gia vào kênh educhannel
+
+Kiến trúc mạng được triển khai bằng công cụ Minifabric, tập tin cấu hình thông số mạng spec.yaml được minh họa như hình
+\ref{fig:minifab_diagram}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\linewidth]{img/minifab.png}
+\caption{Tập tin cấu hình thông số mạng spec.yaml cho ORG0}
+\label{fig:minifab_diagram}
+\end{figure}
+
+
+Quy trình để triển khai một mạng Hyperledger Fabric (HF) bao gồm các bước sau:
+\begin{enumerate}
+    \item Xây dựng mạng HF cho từng ORG
+    \item Tạo kênh
+    \item Cho các peer trong các ORG tham gia vào kênh
+    \item Cài đặt chaincode lên các peer
+    \item Phê duyệt chaincode (từ HF phiên bản 2.0)
+    \item Cam kết (commit) hoặc khởi tạo chaincode
+    \item Gọi chaincode (sử dụng minifab hoặc từ ứng dụng)
+    \item Truy vấn các khối và giao dịch
+\end{enumerate}
+
+Sau đây là chi tiết quy trình thiết lập mạng HF trong thực tế:
+
+\emph{Lưu ý: Minifabric yêu cầu docker CE 18.03 trở lên}
+
+\begin{enumerate}
+    \item Tạo thư mục làm việc trên từng host và tải script minifabric bằng các lệnh sau:
+    \begin{Verbatim}[fontsize=\small]
+    mkdir -p ~/agunet && cd ~/agunet
+    curl -o minifab -sL https://tinyurl.com/yxa2q6yr
+    chmod +x minifab
+    \end{Verbatim}
+
+    \item Thiết lập 3 mạng tương ứng cho 3 ORG mỗi ORG trên một VPS khác nhau: educertnet0-ORG0(VPS1), educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3)
+
+    Các thành phần trong mạng được định nghĩa thông qua tập tin spec.yaml. Tạo tập tin này trong thư mục làm việc (agunet) và cung cấp thông tin cấu hình tương ứng sau:
+    
+ORG0: spec.yaml
+    \begin{Verbatim}[fontsize=\small]
+    fabric:
+        cas:
+            - "ca.org0.educert.net"
+        peers:
+            - "peer0.org0.educert.net"
+            - "peer1.org0.educert.net"
+        orderers:
+            - "orderer1.educert.net"
+            - "orderer2.educert.net"
+            - "orderer3.educert.net"
+        settings:
+            ca:
+                FABRIC_LOGGING_SPEC: INFO
+            peer:
+                FABRIC_LOGGING_SPEC: INFO
+            orderer:
+                FABRIC_LOGGING_SPEC: INFO
+    netname: "educertnet0"
+    \end{Verbatim}
+
+ORG1: spec.yaml
+    \begin{Verbatim}[fontsize=\small]
+    fabric:
+        cas:
+            - "ca.org1.educert.net"
+        peers:
+            - "peer0.org1.educert.net"
+            - "peer1.org1.educert.net"
+        settings:
+            ca:
+                FABRIC_LOGGING_SPEC: INFO
+            peer:
+                FABRIC_LOGGING_SPEC: INFO
+            orderer:
+                FABRIC_LOGGING_SPEC: INFO
+    netname: "educertnet1"
+    \end{Verbatim}
+
+ORG2: spec.yaml
+    \begin{Verbatim}[fontsize=\small]
+    fabric:
+        cas:
+            - "ca.org2.educert.net"
+        peers:
+            - "peer0.org2.educert.net"
+            - "peer1.org2.educert.net"
+        settings:
+            ca:
+                FABRIC_LOGGING_SPEC: INFO
+            peer:
+                FABRIC_LOGGING_SPEC: INFO
+            orderer:
+                FABRIC_LOGGING_SPEC: INFO
+    netname: "educertnet2"
+    \end{Verbatim}
+
+    Khởi chạy đồng thời 3 mạng trên 3 VPS với các lệnh tương ứng sau:
+
+    educertnet0-ORG0(VPS1)
+    \begin{Verbatim}[fontsize=\small]
+    ./minifab netup -i 2.1.1 -e 7000 -o org0.educert.net
+    \end{Verbatim}
+
+   educertnet1-ORG1(VPS2)
+    \begin{Verbatim}[fontsize=\small]
+    ./minifab netup -i 2.1.1 -e 7100 -o org1.educert.net
+    \end{Verbatim}
+
+    educertnet2-ORG2(VPS3
+    \begin{Verbatim}[fontsize=\small]
+    ./minifab netup -i 2.1.1 -e 7200 -o org2.educert.net
+    \end{Verbatim}
+
+Quá trình khởi tạo mạng sau khi thành công sẽ được kết quả như hình \ref{fig:hf_done_diagram}.
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\linewidth]{img/hf_done.png}
+    \caption{Màn hinh khởi tạo mạng blockchain bằng Minifabric}
+    \label{fig:hf_done_diagram}
+    \end{figure}
+
+Kiểm tra các thông tin docker sau khi mạng đã khởi chạy
+    \begin{Verbatim}[fontsize=\small]
+    docker ps --format '{{.Names}}:{{.Ports}}'
+    \end{Verbatim}
+
+Hình \ref{fig:educertnet2_diagram} là kết quả trên educertnet2-ORG2(VPS3)
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\linewidth]{img/educertnet2.png}
+    \caption{Màn hình docker container trên educertnet2-ORG2(VPS3)}
+    \label{fig:educertnet2_diagram}
+    \end{figure}
+    
+\item Tạo kênh educhannel và join các peer trên các ORG vào kênh educhannel
+
+Trên educertnet1-ORG0(VPS1), thực hiện lệnh sau:
+
+    \begin{Verbatim}[fontsize=\small]
+    ./minifab create,join -c educhannel
+    \end{Verbatim}
+    
+Tiếp theo triển khai chaincode educert cho kênh educhannel, phê duyệt và cam kết chaincode bằng lệnh sau:
+    \begin{Verbatim}[fontsize=\small]
+    ./minifab install,approve,commit -n educert -l node -d false
+    \end{Verbatim}
+
+Mã nguồn chaincode được copy theo cấu trúc đường dẫn tương ứng sau, hình \ref{fig:chaincode_path_diagram}
+
+    \begin{Verbatim}[fontsize=\small]
+        agunet/vars/chaincode/educert/node
+    \end{Verbatim}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\linewidth]{img/chaincode_path.png}
+    \caption{Cấu trúc thư mục chaincode trong Minifabric}
+    \label{fig:chaincode_path_diagram}
+    \end{figure}
+
+
+    Đến đây mạng educertnet1-ORG0(VPS1) đã được khởi chạy, kết quả thu được, hình \ref{fig:educertnet1_diagram} sau khi dùng lệnh:
+
+    \begin{Verbatim}[fontsize=\small]
+        docker ps --format '{{.Names}}:{{.Ports}}'
+    \end{Verbatim}
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{img/educertnet1.png}
+    \caption{Mạng educertnet1-ORG0(VPS1) được chạy trong Minifabric}
+    \label{fig:educertnet1_diagram}
+    \end{figure}
+
+    \item Cho các peer của educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3) tham gia vào kênh educhannel
+
+    Hiện tại educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3) đã khởi chạy, tiếp theo thực hiện thêm 2 ORG này vào kênh educhannel. Thông tin kết nối chi tiết trong tập tin JoinRequest\_org1-educert-net.json, JoinRequest\_org2-educert-net.json do Minifabric tạo ra. Sau đó sử dụng lệnh orgjoin để thêm các nút mới. Đồng thời cũng tiến hành tạo các tập tin hồ sơ để import các thông tin về các orderer vào educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3)
+
+    Sao chép tập tin JoinRequest\_org1-educert-net.json(nằm trong agunet/vars/) trên educertnet1-ORG1(VPS2) sang educertnet0-ORG0(VPS1) và đổi tên thành NewOrgJoinRequest.json(nằm trong agunet/vars/)
+
+    educertnet0-ORG0(VPS1)
+    \begin{Verbatim}[fontsize=\small]
+        ./ minifab orgjoin,profilegen
+    \end{Verbatim}
+    
+    Sao chép tập tin endpoints.yaml (nằm trong agunet/vars/ profiles) trên educertnet0-ORG0(VPS1) sang educertnet1-ORG1(VPS2) đặt trong agunet/vars/)
+
+    educertnet1-ORG1(VPS2)
+     \begin{Verbatim}[fontsize=\small]
+        ./ minifab nodeimport,join -c educhannel
+    \end{Verbatim}
+
+Tương tự, tiến hành sao chép các thông tin cấu hình(JoinRequest\_org2-educert-net.json, endpoints.yaml) như trên cho educertnet2-ORG21(VPS3)
+
+educertnet0-ORG0(VPS1)
+     \begin{Verbatim}[fontsize=\small]
+        ./ minifab orgjoin,profilegen
+    \end{Verbatim}
+
+educertnet2-ORG2(VPS3)
+     \begin{Verbatim}[fontsize=\small]
+        ./ minifab nodeimport,join -c educhannel
+    \end{Verbatim}
+
+
+    \item Cài đặt, phê duyệt chaincode lên các peer của educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3)
+
+    Thực hiện các lệnh sau trên cả educertnet1-ORG1(VPS2), educertnet2-ORG2(VPS3)
+     \begin{Verbatim}[fontsize=\small]
+       ./minifab install,approve -n educert -l node
+    \end{Verbatim}
+
+    educertnet0-ORG0(VPS1)
+     \begin{Verbatim}[fontsize=\small]
+       ./minifab approve,discover,commit
+    \end{Verbatim}
+    
+Thực hiện lệnh để kiểm tra chaincode educert đã được approve và commit thành công trên kênh educhannel.
+     \begin{Verbatim}[fontsize=\small]
+       docker ps --format '{{.Names}}:{{.Ports}}'
+    \end{Verbatim}
+
+Hình \ref{fig:educertnet1-ORG1_diagram} là kết quả trả về trên educertnet1-ORG1(VPS2):
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{img/educertnet1-ORG1.png}
+    \caption{Mạng educertnet1-ORG1(VPS2) được chạy trong Minifabric}
+    \label{fig:educertnet1-ORG1_diagram}
+    \end{figure}
+
+
+Đến đây mạng HF đã được triển khai thành công theo kiến trúc đã mô tả như hình \ref{fig:fab_diagram}.
+
+Để xem thêm các lệnh, tham số được hỗ trợ bởi Minifabric  sử dụng lệnh: 
+     \begin{Verbatim}[fontsize=\small]
+       ./minifab
+    \end{Verbatim}
+
+Sử dụng Hyperledger Explorer để giám sát, các giao dịch và khối mạng HF thông qua giao diện Web bằng cách thực thi lệnh sau:
+
+educertnet1-ORG1(VPS2):
+     \begin{Verbatim}[fontsize=\small]
+       ./minifab explorerup
+    \end{Verbatim}
+    
+Tên người dùng đăng nhập và mật khẩu vào Explorer là exploreradmin/exploreradminpw
+
+Sau khi đăng nhập sẽ có kết quả như hình \ref{fig:exploreradmin_diagram}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=.9\linewidth]{img/exploreradmin.png}
+    \caption{Giao diện Web Hyperledger Explorer}
+    \label{fig:exploreradmin_diagram}
+    \end{figure}
+
+    
 \end{enumerate}
 
 \section{Tiểu kết chương 3}
 
-Chương 3 mô tả thiết kế của hệ thống quản lý VBCC sử dụng công nghệ blockchain và công cụ để xây dựng hệ thống gồm có Hyperledger Fabric, Nodejs, MongoDB, Docker, Visual Code, extension IBM blockchain đã được giới thiệu ở Chương 2. Ngoài ra, chương 3 còn mô tả sơ đồ kiến trúc hệ thống, các thành phần chức năng chính, thiết kế CSDL, thiết kế đối tượng trong Blockchain. 
+Chương 3 mô tả thiết kế của hệ thống quản lý VBCC sử dụng công nghệ blockchain và công cụ để xây dựng hệ thống gồm có Hyperledger Fabric, Nodejs, MongoDB, Docker, Minifabric, Visual Code, extension IBM blockchain đã được giới thiệu ở Chương 2. Ngoài ra, chương 3 còn mô tả sơ đồ kiến trúc hệ thống, các thành phần chức năng chính, thiết kế CSDL, thiết kế mạng Blockchain. 

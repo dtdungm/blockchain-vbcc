@@ -29,6 +29,7 @@
 \RequirePackage{setspace}
 \RequirePackage[titles]{tocloft}
 \RequirePackage{polyglossia}
+\RequirePackage{fancyvrb}
 \RequirePackage[shortlabels]{enumitem}
 
 

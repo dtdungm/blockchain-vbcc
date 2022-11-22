@@ -664,7 +664,25 @@ Các ứng dụng chạy trên Docker Engine được minh họa như hình \ref
 \label{fig:getting_started_image2.png}
 \end{figure}
 
-\emph{Tiện ích mở rộng  IBM Blockchain Platform Extension trên VS Code}
+\textbf{Công cụ xây dựng mạng blockchain Minifabric }
+
+Để triển khai kiến trúc mạng Fabric, nghiên cứu đề xuất sử dụng công cụ Minifabric (https://labs.hyperledger.org/labs/minifabric.html). Minifabric được thiết kế để đơn giản hóa quá trình triển khai mạng HF. Công cụ chỉ yêu cầu Docker Engine và hoạt động trên các hệ điều hành Windows 10, Linux và MacOS. Quá trình thiết lập mạng HF bằng một lệnh duy nhất. Sau khi mạng HF được thiết lập và chạy bằng Minifabric, Minifabric cung cấp lệnh để hoạt động với chuỗi khối, kênh và ứng dụng blockchain Hyperledger Fabric.
+
+Minifabric cung cấp các chức năng chính sau:
+\begin{itemize}
+\item Thiết lập và mở rộng mạng HF, chẳng hạn như thêm các tổ chức mới thông qua tập tin cấu hình spec.yaml
+\item Các chức năng với kênh như tạo, cập nhật, đưa các peer vào, cập nhật kênh và truy vấn kênh
+\item Các chức năng với chaincode như cài đặt, nâng cấp, phê duyệt, khởi tạo, gọi, truy vấn.
+\item Hỗ trợ tập dữ liệu riêng tư trong mạng.
+\item Truy vấn kích thước sổ cái và khối.
+\item Tạo hồ sơ kết nối và các tập tin ví cho SDK của các ngôn ngữ go, node, python và các extensions để tích hợp vào VSCode.
+\item Tích hợp Hyperledger Explorer và Caliper
+\item Giám sát , kiểm tra trạng thái và giám sát các nút bên trong mạng blockchain.
+\end{itemize}
+
+Minifabric sử dụng tập tin cấu hình thông số mạng spec.yaml trong thư mục làm việc để thiết lập mạng Fabric. Trong đó, cho phép định nghĩa các tên tổ chức khác nhau, tên nút, số lượng tổ chức, để thiết lập mạng Fabric.
+
+\textbf{Tiện ích mở rộng  IBM Blockchain Platform Extension trên VS Code}
 
 HF được hỗ trợ qua tiện ích mở rộng IBM Blockchain Platform Extension trên VS Code. 
 Tiện ích mở rộng của IBM giúp tạo, phát triển kiểm tra và gỡ lỗi các hợp đồng thông minh của mạng blockchain từ đó xây dựng các ứng dụng trên mạng blockchain.
