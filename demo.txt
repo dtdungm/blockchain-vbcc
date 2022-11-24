@@ -28,7 +28,7 @@ Các bước thực hiện như sau:
 	3.5 Sinh viên chia sẻ chứng chỉ: chọn thông tin chia sẻ.
 	3.6 Đơn vị xác thực chứng chỉ theo thôsng tin từ sinh viên.
 4. Blockchain explorer
-	Theo dõi mạng Blockchain triển khai băng MiniFabric
+	Theo dõi mạng Blockchain triển khai bằng MiniFabric
 	Địa chỉ: 172.16.0.41:7204
 5. Ứng dụng Web 
 	Triển khai trên máy chủ ảo
