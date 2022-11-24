@@ -1,0 +1,36 @@
+Demo chương trình Quản lý văn bằng chứng chỉ sử dụng Blockchain
+
+Các phần mềm cần thiết như sau:
+1.Visual Code và IBM Blockchain extension
+2.Docker Desktop
+3.MongoDB 4.0 và Robo 3T
+4.Nodejs 12.22.12
+
+Trong thư mục demo gồm có:
+- chaincode: thư mục gồm mã của blockchain 
+- web-app: thư mục ứng dụng web, nodejs
+- file Excel danh sách chứng chỉ
+
+Các bước thực hiện như sau:
+1. Thiết lập mạng blockchain và chaincode
+	1.1 Đóng gói chaincode
+	1.2 Khởi động blockchain và Tích hợp chaincode vào kênh
+ 	1.3 Khởi tạo sổ cái
+2. Chạy ứng dụng web (web-app)
+	1.1 Các file cấu hình kết nối với Blockchain
+	- .env: CCP_PATH = C:\Users\pc\Desktop\Demo\codedemo\web-app\GatewayConnection.json
+	- GatewayConnection: thông tin kết nối blockchain
+3. Các chức năng chính web-app
+	3.1 Trường đăng ký tài khoản cict@agu.edu.vn
+	3.2 Trường đăng nhập tài khoản.
+	3.3 Trường phát hành chứng chỉ: import từ danh sách Excel.
+	3.4 Sinh viên đăng nhập tài khoản.
+	3.5 Sinh viên chia sẻ chứng chỉ: chọn thông tin chia sẻ.
+	3.6 Đơn vị xác thực chứng chỉ theo thôsng tin từ sinh viên.
+4. Blockchain explorer
+	Theo dõi mạng Blockchain triển khai băng MiniFabric
+	Địa chỉ: 172.16.0.41:7204
+5. Ứng dụng Web 
+	Triển khai trên máy chủ ảo
+	Địa chỉ: 172.16.0.116:3000
+ 
