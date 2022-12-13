@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: luanvan.aux
+A level-1 auxiliary file: trangbia/bia.aux
+A level-1 auxiliary file: trangbia/loicamon.aux
+A level-1 auxiliary file: trangbia/tomtat.aux
+A level-1 auxiliary file: trangbia/abstract.aux
+A level-1 auxiliary file: trangbia/loicamdoan.aux
+A level-1 auxiliary file: trangbia/danhmuctuviettat.aux
+A level-1 auxiliary file: chuong/modau.aux
+A level-1 auxiliary file: chuong/cosolythuyet.aux
+A level-1 auxiliary file: chuong/xaydunghethong.aux
+A level-1 auxiliary file: chuong/ketquathucnghiem.aux
+A level-1 auxiliary file: chuong/ketluan.aux
+The style file: vietnumeric.bst
+Database file #1: tailieuthamkhao.bib
+Warning--missing institution in ralphcharlesmerkle1979
+You've used 9 entries,
+            2541 wiz_defined-function locations,
+            618 strings with 6483 characters,
+and the built_in function-call counts, 4507 in all, are:
+= -- 409
+> -- 84
+< -- 10
++ -- 50
+- -- 25
+* -- 230
+:= -- 391
+add.period$ -- 14
+call.type$ -- 9
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 551
+empty$ -- 384
+format.name$ -- 29
+if$ -- 998
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 96
+newline$ -- 36
+num.names$ -- 9
+pop$ -- 219
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 220
+stack$ -- 0
+substring$ -- 142
+swap$ -- 440
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 19
+width$ -- 10
+write$ -- 94
+(There was 1 warning)
