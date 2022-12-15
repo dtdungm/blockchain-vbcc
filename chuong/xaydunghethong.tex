@@ -7,26 +7,42 @@ Hiện nay, việc quản lý VBCC được quy định cụ thể riêng theo t
 Tuy nhiên, công việc quản lý VBCC có nhiều hồ sơ, quy trình như bàn giao, in phôi VBCC, trình ký và đóng dấu, rà soát thông tin in lên phôi VBCC, lập sổ gốc, quản lý phát VBCC, xác minh VBCC, \ldots. còn thủ công nên ảnh hưởng đến chất lượng hiệu quả công việc.
 Chẳng hạn như VBCC phát cho sinh viên dễ sai sót, do VBCC phải được in thông tin, ký tên, đóng dấu. Thông tin VBCC gồm có: số hiệu phôi, số vào sổ gốc, họ tên, ngày sinh, giới tính, nơi sinh, kết quả, ngày cấp, người cấp. 
 
+Thủ tục cấp VBCC giấy phải qua nhiều công đoạn, tốn thời gian và chi phí: Trường làm đề nghị cấp phôi chứng chỉ: cần 2 ngày chờ phê duyệt, làm hồ sơ quản lý và lưu trữ phôi chứng chỉ\ldots.
+Ngoài ra, hiện trạng in VBCC giấy gây tốn công sức và ngân sách:
+\begin{itemize}
+    \item Đối với Trường: với số lượng lớn VBCC được cấp như hiện nay và phải cấp cho từng sinh viên sẽ làm tốn chi phí in ấn và thời gian nhận chứng chỉ. Giá phôi chứng chỉ xê dịch khoảng 5.000 đồng/phôi chứng chỉ.
+    \item Đối với cơ quản quản lý: nếu có xảy ra sai sót thì việc truy tìm hồ sơ xử lý sẽ gây khó khăn cho cơ quan quản lý.
+    \item Dễ làm giả chứng chỉ giấy.
+\end{itemize}
+
 Do đó, bài toán đặt ra nhu cầu cải tiến trong quản lý thông tin của người cấp, người được cấp và VBCC; số hóa các quy trình cấp VBCC, sở hữu VBCC, chia sẻ thông tin xác thực VBCC có liên quan đến thông tin cá nhân của người được cấp VBCC theo các quy định hiện hành về bảo vệ bí mật thông tin trong môi trường trực tuyến.
 
-Quy trình quản lý VBCC ứng dụng blockchain được mô tả ở hình \ref{fig:vbcc}
+Sơ đồ  hệ thống quản lý VBCC ứng dụng blockchain được mô tả ở hình \ref{fig:vbcc}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.9\linewidth]{img/vbcc.jpg}
-\caption{Sơ đồ bài toán quản lý VBCC ứng dụng blockchain}
+\caption{Sơ đồ hệ thống quản lý VBCC ứng dụng blockchain}
 \label{fig:vbcc}
 \end{figure}
 
+Sau khi thực hiện công tác tổ chức thi chứng chỉ ứng dụng công nghệ thông tin, Hội đồng thi công bố kết quả thí sinh thi đạt, Trường sẽ ban hành quyết định cấp VBCC kèm theo danh sách thí sinh được cấp VBCC.
+Danh sách thí sinh được cấp VBCC gồm có thông tin như số báo danh, họ tên, ngày sinh, giới tính, dân tộc, điểm thi lý thuyết, điểm thi thực hành.
+Tiếp theo Trường lập đề nghị cấp phôi chứng chỉ và tiếp nhận, quản lý phôi chứng chỉ.
+
+Khi Trung tâm in và cấp chứng chỉ cho Sinh viên, Trung tâm tiến hành ghi nhận thông tin VBCC vào CSDL, những thông tin cần tính minh bạch sẽ được lưu trữ vào hệ thống blockchain.
+
+Khi Sinh viên nhận chứng chỉ, Sinh viên sẽ quản lý xem danh sách chứng chỉ được cấp, thông tin trên chứng chỉ có thể chia sẻ theo lựa chọn trong các thông tin cá nhân được lưu trên CSDL. Khi Đơn vị xác minh nhận thông tin VBCC được chia sẻ từ sinh viên, thông tin VBCC xác thực với dữ liệu trong Blockchain.
+
 \begin{enumerate}
-\item Phát hành VBCC cho sinh viên/học viên:
-Thông tin VBCC của sinh viên được lưu trên hệ thống blockchain để đảm bào tính an toàn và tin cậy. Ngoài ra, ứng dụng ký số các thông tin VBCC của sinh viên nhằm bảo vệ tính minh bạch trên môi trường điện tử.
+\item Khi phát hành VBCC cho sinh viên/học viên:
+Thông tin VBCC của sinh viên được kết hợp lưu trên CSDL và trên hệ thống blockchain để đảm bảo tính an toàn và tin cậy. Ứng dụng ký số các thông tin VBCC của sinh viên nhằm bảo vệ tính minh bạch trên môi trường điện tử.
 
 \item Cung cấp thông tin xác minh VBCC:
 Sinh viên có thể sở hữu một hoặc nhiều VBCC của Trường cấp. Khi cần xác minh VBCC thì chỉ cần gửi thông tin VBCC, có thể lựa chọn thông tin cá nhân như giới tính, dân tộc \ldots khi chia sẻ cho đơn vị xác minh
 
 \item Kiểm tra xác minh VBCC:
-Đơn vị xác minh chỉ cần nhận thông tin VBCC được chia sẻ từ sinh viên, sau đó có thể xác thực thông tin VBCC với dữ liệu trong Blockchain.
+Đơn vị xác minh nhận thông tin VBCC được chia sẻ từ sinh viên, và có thể xác thực thông tin VBCC với dữ liệu trong Blockchain.
 
 \end{enumerate}
 
