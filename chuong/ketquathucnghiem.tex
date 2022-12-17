@@ -173,6 +173,22 @@ Kết quả xác thực: nếu minh chứng đúng thì thông báo hợp lệ n
 \label{fig:xacminh_hople}
 \end{figure}
 
+\section{Đánh giá mô hình đề xuất}
+
+Để đánh giá mô hình đề xuất, nghiên cứu đã thực hiện một hệ thống quản lý VBCC dựa trên mạng Hyperledger Fabric, là một nền tảng blockchain riêng tư, và hỗ trợ việc mở rộng và triển khai các hợp đồng thông minh một cách dễ dàng. Trong mô hình đề xuất của nghiên cứu, có 2 đối tượng chính là Trường cấp chứng chỉ, Sinh viên nhận chứng chỉ và hợp đồng thông minh dùng để thực hiện các bước trong quá trình ghi nhận thông tin trên CSDL và Blockchain. Như vậy phần đánh giá của mô hình là việc đánh giá hiệu quả của thiết kế hợp đồng thông minh.
+
+Hệ thống thử nghiệm đánh giá tính đúng đắn của hợp đồng thông minh bằng dữ liệu được nhập từ danh sách 150 chứng chỉ. Có 150 tài khoản Sinh viên được khởi tạo và 150 chứng chỉ được cấp. Các tài khoản Sinh viên lần lượt đăng nhập thủ công để thực hiện các chức năng tương tác với hợp đồng thông minh. Kết quả cho thấy chức năng của hợp đồng thông minh: xác thực chứng chỉ hợp lệ đã hoạt động đúng với thiết kế. Tuy nhiên, hợp đồng thông minh còn thiếu chức năng xử lý, kiểm tra dữ liệu nhập vào hệ thống.
+
+Về tốc độ xử lý, hệ thống sẽ phụ thuộc vào tốc độ xử lý của mạng blockchain. Thực tế hệ thống thử nghiệm cho thấy thời gian từ khi gởi dữ liệu đến khi ghi nhận vào chuỗi khối còn chậm từ khoảng 2 giây để một chứng chỉ ghi nhận vào blockchain.
+
+Trong quá trình thực hiện, nghiên cứu sử dụng CSDL MongoDB đóng vai trò là cơ sở dữ liệu ngoài chuỗi khối, off-chain storage. Đây là thế hệ CSDL mới ra đời vào những năm 2000, cơ sở dữ liệu phi quan hệ hay CSDL NoSQL. NoSQL được thiết kế cho mô hình lưu trữ dữ liệu phân tán với những đặc điểm nổi bật như: có khả năng mở rộng theo chiều ngang, lược đồ tự do, có thể chịu lỗi cao và đáp ứng thời gian thực.
+
+Dữ liệu cấp chứng chỉ được lưu trên blockchain sử dụng cấu trúc Merkle tree có thể làm giảm lượng dữ liệu cần thiết cho mục đích xác minh thông tin, tính toàn vẹn, tính nhất quán nội dung của dữ liệu. Merkle Root tóm tắt tất cả dữ liệu đặc trưng của chứng chỉ. Nếu một chi tiết trong chứng chỉ được cấp có sự thay đổi, thì Merkle Root cũng sẽ thay đổi. Do đó sử dụng Merkle tree sẽ kiểm tra một cách nhanh chóng tính toàn vẹn thông tin của chứng chỉ trên nền tảng sổ.
+
+
+
+Trong thời gian tới, nghiên cứu sẽ tiếp tực bổ sung các chức năng về quản lý quyền truy cập  với các vai trò của người sử dụng trong thực tế: nhập dữ liệu, xét duyệt dữ liệu và tăng cường tính bảo mật của hệ thống.
+
 \textbf{Tiểu kết chương 4}
 
 Chương 4 trình bày kết quả thực nghiệm hệ thống quản lý VBCC sử dụng công nghệ blockchain. Nghiên cứu đã tìm hiểu và thử nghiệm hệ thống blockchain Hyperledger Fabric trên máy tính cá nhân và sau đó trên các máy chủ ảo. Hệ thống quản lý VBCC có giao diện web với các chức năng chính cho người sử dụng như: (1) Trường quản lý và cấp VBCC; (2) Sinh viên nhận VBCC và chia sẻ thông tin VBCC; (3) Đơn vị xác thực VBCC. 
