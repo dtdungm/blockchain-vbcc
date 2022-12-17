@@ -41,5 +41,6 @@
 \contentsline {chapter}{\numberline {4}Kết quả thực nghiệm}{44}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Mạng blockchain}{44}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Ứng dụng Web}{44}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Kết luận}{52}{chapter.5}%
-\contentsline {chapter}{Tài liệu tham khảo}{53}{chapter*.11}%
+\contentsline {section}{\numberline {4.3}Đánh giá mô hình đề xuất}{51}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Kết luận}{53}{chapter.5}%
+\contentsline {chapter}{Tài liệu tham khảo}{54}{chapter*.11}%
