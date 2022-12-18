@@ -1,7 +1,7 @@
 \selectlanguage *{vietnamese}
-\contentsline {chapter}{Tóm tắt}{ii}{chapter*.2}%
-\contentsline {chapter}{Abstract}{iii}{chapter*.3}%
-\contentsline {chapter}{Mục lục}{vi}{chapter*.5}%
+\contentsline {chapter}{Tóm tắt}{iii}{chapter*.3}%
+\contentsline {chapter}{Abstract}{iv}{chapter*.4}%
+\contentsline {chapter}{Mục lục}{vii}{chapter*.6}%
 \contentsline {chapter}{\numberline {1}Mở đầu}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Giới thiệu}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Lý do chọn đề tài}{2}{section.1.2}%
@@ -19,8 +19,8 @@
 \contentsline {subsection}{\numberline {2.2.2}Mật mã Khóa Đối xứng và mật mã Khóa Bất đối xứng}{9}{subsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.2.3}Hàm băm}{10}{subsection.2.2.3}%
 \contentsline {subsection}{\numberline {2.2.4}Chữ ký số}{11}{subsection.2.2.4}%
-\contentsline {subsubsection}{Nguyên lý ký số và xác thực chữ ký số }{12}{section*.9}%
-\contentsline {subsubsection}{Chức năng của chữ ký số và tiêu chí an toàn thông tin}{13}{section*.10}%
+\contentsline {subsubsection}{Nguyên lý ký số và xác thực chữ ký số }{12}{section*.10}%
+\contentsline {subsubsection}{Chức năng của chữ ký số và tiêu chí an toàn thông tin}{13}{section*.11}%
 \contentsline {subsection}{\numberline {2.2.5}Chứng thư số}{13}{subsection.2.2.5}%
 \contentsline {subsection}{\numberline {2.2.6}Dịch vụ chứng thực số}{14}{subsection.2.2.6}%
 \contentsline {subsection}{\numberline {2.2.7}Hạ tầng khóa công khai}{14}{subsection.2.2.7}%
@@ -43,4 +43,4 @@
 \contentsline {section}{\numberline {4.2}Ứng dụng Web}{44}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Đánh giá mô hình đề xuất}{51}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Kết luận}{53}{chapter.5}%
-\contentsline {chapter}{Tài liệu tham khảo}{54}{chapter*.11}%
+\contentsline {chapter}{Tài liệu tham khảo}{54}{chapter*.12}%

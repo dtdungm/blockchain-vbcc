@@ -2,6 +2,7 @@ This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: luanvan.aux
 A level-1 auxiliary file: trangbia/bia.aux
+A level-1 auxiliary file: trangbia/trangxacnhancuahoidong.aux
 A level-1 auxiliary file: trangbia/loicamon.aux
 A level-1 auxiliary file: trangbia/tomtat.aux
 A level-1 auxiliary file: trangbia/abstract.aux
@@ -17,7 +18,7 @@ Database file #1: tailieuthamkhao.bib
 Warning--missing institution in ralphcharlesmerkle1979
 You've used 9 entries,
             2541 wiz_defined-function locations,
-            618 strings with 6483 characters,
+            619 strings with 6518 characters,
 and the built_in function-call counts, 4507 in all, are:
 = -- 409
 > -- 84
